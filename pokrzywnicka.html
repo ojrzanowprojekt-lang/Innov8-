@@ -255,29 +255,13 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
   <a href="/#projekty" class="nav-back">← Wszystkie projekty</a>
 </nav>
 
-<!-- HERO — BEFORE/AFTER SLIDER -->
-<div class="ba-slider" id="baSlider">
-  <!-- PRZED -->
-  <div class="ba-slider-before">
-    <img src="/images/pokrzywnicka-przed.png" alt="Pokrzywnicka 11 — przed remontem" />
+<!-- HERO — statyczne zdjęcie -->
+<section class="hero">
+  <div class="hero-img">
+    <img src="/images/pokrzywnicka-hero.png" alt="Pokrzywnicka 11 — po remoncie" />
   </div>
-  <!-- PO -->
-  <div class="ba-slider-after" id="baAfter">
-    <img src="/images/pokrzywnicka-po.png" alt="Pokrzywnicka 11 — po remoncie" />
-  </div>
-  <!-- Overlay gradient -->
-  <div class="ba-slider-overlay"></div>
-  <!-- Divider -->
-  <div class="ba-slider-divider" id="baDivider">
-    <div class="ba-slider-handle">⇔</div>
-  </div>
-  <!-- Labels -->
-  <div class="ba-slider-labels">
-    <span class="ba-slider-label">Przed</span>
-    <span class="ba-slider-label">Po</span>
-  </div>
-  <!-- Content overlay -->
-  <div class="ba-slider-content">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
     <div class="hero-eyebrow">
       <div class="hero-eyeline"></div>
       <span class="hero-eyelabel">Projekt Zrealizowany · Warszawa</span>
@@ -291,7 +275,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
       <span class="hero-tag"><strong>Warszawa</strong> lokalizacja</span>
     </div>
   </div>
-</div>
+</section>
 
 <!-- OVERVIEW -->
 <section class="overview">
@@ -345,6 +329,30 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <div class="stat-l">Rok realizacji</div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE/AFTER SLIDER — osobna sekcja -->
+<section style="padding:80px 0; background:var(--white);">
+  <div class="container">
+    <div class="label reveal" style="margin-bottom:16px">Transformacja</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:300;color:var(--ink);margin-bottom:8px" class="reveal d1">Przed i <em style="font-style:italic;color:var(--gold)">po.</em></h2>
+    <p style="font-size:13px;color:var(--stone);margin-bottom:36px;font-weight:300" class="reveal d2">Przeciągnij linię aby zobaczyć transformację budynku.</p>
+    <div class="ba-slider reveal d2" id="baSlider" style="height:520px;min-height:auto;margin-top:0;border-radius:0;box-shadow:var(--shadow-l);">
+      <div class="ba-slider-before">
+        <img src="/images/pokrzywnicka-przed.png" alt="Pokrzywnicka 11 — przed remontem" />
+      </div>
+      <div class="ba-slider-after" id="baAfter">
+        <img src="/images/pokrzywnicka-po.png" alt="Pokrzywnicka 11 — po remoncie" />
+      </div>
+      <div class="ba-slider-divider" id="baDivider">
+        <div class="ba-slider-handle">⇔</div>
+      </div>
+      <div class="ba-slider-labels">
+        <span class="ba-slider-label">Przed</span>
+        <span class="ba-slider-label">Po</span>
       </div>
     </div>
   </div>
