@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sycowska 33 — Apartamenty Warszawa | Innov8 Development</title>
+<meta name="description" content="Sycowska 33 — 9 apartamentów w Warszawie (dzielnica Włochy). Sprzedaż otwarta. Metraże 19–55 m². Innov8 Development.">
+<link rel="canonical" href="https://innov-8.pl/sycowska.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white:     #FFFFFF;
+  --off-white: #F8F6F2;
+  --paper:     #F2EDE5;
+  --ink:       #1A1714;
+  --stone:     #7A746C;
+  --gold:      #9E7A3A;
+  --gold-l:    #B8954E;
+  --gold-pale: rgba(158,122,58,0.10);
+  --gold-line: rgba(158,122,58,0.25);
+  --border:    rgba(26,23,20,0.08);
+  --serif:     'Cormorant Garamond', Georgia, serif;
+  --sans:      'DM Sans', sans-serif;
+  --ease:      cubic-bezier(0.25,0.46,0.45,0.94);
+  --shadow-m:  0 8px 40px rgba(26,23,20,0.10);
+  --shadow-l:  0 24px 80px rgba(26,23,20,0.14);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--sans); font-weight:300; background:var(--white); color:var(--ink); overflow-x:hidden; }
+img { display:block; width:100%; object-fit:cover; }
+a { text-decoration:none; color:inherit; }
+.container { max-width:1240px; margin:0 auto; padding:0 56px; }
+.label { font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:10px; }
+.label::before { content:''; width:20px; height:1px; background:var(--gold); flex-shrink:0; }
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .85s var(--ease),transform .85s var(--ease); }
+.reveal.in { opacity:1; transform:none; }
+.d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s}
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:24px 56px;
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 16px rgba(26,23,20,0.06);
+}
+.nav-logo { display:flex; align-items:center; gap:10px; }
+.nav-mark { width:30px; height:30px; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:13px; font-weight:600; color:var(--white); }
+.nav-name { font-size:12px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); }
+.nav-back { font-size:11px; font-weight:400; letter-spacing:.09em; text-transform:uppercase; color:var(--stone); border:1px solid var(--border); padding:9px 22px; transition:all .3s; }
+.nav-back:hover { border-color:var(--gold); color:var(--gold); }
+.nav-status { display:flex; align-items:center; gap:8px; font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); }
+.nav-status::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--gold); animation:blink 1.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ── HERO ── */
+.hero {
+  height:80vh; min-height:560px;
+  position:relative; overflow:hidden;
+  display:flex; align-items:flex-end;
+  margin-top:73px;
+}
+.hero-img { position:absolute; inset:0; }
+.hero-img img { width:100%; height:100%; object-fit:cover; }
+.hero-overlay {
+  position:absolute; inset:0;
+  background: linear-gradient(to top, rgba(20,17,14,.88) 0%, rgba(20,17,14,.4) 50%, rgba(20,17,14,.1) 100%);
+}
+.hero-content { position:relative; z-index:2; padding:0 56px 72px; width:100%; }
+.hero-eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.hero-eyeline { width:36px; height:1px; background:var(--gold); }
+.hero-eyelabel { font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.55); }
+.hero-h1 { font-family:var(--serif); font-size:clamp(40px,6vw,80px); font-weight:300; color:var(--white); line-height:1.0; margin-bottom:20px; }
+.hero-h1 em { font-style:italic; color:var(--gold-l); }
+.hero-meta { display:flex; gap:32px; flex-wrap:wrap; }
+.hero-tag { font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.45); }
+.hero-tag strong { color:rgba(255,255,255,.8); font-weight:400; }
+.status-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--gold); color:var(--white);
+  font-size:10px; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  padding:8px 18px; margin-bottom:28px;
+}
+.status-badge::before { content:''; width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.8); animation:blink 1.5s infinite; }
+
+/* ── UNDER CONSTRUCTION BANNER ── */
+.uc-banner {
+  background:var(--ink);
+  padding:20px 0;
+  border-bottom:3px solid var(--gold);
+}
+.uc-inner {
+  display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+}
+.uc-text { font-size:13px; color:rgba(255,255,255,.6); line-height:1.7; }
+.uc-text strong { color:var(--gold-l); font-weight:500; }
+.uc-progress { display:flex; flex-direction:column; gap:8px; min-width:280px; }
+.uc-prog-label { display:flex; justify-content:space-between; font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
+.uc-prog-label span:first-child { color:rgba(255,255,255,.4); }
+.uc-prog-label span:last-child { color:var(--gold); font-weight:500; }
+.uc-prog-bar { height:3px; background:rgba(255,255,255,.1); }
+.uc-prog-fill { height:100%; background:var(--gold); width:65%; }
+
+/* ── OVERVIEW ── */
+.overview { padding:100px 0; background:var(--white); }
+.overview-inner { display:grid; grid-template-columns:1fr 1fr; gap:88px; align-items:start; }
+.overview-h2 { font-family:var(--serif); font-size:clamp(28px,3vw,44px); font-weight:300; color:var(--ink); line-height:1.15; margin-bottom:24px; }
+.overview-body { font-size:14px; font-weight:300; line-height:1.9; color:var(--stone); margin-bottom:16px; }
+.feat { display:flex; align-items:flex-start; gap:14px; padding:14px 0; border-bottom:1px solid var(--border); }
+.feat:first-child { border-top:1px solid var(--border); }
+.feat-ic { width:24px; height:24px; flex-shrink:0; border:1px solid var(--gold-line); display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:10px; margin-top:2px; background:var(--gold-pale); }
+.feat-title { font-size:13px; font-weight:500; margin-bottom:2px; color:var(--ink); }
+.feat-desc { font-size:12.5px; color:var(--stone); line-height:1.65; }
+.stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.stat { background:var(--off-white); padding:32px 28px; }
+.stat-n { font-family:var(--serif); font-size:48px; font-weight:300; color:var(--gold); line-height:1; margin-bottom:6px; }
+.stat-l { font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--stone); }
+
+/* ── APARTMENTS TABLE ── */
+.apartments { padding:100px 0; background:var(--off-white); }
+.apt-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:48px; flex-wrap:wrap; gap:24px; }
+.apt-h2 { font-family:var(--serif); font-size:clamp(28px,3vw,44px); font-weight:300; color:var(--ink); margin-top:14px; }
+.apt-legend { display:flex; gap:16px; flex-wrap:wrap; }
+.leg-item { display:flex; align-items:center; gap:8px; font-size:11px; color:var(--stone); }
+.leg-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.leg-dot.available { background:#9E7A3A; }
+.leg-dot.sold { background:#ccc; }
+
+/* Table */
+.apt-table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; background:var(--white); }
+thead tr { background:var(--ink); }
+thead th {
+  padding:14px 16px;
+  font-size:9.5px; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+  text-align:left; white-space:nowrap;
+}
+thead th:first-child { color:var(--gold-l); }
+tbody tr {
+  border-bottom:1px solid var(--border);
+  transition:background .2s;
+  cursor:default;
+}
+tbody tr:hover { background:var(--off-white); }
+tbody tr.sold-row { opacity:.45; }
+tbody td {
+  padding:16px 16px;
+  font-size:13px; color:var(--ink);
+}
+tbody td.apt-id { font-family:var(--serif); font-size:16px; font-weight:500; color:var(--gold); }
+tbody td.apt-price { font-weight:500; color:var(--ink); }
+tbody td.apt-psm { font-size:12px; color:var(--stone); }
+.status-pill {
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:9.5px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
+  padding:4px 10px;
+}
+.status-pill.available { color:#9E7A3A; background:rgba(158,122,58,.1); }
+.status-pill.sold { color:#999; background:rgba(0,0,0,.04); }
+.status-pill::before { content:''; width:5px; height:5px; border-radius:50%; flex-shrink:0; }
+.status-pill.available::before { background:#9E7A3A; }
+.status-pill.sold::before { background:#ccc; }
+.balcon-yes { color:#4a7c59; font-weight:500; }
+.balcon-no { color:var(--stone); }
+
+/* CTA pod tabelą */
+.apt-cta { margin-top:48px; padding:40px; background:var(--ink); display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap; }
+.apt-cta-text h3 { font-family:var(--serif); font-size:24px; font-weight:300; color:var(--white); margin-bottom:6px; }
+.apt-cta-text p { font-size:13px; color:rgba(255,255,255,.45); }
+.btn-gold { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; padding:14px 36px; background:var(--gold); color:var(--white); border:none; transition:all .3s; }
+.btn-gold:hover { background:var(--gold-l); }
+.btn-outline-white { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; padding:13px 36px; background:transparent; color:var(--white); border:1.5px solid rgba(255,255,255,.25); transition:all .3s; }
+.btn-outline-white:hover { border-color:var(--gold-l); color:var(--gold-l); }
+
+/* ── GALLERY placeholder ── */
+.gallery { padding:100px 0; background:var(--white); }
+.gallery-h2 { font-family:var(--serif); font-size:clamp(28px,3vw,44px); font-weight:300; color:var(--ink); margin:14px 0 48px; }
+.gallery-img { width:100%; aspect-ratio:16/9; object-fit:cover; box-shadow:var(--shadow-l); }
+
+/* ── PROCESS ── */
+.process { padding:100px 0; background:var(--off-white); }
+.proc-h2 { font-family:var(--serif); font-size:clamp(28px,3vw,44px); font-weight:300; color:var(--ink); margin:14px 0 48px; }
+.proc-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; }
+.pstep { background:var(--white); padding:36px 28px; }
+.pstep-n { font-family:var(--serif); font-size:48px; font-weight:300; color:var(--gold-line); line-height:1; margin-bottom:16px; }
+.pstep-t { font-size:13px; font-weight:500; color:var(--ink); margin-bottom:8px; }
+.pstep-d { font-size:12px; color:var(--stone); line-height:1.7; }
+
+/* ── CTA SECTION ── */
+.cta-section { padding:100px 0; background:var(--ink); text-align:center; }
+.cta-h2 { font-family:var(--serif); font-size:clamp(32px,4vw,56px); font-weight:300; color:var(--white); margin-bottom:20px; }
+.cta-h2 em { font-style:italic; color:var(--gold-l); }
+.cta-sub { font-size:15px; font-weight:300; color:rgba(255,255,255,.45); max-width:480px; margin:0 auto 44px; line-height:1.8; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+/* ── FOOTER ── */
+footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padding:32px 56px; display:flex; align-items:center; justify-content:space-between; }
+.f-logo { display:flex; align-items:center; gap:10px; }
+.f-mark { width:26px; height:26px; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:11px; font-weight:600; color:var(--white); }
+.f-name { font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.4); }
+.f-copy { font-size:11px; color:rgba(255,255,255,.25); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px) {
+  nav { padding:16px 20px; }
+  .container { padding:0 20px; }
+  .hero-content { padding:0 20px 48px; }
+  .overview-inner { grid-template-columns:1fr; gap:48px; }
+  .stats-grid { grid-template-columns:1fr 1fr; }
+  .proc-steps { grid-template-columns:1fr 1fr; }
+  .apt-cta { flex-direction:column; }
+  footer { flex-direction:column; gap:16px; text-align:center; padding:24px 20px; }
+  .uc-inner { flex-direction:column; }
+}
+@media(max-width:480px) {
+  .proc-steps { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-mark">i8</div>
+    <span class="nav-name">Innov8 Development</span>
+  </a>
+  <div class="nav-status">Sprzedaż Otwarta</div>
+  <a href="/#projekty" class="nav-back">← Wszystkie projekty</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img">
+    <img src="/images/sycowska.jpg" alt="Sycowska 33 — apartamenty Warszawa Włochy" />
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyeline"></div>
+      <span class="hero-eyelabel">Sprzedaż Otwarta · Warszawa, Włochy</span>
+    </div>
+    <div class="status-badge">Sprzedaż aktywna</div>
+    <h1 class="hero-h1">Sycowska 33<br><em>Apartamenty</em></h1>
+    <div class="hero-meta">
+      <span class="hero-tag"><strong>9</strong> lokali</span>
+      <span class="hero-tag"><strong>19–55 m²</strong> metraże</span>
+      <span class="hero-tag"><strong>3 piętra</strong></span>
+      <span class="hero-tag"><strong>Warszawa, Włochy</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- UNDER CONSTRUCTION BANNER -->
+<div class="uc-banner">
+  <div class="container">
+    <div class="uc-inner">
+      <div class="uc-text">
+        <strong>Prace w toku</strong> — budynek jest aktualnie w trakcie remontu.<br>
+        Lokale dostępne w sprzedaży. Odbiór kluczy po zakończeniu prac.
+      </div>
+      <div class="uc-progress">
+        <div class="uc-prog-label">
+          <span>Postęp prac</span>
+          <span>~65%</span>
+        </div>
+        <div class="uc-prog-bar">
+          <div class="uc-prog-fill"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="overview">
+  <div class="container">
+    <div class="overview-inner">
+      <div>
+        <div class="label reveal" style="margin-bottom:18px">O Projekcie</div>
+        <h2 class="overview-h2 reveal d1">9 lokali w sercu<br><em style="font-style:italic;color:var(--gold)">Włoch.</em></h2>
+        <p class="overview-body reveal d2">Sycowska 33 to kameralna inwestycja w spokojnej dzielnicy Włochy — doskonale skomunikowanej z centrum Warszawy. Kompleksowo remontowany budynek oferuje lokale o zróżnicowanych metrażach, idealne zarówno na własne mieszkanie, jak i pod wynajem.</p>
+        <p class="overview-body reveal d2">Wszystkie lokale sprzedawane w stanie deweloperskim — gotowe do własnej aranżacji. Wybrane mieszkania posiadają balkony.</p>
+        <div class="reveal d3" style="margin-top:36px;">
+          <div class="feat">
+            <div class="feat-ic">◎</div>
+            <div>
+              <div class="feat-title">Kompleksowy remont</div>
+              <div class="feat-desc">Wymiana wszystkich instalacji, nowa elewacja, odnowione części wspólne.</div>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-ic">⬡</div>
+            <div>
+              <div class="feat-title">Stan deweloperski</div>
+              <div class="feat-desc">Lokale gotowe do własnej aranżacji — tynki, wylewki, instalacje.</div>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-ic">✦</div>
+            <div>
+              <div class="feat-title">Świetna lokalizacja</div>
+              <div class="feat-desc">Dzielnica Włochy — dobre połączenia z centrum, spokojna okolica.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-n">9</div>
+            <div class="stat-l">Lokali</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">55m²</div>
+            <div class="stat-l">Największy lokal</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">3</div>
+            <div class="stat-l">Piętra</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">269</div>
+            <div class="stat-l">m² łącznie</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APARTMENTS TABLE -->
+<section class="apartments">
+  <div class="container">
+    <div class="apt-header reveal">
+      <div>
+        <div class="label">Dostępne Lokale</div>
+        <h2 class="apt-h2">Wybierz swój<br><em style="font-style:italic;color:var(--gold)">lokal.</em></h2>
+      </div>
+      <div class="apt-legend">
+        <div class="leg-item"><div class="leg-dot available"></div> Dostępny</div>
+        <div class="leg-item"><div class="leg-dot sold"></div> Sprzedany</div>
+      </div>
+    </div>
+
+    <div class="apt-table-wrap reveal d1">
+      <table>
+        <thead>
+          <tr>
+            <th>Nr lokalu</th>
+            <th>Piętro</th>
+            <th>Powierzchnia</th>
+            <th>Aneks / 2 pokoje</th>
+            <th>Łazienka</th>
+            <th>Balkon</th>
+            <th>Status</th>
+            <th>Cena</th>
+            <th>Cena / m²</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="apt-id">M1</td>
+            <td>Parter</td>
+            <td>19,09 m²</td>
+            <td>—</td>
+            <td>2,29 m²</td>
+            <td class="balcon-no">Nie</td>
+            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="apt-price">362 710 zł</td>
+            <td class="apt-psm">19 000 zł/m²</td>
+          </tr>
+          <tr>
+            <td class="apt-id">M2</td>
+            <td>Parter</td>
+            <td>27,54 m²</td>
+            <td>17,11 m²</td>
+            <td>2,04 m²</td>
+            <td class="balcon-no">Nie</td>
+            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="apt-price">468 180 zł</td>
+            <td class="apt-psm">17 000 zł/m²</td>
+          </tr>
+          <tr>
+            <td class="apt-id">M3</td>
+            <td>Parter</td>
+            <td>29,17 m²</td>
+            <td>16,7 m²</td>
+            <td>1,65 m²</td>
+            <td class="balcon-no">Nie</td>
+            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="apt-price">495 890 zł</td>
+            <td class="apt-psm">17 000 zł/m²</td>
+          </tr>
+          <tr>
+            <td class="apt-id">M4</td>
+            <td>Parter</td>
+            <td>29,8 m²</td>
+            <td>17,29 m²</td>
+            <td>1,78 m²</td>
+            <td class="balcon-no">Nie</td>
+            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="apt-price">506 600 zł</td>
+            <td class="apt-psm">17 000 zł/m²</td>
+          </tr>
+          <tr>
+            <td class="apt-id">M5</td>
+            <td>1 Piętro</td>
+            <td>19,88 m²</td>
+            <td>—</td>
+            <td>2,29 m²</td>
+            <td class="balcon-yes">Tak</td>
+            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="apt-price">377 720 zł</td>
+            <td class="apt-psm">19 000 zł/m²</td>
+          </tr>
+          <tr>
+            <td class="apt-id">M6</td>
+            <td>1 Piętro</td>
+            <td>28,24 m²</td>
+            <td>17,5 m²</td>
+            <td>2,04 m²</td>
+            <td class="balcon-yes">Tak</td>
+            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="apt-price">480 080 zł</td>
+            <td class="apt-psm">17 000 zł/m²</td>
+          </tr>
+          <tr>
+            <td class="apt-id">M7</td>
+            <td>1 Piętro</td>
+            <td>29,85 m²</td>
+            <td>17,05 m²</td>
+            <td>5,74 m²</td>
+            <td class="balcon-yes">Tak</td>
+            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="apt-price">507 450 zł</td>
+            <td class="apt-psm">17 000 zł/m²</td>
+          </tr>
+          <tr>
+            <td class="apt-id">M8</td>
+            <td>1 Piętro</td>
+            <td>31,00 m²</td>
+            <td>17,96 m²</td>
+            <td>1,8 m²</td>
+            <td class="balcon-yes">Tak</td>
+            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="apt-price">527 000 zł</td>
+            <td class="apt-psm">17 000 zł/m²</td>
+          </tr>
+          <tr>
+            <td class="apt-id">M9</td>
+            <td>2 Piętro</td>
+            <td>54,9 m²</td>
+            <td>—</td>
+            <td>2,96 m²</td>
+            <td class="balcon-yes">Tak</td>
+            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="apt-price">933 300 zł</td>
+            <td class="apt-psm">17 000 zł/m²</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="apt-cta reveal d2">
+      <div class="apt-cta-text">
+        <h3>Zainteresowany lokalem?</h3>
+        <p>Skontaktuj się z nami — odpowiemy w ciągu 24h.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="tel:+48535033499" class="btn-gold">Zadzwoń: +48 535 033 499</a>
+        <a href="/#kontakt" class="btn-outline-white">Wyślij zapytanie</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="container">
+    <div class="label reveal" style="margin-bottom:14px">Dokumentacja</div>
+    <h2 class="gallery-h2 reveal d1">Postęp <em style="font-style:italic;color:var(--gold)">prac.</em></h2>
+    <img src="/images/sycowska.jpg" alt="Sycowska 33 — budynek" class="gallery-img reveal d2" />
+    <p style="margin-top:20px;font-size:12px;color:var(--stone);font-style:italic;" class="reveal d3">
+      Zdjęcia z postępów prac będą aktualizowane na bieżąco. Ostatnia aktualizacja: marzec 2026.
+    </p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <div class="label reveal" style="margin-bottom:14px">Harmonogram</div>
+    <h2 class="proc-h2 reveal d1">Etapy <em style="font-style:italic;color:var(--gold)">realizacji.</em></h2>
+    <div class="proc-steps reveal d2">
+      <div class="pstep">
+        <div class="pstep-n">01</div>
+        <div class="pstep-t">Zakup i przygotowanie</div>
+        <div class="pstep-d">Nabycie nieruchomości, opracowanie projektu remontowego i budżetu inwestycji.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-n">02</div>
+        <div class="pstep-t">Remont i instalacje</div>
+        <div class="pstep-d">Kompleksowa wymiana instalacji elektrycznych, hydraulicznych i grzewczych.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-n">03</div>
+        <div class="pstep-t">Wykończenie i elewacja</div>
+        <div class="pstep-d">Tynki, posadzki, odnowa elewacji, klatki schodowej i otoczenia budynku.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-n">04</div>
+        <div class="pstep-t">Odbiory i przekazanie</div>
+        <div class="pstep-d">Odbiory techniczne, przekazanie lokali nowym właścicielom.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="label reveal" style="justify-content:center;margin-bottom:24px">
+      <span style="font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)">Kontakt</span>
+    </div>
+    <h2 class="cta-h2 reveal d1">Masz pytania<br>o <em>Sycowską 33?</em></h2>
+    <p class="cta-sub reveal d2">Chętnie odpowiemy na wszystkie pytania dotyczące lokali, stanu zaawansowania prac i warunków zakupu.</p>
+    <div class="cta-btns reveal d3">
+      <a href="tel:+48535033499" class="btn-gold">+48 535 033 499</a>
+      <a href="/#kontakt" class="btn-outline-white">Formularz kontaktowy</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">
+    <div class="f-mark">i8</div>
+    <span class="f-name">Innov8 Development</span>
+  </div>
+  <span class="f-copy">© 2026 Innov8 Development Sp. z o.o.</span>
+</footer>
+
+<script>
+document.querySelectorAll('.reveal').forEach(el => {
+  new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('in');
+  }), { threshold: .07 }).observe(el);
+});
+</script>
+
+</body>
+</html>
