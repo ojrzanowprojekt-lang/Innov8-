@@ -1127,9 +1127,12 @@ footer { background:#0D0C0A; padding:60px 56px 0; display:grid; grid-template-co
           </div>
         </div>
       </div>
-      <form class="cform reveal d2" id="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
-        <input type="hidden" name="form-name" value="kontakt" />
-        <input type="hidden" name="bot-field" style="display:none" />
+      <form class="cform reveal d2" id="contact-form">
+        <input type="hidden" name="access_key" value="c8fc4570-5388-4f39-be7f-a82a5f2e5cef" />
+        <input type="hidden" name="subject" value="Nowe zapytanie — Innov8 Development" />
+        <input type="hidden" name="from_name" value="Innov8 Development" />
+        <input type="hidden" name="redirect" value="https://innov-8.pl/thanks.html" />
+        <input type="checkbox" name="botcheck" style="display:none" />
         <div class="cf-ttl" data-pl="Wyślij Zapytanie" data-en="Send Inquiry">Wyślij Zapytanie</div>
         <div class="cf-row">
           <div class="cfg"><label data-pl="Imię i Nazwisko" data-en="Full Name">Imię i Nazwisko</label><input type="text" name="name" required placeholder="Jan Kowalski" data-pl-ph="Jan Kowalski" data-en-ph="John Smith"></div>
@@ -1147,7 +1150,7 @@ footer { background:#0D0C0A; padding:60px 56px 0; display:grid; grid-template-co
           </select>
         </div>
         <div class="cfg"><label data-pl="Wiadomość" data-en="Message">Wiadomość</label><textarea name="message" rows="4" required placeholder="Opisz czego szukasz — odpowiemy w ciągu 24h." data-pl-ph="Opisz czego szukasz — odpowiemy w ciągu 24h." data-en-ph="Describe what you're looking for — we'll reply within 24h."></textarea></div>
-        <button type="submit" class="cf-submit" id="cf-submit-btn" data-pl="Wyślij →" data-en="Send →">Wyślij →</button>
+        <button type="button" class="cf-submit" id="cf-submit-btn" data-pl="Wyślij →" data-en="Send →" onclick="submitForm()">Wyślij →</button>
       </form>
     </div>
   </div>
@@ -1503,8 +1506,53 @@ function closeModal(type) {
 }
 
 /* ══════════════════════════════
-   CONTACT FORM — NETLIFY SUBMIT
+   CONTACT FORM — WEB3FORMS
 ══════════════════════════════ */
+async function submitForm() {
+  const form = document.getElementById('contact-form');
+  const btn = document.getElementById('cf-submit-btn');
+
+  const name = form.querySelector('[name="name"]').value.trim();
+  const email = form.querySelector('[name="email"]').value.trim();
+  const message = form.querySelector('[name="message"]').value.trim();
+
+  if (!name || !email || !message) {
+    alert(currentLang === 'en'
+      ? 'Please fill in required fields (name, email, message).'
+      : 'Proszę wypełnić wymagane pola: imię, email, wiadomość.');
+    return;
+  }
+
+  const lang = currentLang === 'en' ? 'Send →' : 'Wyślij →';
+  btn.textContent = currentLang === 'en' ? 'Sending...' : 'Wysyłanie...';
+  btn.disabled = true;
+
+  const data = new FormData(form);
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: data
+    });
+    const json = await res.json();
+
+    if (json.success) {
+      window.location.href = '/thanks.html';
+    } else {
+      throw new Error(json.message);
+    }
+  } catch (err) {
+    btn.textContent = currentLang === 'en' ? 'Error — try again' : 'Błąd — spróbuj ponownie';
+    btn.style.background = '#c0392b';
+    btn.disabled = false;
+    setTimeout(() => {
+      btn.textContent = lang;
+      btn.style.background = '';
+    }, 3000);
+  }
+}
+
+
 (function() {
   const form = document.getElementById('contact-form');
   if (!form) return;
