@@ -1451,7 +1451,7 @@ async function send() {
   inp.value = ''; hideChips(); addMsg(msg, 'user');
   hist.push({ role: 'user', content: msg }); showDots();
   try {
-    const r = await fetch('/.netlify/functions/chat', {
+    const r = await fetch('https://innov8-chat.vercel.app/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ messages: hist })
