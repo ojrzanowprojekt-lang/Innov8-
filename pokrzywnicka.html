@@ -109,58 +109,62 @@ nav {
 
 /* ── BEFORE/AFTER SLIDER ── */
 .ba-slider {
-  position:relative; overflow:hidden;
-  height:80vh; min-height:560px;
-  margin-top:73px;
+  position:relative;
+  overflow:hidden;
+  height:520px;
   cursor:ew-resize;
   user-select:none;
+  -webkit-user-select:none;
+  box-shadow:var(--shadow-l);
 }
 .ba-slider-before, .ba-slider-after {
-  position:absolute; inset:0;
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
 }
 .ba-slider-before img, .ba-slider-after img {
-  width:100%; height:100%; object-fit:cover;
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
 }
 .ba-slider-after {
-  clip-path: inset(0 50% 0 0);
-  transition: clip-path 0s;
+  clip-path: inset(0 0 0 50%);
 }
 .ba-slider-divider {
-  position:absolute; top:0; bottom:0;
-  width:3px; background:var(--white);
-  left:50%; transform:translateX(-50%);
-  z-index:10; pointer-events:none;
-  box-shadow:0 0 12px rgba(0,0,0,.4);
+  position:absolute;
+  top:0; bottom:0;
+  left:50%;
+  width:3px;
+  background:var(--white);
+  transform:translateX(-50%);
+  z-index:10;
+  pointer-events:none;
+  box-shadow:0 0 12px rgba(0,0,0,.5);
 }
 .ba-slider-handle {
-  position:absolute; top:50%; left:50%;
+  position:absolute;
+  top:50%; left:50%;
   transform:translate(-50%,-50%);
   width:52px; height:52px;
   background:var(--white);
   border-radius:50%;
   display:flex; align-items:center; justify-content:center;
-  z-index:11; pointer-events:none;
+  z-index:11;
+  pointer-events:none;
   box-shadow:0 4px 20px rgba(0,0,0,.3);
   font-size:16px; color:var(--ink);
+  font-weight:bold;
 }
 .ba-slider-labels {
-  position:absolute; top:24px; left:0; right:0;
+  position:absolute; top:20px; left:0; right:0;
   display:flex; justify-content:space-between;
-  padding:0 32px; z-index:12; pointer-events:none;
+  padding:0 28px; z-index:12; pointer-events:none;
 }
 .ba-slider-label {
   font-size:10px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--white); background:rgba(0,0,0,.45);
-  padding:6px 14px; backdrop-filter:blur(4px);
-}
-.ba-slider-overlay {
-  position:absolute; inset:0; z-index:2;
-  background:linear-gradient(to top, rgba(20,17,14,.75) 0%, transparent 40%);
-  pointer-events:none;
-}
-.ba-slider-content {
-  position:absolute; bottom:0; left:0; right:0;
-  z-index:5; padding:0 56px 72px; pointer-events:none;
+  color:var(--white); background:rgba(0,0,0,.5);
+  padding:6px 16px; backdrop-filter:blur(4px);
 }
 
 .ba-label { margin-bottom:48px; }
@@ -340,23 +344,70 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
     <div class="label reveal" style="margin-bottom:16px">Transformacja</div>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:300;color:var(--ink);margin-bottom:8px" class="reveal d1">Przed i <em style="font-style:italic;color:var(--gold)">po.</em></h2>
     <p style="font-size:13px;color:var(--stone);margin-bottom:36px;font-weight:300" class="reveal d2">Przeciągnij linię aby zobaczyć transformację budynku.</p>
-    <div class="ba-slider reveal d2" id="baSlider" style="height:520px;min-height:auto;margin-top:0;border-radius:0;box-shadow:var(--shadow-l);">
-      <div class="ba-slider-before">
-        <img src="/images/pokrzywnicka-przed.png" alt="Pokrzywnicka 11 — przed remontem" />
+
+    <!-- SLIDER -->
+    <div id="baSlider" style="
+      position:relative;
+      width:100%;
+      height:500px;
+      overflow:hidden;
+      cursor:ew-resize;
+      user-select:none;
+      -webkit-user-select:none;
+      box-shadow:var(--shadow-l);
+    ">
+      <!-- PRZED — pełne tło -->
+      <img src="/images/pokrzywnicka-przed.png" alt="Przed remontem" style="
+        position:absolute;top:0;left:0;
+        width:100%;height:100%;object-fit:cover;
+      "/>
+
+      <!-- PO — przycinane od lewej -->
+      <div id="baAfterWrap" style="
+        position:absolute;top:0;left:50%;right:0;bottom:0;
+        overflow:hidden;
+      ">
+        <img src="/images/pokrzywnicka-po.png" alt="Po remoncie" style="
+          position:absolute;top:0;right:0;
+          height:100%;width:auto;min-width:100%;
+          object-fit:cover;object-position:left center;
+        "/>
       </div>
-      <div class="ba-slider-after" id="baAfter">
-        <img src="/images/pokrzywnicka-po.png" alt="Pokrzywnicka 11 — po remoncie" />
+
+      <!-- Linia podziału -->
+      <div id="baDivider" style="
+        position:absolute;top:0;bottom:0;left:50%;
+        width:3px;background:#fff;
+        transform:translateX(-50%);
+        box-shadow:0 0 10px rgba(0,0,0,.5);
+        z-index:10;
+        pointer-events:none;
+      ">
+        <!-- Kółko -->
+        <div style="
+          position:absolute;top:50%;left:50%;
+          transform:translate(-50%,-50%);
+          width:48px;height:48px;
+          background:#fff;border-radius:50%;
+          display:flex;align-items:center;justify-content:center;
+          font-size:18px;font-weight:bold;color:#1A1714;
+          box-shadow:0 4px 16px rgba(0,0,0,.3);
+        ">⇔</div>
       </div>
-      <div class="ba-slider-divider" id="baDivider">
-        <div class="ba-slider-handle">⇔</div>
-      </div>
-      <div class="ba-slider-labels">
-        <span class="ba-slider-label">Przed</span>
-        <span class="ba-slider-label">Po</span>
-      </div>
+
+      <!-- Etykiety -->
+      <div style="position:absolute;top:20px;left:20px;z-index:11;
+        background:rgba(0,0,0,.5);color:#fff;
+        font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+        padding:6px 14px;pointer-events:none;backdrop-filter:blur(4px);">← Przed</div>
+      <div style="position:absolute;top:20px;right:20px;z-index:11;
+        background:rgba(0,0,0,.5);color:#fff;
+        font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+        padding:6px 14px;pointer-events:none;backdrop-filter:blur(4px);">Po →</div>
     </div>
   </div>
 </section>
+
 
 <!-- BEFORE / AFTER -->
 <section class="ba-section">
@@ -517,22 +568,22 @@ document.querySelectorAll('.reveal').forEach(el => {
 // Before/After Slider
 (function() {
   const slider = document.getElementById('baSlider');
-  const after = document.getElementById('baAfter');
+  const afterWrap = document.getElementById('baAfterWrap');
   const divider = document.getElementById('baDivider');
-  if (!slider) return;
+  if (!slider || !afterWrap) return;
 
   let dragging = false;
 
-  function setPos(x) {
+  function setPos(clientX) {
     const rect = slider.getBoundingClientRect();
-    let pct = (x - rect.left) / rect.width;
+    let pct = (clientX - rect.left) / rect.width;
     pct = Math.max(0.05, Math.min(0.95, pct));
-    const pctRight = (1 - pct) * 100;
-    after.style.clipPath = `inset(0 ${pctRight}% 0 0)`;
+    // afterWrap zaczyna się od lewej i odsłania prawą stronę
+    afterWrap.style.left = (pct * 100) + '%';
     divider.style.left = (pct * 100) + '%';
   }
 
-  slider.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); });
+  slider.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); e.preventDefault(); });
   window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
   window.addEventListener('mouseup', () => { dragging = false; });
 
