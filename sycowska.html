@@ -39,6 +39,13 @@ a { text-decoration:none; color:inherit; }
 .reveal.in { opacity:1; transform:none; }
 .d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s}
 
+
+/* ── LANG SWITCHER ── */
+.lang-sw { display:flex; gap:4px; align-items:center; }
+.lang-btn { background:none; border:none; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--stone); padding:2px 4px; transition:color .3s; cursor:pointer; font-family:var(--sans); }
+.lang-btn.act, .lang-btn:hover { color:var(--gold) !important; }
+.lang-sep { color:var(--border); font-size:10px; }
+
 /* ── NAV ── */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:500;
@@ -222,8 +229,9 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
   .proc-steps { grid-template-columns:1fr; }
 }
 </style>
+<script src="/lang.js"></script>
 </head>
-<body>
+<body data-page="sycowska">
 
 <!-- NAV -->
 <nav>
@@ -231,8 +239,14 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
     <div class="nav-mark">i8</div>
     <span class="nav-name">Innov8 Development</span>
   </a>
-  <div class="nav-status">Sprzedaż Otwarta</div>
-  <a href="/#projekty" class="nav-back">← Wszystkie projekty</a>
+  <div class="nav-status" data-pl="Sprzedaż Otwarta" data-en="Sales Open">Sprzedaż Otwarta</div>
+  <div class="lang-sw"><button class="lang-btn act" onclick="setLang('pl')">PL</button><span class="lang-sep">/</span><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+  <div class="lang-sw" style="display:flex;gap:4px;align-items:center;">
+    <button class="lang-btn act" onclick="setLang('pl')" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:2px 4px;cursor:pointer;font-family:var(--sans);">PL</button>
+    <span style="color:var(--border);font-size:10px;">/</span>
+    <button class="lang-btn" onclick="setLang('en')" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:2px 4px;cursor:pointer;font-family:var(--sans);">EN</button>
+  </div>
+  <a href="/#projekty" class="nav-back" data-pl="← Wszystkie projekty" data-en="← All Projects" data-pl="← Wszystkie projekty" data-en="← All Projects">← Wszystkie projekty</a>
 </nav>
 
 <!-- HERO -->
@@ -244,14 +258,14 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
   <div class="hero-content">
     <div class="hero-eyebrow">
       <div class="hero-eyeline"></div>
-      <span class="hero-eyelabel">Sprzedaż Otwarta · Warszawa, Włochy</span>
+      <span class="hero-eyelabel" data-pl="Sprzedaż Otwarta · Warszawa, Włochy" data-en="Sales Open · Warsaw, Włochy">Sprzedaż Otwarta · Warszawa, Włochy</span>
     </div>
-    <div class="status-badge">Sprzedaż aktywna</div>
-    <h1 class="hero-h1">Sycowska 33<br><em>Apartamenty</em></h1>
+    <div class="status-badge" data-pl="Sprzedaż aktywna" data-en="Sales Active">Sprzedaż aktywna</div>
+    <h1 class="hero-h1" data-pl="Sycowska 33<br><em>Apartamenty</em>" data-en="Sycowska 33<br><em>Apartments</em>">Sycowska 33<br><em>Apartamenty</em></h1>
     <div class="hero-meta">
       <span class="hero-tag"><strong>9</strong> lokali</span>
-      <span class="hero-tag"><strong>19–55 m²</strong> metraże</span>
-      <span class="hero-tag"><strong>3 piętra</strong></span>
+      <span class="hero-tag"><strong>19–55 m²</strong> <span data-pl="metraże" data-en="floor area">metraże</span></span>
+      <span class="hero-tag"><strong>3</strong> <span data-pl="piętra" data-en="floors">piętra</span></span>
       <span class="hero-tag"><strong>Warszawa, Włochy</strong></span>
     </div>
   </div>
@@ -354,14 +368,14 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
         <thead>
           <tr>
             <th>Nr lokalu</th>
-            <th>Piętro</th>
-            <th>Powierzchnia</th>
-            <th>Aneks / 2 pokoje</th>
-            <th>Łazienka</th>
-            <th>Balkon</th>
-            <th>Status</th>
-            <th>Cena</th>
-            <th>Cena / m²</th>
+            <th data-pl="Piętro" data-en="Floor">Piętro</th>
+            <th data-pl="Powierzchnia" data-en="Area">Powierzchnia</th>
+            <th data-pl="Aneks / 2 pokoje" data-en="Kitchenette / 2 rms">Aneks / 2 pokoje</th>
+            <th data-pl="Łazienka" data-en="Bathroom">Łazienka</th>
+            <th data-pl="Balkon" data-en="Balcony">Balkon</th>
+            <th data-pl="Status" data-en="Status">Status</th>
+            <th data-pl="Cena" data-en="Price">Cena</th>
+            <th data-pl="Cena / m²" data-en="Price / m²">Cena / m²</th>
           </tr>
         </thead>
         <tbody>
@@ -371,8 +385,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td>19,09 m²</td>
             <td>—</td>
             <td>2,29 m²</td>
-            <td class="balcon-no">Nie</td>
-            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="balcon-no" data-pl="Nie" data-en="No">Nie</td>
+            <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">362 710 zł</td>
             <td class="apt-psm">19 000 zł/m²</td>
           </tr>
@@ -382,8 +396,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td>27,54 m²</td>
             <td>17,11 m²</td>
             <td>2,04 m²</td>
-            <td class="balcon-no">Nie</td>
-            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="balcon-no" data-pl="Nie" data-en="No">Nie</td>
+            <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">468 180 zł</td>
             <td class="apt-psm">17 000 zł/m²</td>
           </tr>
@@ -393,8 +407,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td>29,17 m²</td>
             <td>16,7 m²</td>
             <td>1,65 m²</td>
-            <td class="balcon-no">Nie</td>
-            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="balcon-no" data-pl="Nie" data-en="No">Nie</td>
+            <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">495 890 zł</td>
             <td class="apt-psm">17 000 zł/m²</td>
           </tr>
@@ -404,8 +418,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td>29,8 m²</td>
             <td>17,29 m²</td>
             <td>1,78 m²</td>
-            <td class="balcon-no">Nie</td>
-            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="balcon-no" data-pl="Nie" data-en="No">Nie</td>
+            <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">506 600 zł</td>
             <td class="apt-psm">17 000 zł/m²</td>
           </tr>
@@ -415,8 +429,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td>19,88 m²</td>
             <td>—</td>
             <td>2,29 m²</td>
-            <td class="balcon-yes">Tak</td>
-            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="balcon-yes" data-pl="Tak" data-en="Yes">Tak</td>
+            <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">377 720 zł</td>
             <td class="apt-psm">19 000 zł/m²</td>
           </tr>
@@ -426,8 +440,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td>28,24 m²</td>
             <td>17,5 m²</td>
             <td>2,04 m²</td>
-            <td class="balcon-yes">Tak</td>
-            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="balcon-yes" data-pl="Tak" data-en="Yes">Tak</td>
+            <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">480 080 zł</td>
             <td class="apt-psm">17 000 zł/m²</td>
           </tr>
@@ -437,8 +451,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td>29,85 m²</td>
             <td>17,05 m²</td>
             <td>5,74 m²</td>
-            <td class="balcon-yes">Tak</td>
-            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="balcon-yes" data-pl="Tak" data-en="Yes">Tak</td>
+            <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">507 450 zł</td>
             <td class="apt-psm">17 000 zł/m²</td>
           </tr>
@@ -448,8 +462,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td>31,00 m²</td>
             <td>17,96 m²</td>
             <td>1,8 m²</td>
-            <td class="balcon-yes">Tak</td>
-            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="balcon-yes" data-pl="Tak" data-en="Yes">Tak</td>
+            <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">527 000 zł</td>
             <td class="apt-psm">17 000 zł/m²</td>
           </tr>
@@ -459,8 +473,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td>54,9 m²</td>
             <td>—</td>
             <td>2,96 m²</td>
-            <td class="balcon-yes">Tak</td>
-            <td><span class="status-pill available">Dostępny</span></td>
+            <td class="balcon-yes" data-pl="Tak" data-en="Yes">Tak</td>
+            <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">933 300 zł</td>
             <td class="apt-psm">17 000 zł/m²</td>
           </tr>
@@ -474,8 +488,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
         <p>Skontaktuj się z nami — odpowiemy w ciągu 24h.</p>
       </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <a href="tel:+48535033499" class="btn-gold">Zadzwoń: +48 535 033 499</a>
-        <a href="/#kontakt" class="btn-outline-white">Wyślij zapytanie</a>
+        <a href="tel:+48535033499" class="btn-gold" data-pl="Zadzwoń: +48 535 033 499" data-en="Call: +48 535 033 499">Zadzwoń: +48 535 033 499</a>
+        <a href="/#kontakt" class="btn-outline-white" data-pl="Wyślij zapytanie" data-en="Send Inquiry">Wyślij zapytanie</a>
       </div>
     </div>
   </div>
@@ -533,7 +547,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
     <p class="cta-sub reveal d2">Chętnie odpowiemy na wszystkie pytania dotyczące lokali, stanu zaawansowania prac i warunków zakupu.</p>
     <div class="cta-btns reveal d3">
       <a href="tel:+48535033499" class="btn-gold">+48 535 033 499</a>
-      <a href="/#kontakt" class="btn-outline-white">Formularz kontaktowy</a>
+      <a href="/#kontakt" class="btn-outline-white" data-pl="Formularz kontaktowy" data-en="Contact Form">Formularz kontaktowy</a>
     </div>
   </div>
 </section>
@@ -555,5 +569,13 @@ document.querySelectorAll('.reveal').forEach(el => {
 });
 </script>
 
+
+<script>
+// Init lang buttons highlight
+document.querySelectorAll('.lang-btn').forEach(b => {
+  b.addEventListener('mouseenter', () => b.style.color = 'var(--gold)');
+  b.addEventListener('mouseleave', () => { if (!b.classList.contains('act')) b.style.color = ''; });
+});
+</script>
 </body>
 </html>

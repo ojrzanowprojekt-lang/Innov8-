@@ -41,6 +41,13 @@ a { text-decoration:none; color:inherit; }
 .reveal.in { opacity:1; transform:none; }
 .d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s}
 
+
+/* ── LANG SWITCHER ── */
+.lang-sw { display:flex; gap:4px; align-items:center; }
+.lang-btn { background:none; border:none; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--stone); padding:2px 4px; transition:color .3s; cursor:pointer; font-family:var(--sans); }
+.lang-btn.act, .lang-btn:hover { color:var(--gold) !important; }
+.lang-sep { color:var(--border); font-size:10px; }
+
 /* ── NAV ── */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:500;
@@ -246,8 +253,9 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
 
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
 </style>
+<script src="/lang.js"></script>
 </head>
-<body>
+<body data-page="pokrzywnicka">
 
 <!-- NAV -->
 <nav>
@@ -255,8 +263,14 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
     <div class="nav-mark">i8</div>
     <span class="nav-name">Innov8 Development</span>
   </a>
-  <div class="nav-status">Projekt zrealizowany</div>
-  <a href="/#projekty" class="nav-back">← Wszystkie projekty</a>
+  <div class="nav-status" data-pl="Projekt zrealizowany" data-en="Completed Project">Projekt zrealizowany</div>
+  <div class="lang-sw"><button class="lang-btn act" onclick="setLang('pl')">PL</button><span class="lang-sep">/</span><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+  <div class="lang-sw" style="display:flex;gap:4px;align-items:center;">
+    <button class="lang-btn act" onclick="setLang('pl')" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:2px 4px;cursor:pointer;font-family:var(--sans);">PL</button>
+    <span style="color:var(--border);font-size:10px;">/</span>
+    <button class="lang-btn" onclick="setLang('en')" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:2px 4px;cursor:pointer;font-family:var(--sans);">EN</button>
+  </div>
+  <a href="/#projekty" class="nav-back" data-pl="← Wszystkie projekty" data-en="← All Projects" data-pl="← Wszystkie projekty" data-en="← All Projects">← Wszystkie projekty</a>
 </nav>
 
 <!-- HERO — statyczne zdjęcie -->
@@ -270,8 +284,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
       <div class="hero-eyeline"></div>
       <span class="hero-eyelabel">Projekt Zrealizowany · Warszawa</span>
     </div>
-    <div class="sold-badge">Wszystkie lokale sprzedane</div>
-    <h1 class="hero-h1">Pokrzywnicka 11<br><em>Rewitalizacja</em></h1>
+    <div class="sold-badge" data-pl="Wszystkie lokale sprzedane" data-en="All Units Sold">Wszystkie lokale sprzedane</div>
+    <h1 class="hero-h1" data-pl="Pokrzywnicka 11<br><em>Rewitalizacja</em>" data-en="Pokrzywnicka 11<br><em>Renovation</em>">Pokrzywnicka 11<br><em>Rewitalizacja</em></h1>
     <div class="hero-meta">
       <span class="hero-tag"><strong>8</strong> mieszkań</span>
       <span class="hero-tag"><strong>32–40 m²</strong> metraże</span>
@@ -343,7 +357,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
   <div class="container">
     <div class="label reveal" style="margin-bottom:16px">Transformacja</div>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:300;color:var(--ink);margin-bottom:8px" class="reveal d1">Przed i <em style="font-style:italic;color:var(--gold)">po.</em></h2>
-    <p style="font-size:13px;color:var(--stone);margin-bottom:36px;font-weight:300" class="reveal d2">Przeciągnij linię aby zobaczyć transformację budynku.</p>
+    <p style="font-size:13px;color:var(--stone);margin-bottom:36px;font-weight:300" class="reveal d2" data-pl="Przeciągnij linię aby zobaczyć transformację budynku." data-en="Drag the line to reveal the building's transformation.">Przeciągnij linię aby zobaczyć transformację budynku.</p>
 
     <!-- SLIDER -->
     <div id="baSlider" style="
@@ -399,11 +413,11 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
       <div style="position:absolute;top:20px;left:20px;z-index:11;
         background:rgba(0,0,0,.5);color:#fff;
         font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-        padding:6px 14px;pointer-events:none;backdrop-filter:blur(4px);">← Przed</div>
+        padding:6px 14px;pointer-events:none;backdrop-filter:blur(4px);" data-pl="← Przed" data-en="← Before">← Przed</div>
       <div style="position:absolute;top:20px;right:20px;z-index:11;
         background:rgba(0,0,0,.5);color:#fff;
         font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-        padding:6px 14px;pointer-events:none;backdrop-filter:blur(4px);">Po →</div>
+        padding:6px 14px;pointer-events:none;backdrop-filter:blur(4px);" data-pl="Po →" data-en="After →">Po →</div>
     </div>
   </div>
 </section>
@@ -543,8 +557,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
     <h2 class="cta-h2 reveal d1">Zainteresowany<br><em>współpracą?</em></h2>
     <p class="cta-sub reveal d2">Aktywnie realizujemy kolejne projekty w Warszawie. Skontaktuj się z nami, aby dowiedzieć się więcej o możliwościach współpracy.</p>
     <div class="cta-btns reveal d3">
-      <a href="/#projekty" class="btn-gold">Aktywne projekty →</a>
-      <a href="/#kontakt" class="btn-outline-white">Skontaktuj się</a>
+      <a href="/#projekty" class="btn-gold" data-pl="Aktywne projekty →" data-en="Active Projects →">Aktywne projekty →</a>
+      <a href="/#kontakt" class="btn-outline-white" data-pl="Skontaktuj się" data-en="Contact Us">Skontaktuj się</a>
     </div>
   </div>
 </section>
@@ -593,5 +607,13 @@ document.querySelectorAll('.reveal').forEach(el => {
 })();
 </script>
 
+
+<script>
+// Init lang buttons highlight
+document.querySelectorAll('.lang-btn').forEach(b => {
+  b.addEventListener('mouseenter', () => b.style.color = 'var(--gold)');
+  b.addEventListener('mouseleave', () => { if (!b.classList.contains('act')) b.style.color = ''; });
+});
+</script>
 </body>
 </html>

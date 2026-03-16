@@ -98,15 +98,21 @@ footer{padding:32px 56px;border-top:1px solid rgba(255,255,255,.06);display:flex
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 </style>
+<script src="/lang.js"></script>
 </head>
-<body>
+<body data-page="czarnylas">
 
 <nav>
   <a href="/" class="nav-logo">
     <div class="nav-mark">i8</div>
     <span class="nav-name">Innov8 Development</span>
   </a>
-  <a href="/#projekty" class="nav-back">← Wszystkie projekty</a>
+  <div class="lang-sw" style="display:flex;gap:4px;align-items:center;">
+    <button class="lang-btn act" onclick="setLang('pl')" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:2px 4px;cursor:pointer;font-family:var(--sans);">PL</button>
+    <span style="color:rgba(255,255,255,.15);font-size:10px;">/</span>
+    <button class="lang-btn" onclick="setLang('en')" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:2px 4px;cursor:pointer;font-family:var(--sans);">EN</button>
+  </div>
+  <a href="/#projekty" class="nav-back" data-pl="← Wszystkie projekty" data-en="← All Projects">← Wszystkie projekty</a>
 </nav>
 
 <section class="hero">
@@ -120,9 +126,9 @@ footer{padding:32px 56px;border-top:1px solid rgba(255,255,255,.06);display:flex
       <span class="hero-eyelabel">Projekt w Pipeline · Mazowsze</span>
       <div class="hero-eyeline"></div>
     </div>
-    <div class="badge">Wkrótce</div>
-    <h1 class="hero-h1">Czarny Las<br><em>Projekt Rezydencjalny</em></h1>
-    <p class="hero-sub">Nowy projekt Innov8 Development na Mazowszu. Pracujemy nad szczegółami — zapisz się aby być pierwszym gdy ogłosimy start.</p>
+    <div class="badge" data-pl="Wkrótce" data-en="Coming Soon">Wkrótce</div>
+    <h1 class="hero-h1" data-pl="Czarny Las<br><em>Projekt Rezydencjalny</em>" data-en="Czarny Las<br><em>Residential Project</em>">Czarny Las<br><em>Projekt Rezydencjalny</em></h1>
+    <p class="hero-sub" data-pl="Nowy projekt Innov8 Development na Mazowszu. Pracujemy nad szczegółami — zapisz się aby być pierwszym gdy ogłosimy start." data-en="A new Innov8 Development project in Masovia. We're working on the details — sign up to be first when we announce launch.">Nowy projekt Innov8 Development na Mazowszu. Pracujemy nad szczegółami — zapisz się aby być pierwszym gdy ogłosimy start.</p>
 
     <div class="pipeline-info">
       <div class="pi-item">
@@ -132,23 +138,23 @@ footer{padding:32px 56px;border-top:1px solid rgba(255,255,255,.06);display:flex
       <div class="pi-sep"></div>
       <div class="pi-item">
         <div class="pi-n">WAW</div>
-        <div class="pi-l">Mazowsze</div>
+        <div class="pi-l" data-pl="Mazowsze" data-en="Masovia">Mazowsze</div>
       </div>
       <div class="pi-sep"></div>
       <div class="pi-item">
         <div class="pi-n">TBD</div>
-        <div class="pi-l">Szczegóły wkrótce</div>
+        <div class="pi-l" data-pl="Szczegóły wkrótce" data-en="Details TBD">Szczegóły wkrótce</div>
       </div>
     </div>
 
     <div class="notify-form">
-      <p>Zapisz się — poinformujemy Cię jako pierwszego</p>
+      <p data-pl="Zapisz się — poinformujemy Cię jako pierwszego" data-en="Sign up — we'll notify you first">Zapisz się — poinformujemy Cię jako pierwszego</p>
       <form id="czarnylas-form" style="margin:0;">
         <div class="form-row">
           <input class="form-input" type="email" name="email" placeholder="Twój adres email" required />
-          <button class="form-btn" type="button" onclick="submitNotify('czarnylas-form', 'Czarny Las')">Powiadom mnie →</button>
+          <button class="form-btn" type="button" onclick="submitNotify('czarnylas-form', 'Czarny Las')" data-pl="Powiadom mnie →" data-en="Notify Me →">Powiadom mnie →</button>
         </div>
-        <p class="form-note">Bez spamu. Tylko jedna wiadomość gdy ruszymy sprzedaż.</p>
+        <p class="form-note" data-pl="Bez spamu. Tylko jedna wiadomość gdy ruszymy sprzedaż." data-en="No spam. One email when sales launch.">Bez spamu. Tylko jedna wiadomość gdy ruszymy sprzedaż.</p>
       </form>
     </div>
   </div>
@@ -160,7 +166,7 @@ footer{padding:32px 56px;border-top:1px solid rgba(255,255,255,.06);display:flex
   <div class="container">
     <div class="info-inner">
       <div class="info-text">
-        <h2>Nasz kolejny<br><em>projekt.</em></h2>
+        <h2 data-pl="Nasz kolejny<br><em>projekt.</em>" data-en="Our next<br><em>project.</em>">Nasz kolejny<br><em>projekt.</em></h2>
         <p>Czarny Las to kolejna inwestycja w pipeline Innov8 Development. Zgodnie z naszym sprawdzonym modelem — znajdziemy nieruchomość z potencjałem, przygotujemy projekt i wdrożymy go z pełną transparentnością.</p>
         <p>Szczegóły projektu zostaną ogłoszone gdy zakończymy fazę przygotowawczą. Zapisz się na listę zainteresowanych.</p>
       </div>
@@ -232,6 +238,14 @@ async function submitNotify(formId, project) {
     setTimeout(() => { btn.textContent = 'Powiadom mnie →'; btn.style.background = ''; }, 3000);
   }
 }
+</script>
+
+<script>
+// Init lang buttons highlight
+document.querySelectorAll('.lang-btn').forEach(b => {
+  b.addEventListener('mouseenter', () => b.style.color = 'var(--gold)');
+  b.addEventListener('mouseleave', () => { if (!b.classList.contains('act')) b.style.color = ''; });
+});
 </script>
 </body>
 </html>

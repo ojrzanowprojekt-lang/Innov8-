@@ -95,15 +95,21 @@ footer{padding:32px 56px;border-top:1px solid rgba(255,255,255,.06);display:flex
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 </style>
+<script src="/lang.js"></script>
 </head>
-<body>
+<body data-page="ojrzanow">
 
 <nav>
   <a href="/" class="nav-logo">
     <div class="nav-mark">i8</div>
     <span class="nav-name">Innov8 Development</span>
   </a>
-  <a href="/#projekty" class="nav-back">← Wszystkie projekty</a>
+  <div class="lang-sw" style="display:flex;gap:4px;align-items:center;">
+    <button class="lang-btn act" onclick="setLang('pl')" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:2px 4px;cursor:pointer;font-family:var(--sans);">PL</button>
+    <span style="color:rgba(255,255,255,.15);font-size:10px;">/</span>
+    <button class="lang-btn" onclick="setLang('en')" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:2px 4px;cursor:pointer;font-family:var(--sans);">EN</button>
+  </div>
+  <a href="/#projekty" class="nav-back" data-pl="← Wszystkie projekty" data-en="← All Projects">← Wszystkie projekty</a>
 </nav>
 
 <section class="hero">
@@ -117,9 +123,9 @@ footer{padding:32px 56px;border-top:1px solid rgba(255,255,255,.06);display:flex
       <span class="hero-eyelabel">Projekt w przygotowaniu · Okolice Warszawy</span>
       <div class="hero-eyeline"></div>
     </div>
-    <div class="badge">Pozwolenie w toku</div>
-    <h1 class="hero-h1">Ojrzanów<br><em>Domy Premium</em></h1>
-    <p class="hero-sub">7 ekskluzywnych domów jednorodzinnych w zielonej okolicy pod Warszawą. Każdy dom ~200 m² z własną działką. Szczegóły wkrótce.</p>
+    <div class="badge" data-pl="Pozwolenie w toku" data-en="Permit Pending">Pozwolenie w toku</div>
+    <h1 class="hero-h1" data-pl="Ojrzanów<br><em>Domy Premium</em>" data-en="Ojrzanów<br><em>Premium Homes</em>">Ojrzanów<br><em>Domy Premium</em></h1>
+    <p class="hero-sub" data-pl="7 ekskluzywnych domów jednorodzinnych w zielonej okolicy pod Warszawą. Każdy dom ~200 m² z własną działką. Szczegóły wkrótce." data-en="7 exclusive detached homes in a green area near Warsaw. Each home ~200 m² with its own plot. Details coming soon.">7 ekskluzywnych domów jednorodzinnych w zielonej okolicy pod Warszawą. Każdy dom ~200 m² z własną działką. Szczegóły wkrótce.</p>
 
     <div class="specs">
       <div class="spec">
@@ -132,18 +138,18 @@ footer{padding:32px 56px;border-top:1px solid rgba(255,255,255,.06);display:flex
       </div>
       <div class="spec">
         <div class="spec-n">2026</div>
-        <div class="spec-l">Planowany start</div>
+        <div class="spec-l" data-pl="Planowany start" data-en="Planned Start">Planowany start</div>
       </div>
     </div>
 
     <div class="notify-form">
-      <p>Zapisz się — poinformujemy Cię jako pierwszego</p>
+      <p data-pl="Zapisz się — poinformujemy Cię jako pierwszego" data-en="Sign up — we'll notify you first">Zapisz się — poinformujemy Cię jako pierwszego</p>
       <form id="ojrzanow-form" style="margin:0;">
         <div class="form-row">
           <input class="form-input" type="email" name="email" placeholder="Twój adres email" required />
-          <button class="form-btn" type="button" onclick="submitNotify('ojrzanow-form', 'Ojrzanów')">Powiadom mnie →</button>
+          <button class="form-btn" type="button" onclick="submitNotify('ojrzanow-form', 'Ojrzanów')" data-pl="Powiadom mnie →" data-en="Notify Me →">Powiadom mnie →</button>
         </div>
-        <p class="form-note">Bez spamu. Tylko jedna wiadomość gdy ruszymy sprzedaż.</p>
+        <p class="form-note" data-pl="Bez spamu. Tylko jedna wiadomość gdy ruszymy sprzedaż." data-en="No spam. One email when sales launch.">Bez spamu. Tylko jedna wiadomość gdy ruszymy sprzedaż.</p>
       </form>
     </div>
   </div>
@@ -156,17 +162,17 @@ footer{padding:32px 56px;border-top:1px solid rgba(255,255,255,.06);display:flex
     <div class="info-inner">
       <div class="info-card">
         <div class="info-ic">⌖</div>
-        <div class="info-title">Lokalizacja</div>
+        <div class="info-title" data-pl="Lokalizacja" data-en="Location">Lokalizacja</div>
         <div class="info-body">Ojrzanów — spokojna miejscowość w gminie Grodzisk Mazowiecki. Doskonałe połączenia z Warszawą, zielona okolica, cisza.</div>
       </div>
       <div class="info-card">
         <div class="info-ic">◎</div>
-        <div class="info-title">Standard</div>
+        <div class="info-title" data-pl="Standard" data-en="Standard">Standard</div>
         <div class="info-body">Domy premium ~200 m² z własną działką. Nowoczesna architektura, wysokiej jakości materiały, przemyślane układy funkcjonalne.</div>
       </div>
       <div class="info-card">
         <div class="info-ic">✦</div>
-        <div class="info-title">Status</div>
+        <div class="info-title" data-pl="Status" data-en="Status">Status</div>
         <div class="info-body">Pozwolenie na budowę w trakcie uzyskiwania. Sprzedaż ruszy po uzyskaniu pozwolenia. Zapisz się aby być pierwszym w kolejce.</div>
       </div>
     </div>
@@ -214,6 +220,14 @@ async function submitNotify(formId, project) {
     setTimeout(() => { btn.textContent = 'Powiadom mnie →'; btn.style.background = ''; }, 3000);
   }
 }
+</script>
+
+<script>
+// Init lang buttons highlight
+document.querySelectorAll('.lang-btn').forEach(b => {
+  b.addEventListener('mouseenter', () => b.style.color = 'var(--gold)');
+  b.addEventListener('mouseleave', () => { if (!b.classList.contains('act')) b.style.color = ''; });
+});
 </script>
 </body>
 </html>
