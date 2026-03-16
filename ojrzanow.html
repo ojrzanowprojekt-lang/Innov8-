@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ojrzanów — Domy Premium | Innov8 Development</title>
+<meta name="description" content="Ojrzanów — 7 domów premium ~200m² w okolicach Warszawy. Projekt w przygotowaniu. Zapisz się na listę zainteresowanych.">
+<link rel="canonical" href="https://innov-8.pl/ojrzanow.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white:#FFFFFF; --off-white:#F8F6F2; --ink:#1A1714; --stone:#7A746C;
+  --gold:#9E7A3A; --gold-l:#B8954E; --gold-pale:rgba(158,122,58,0.10);
+  --gold-line:rgba(158,122,58,0.25); --border:rgba(26,23,20,0.08);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'DM Sans',sans-serif;
+  --ease:cubic-bezier(0.25,0.46,0.45,0.94);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);font-weight:300;background:var(--ink);color:var(--white);min-height:100vh;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+.container{max-width:1240px;margin:0 auto;padding:0 56px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:24px 56px;border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-mark{width:30px;height:30px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:13px;font-weight:600;color:var(--white);}
+.nav-name{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+.nav-back{font-size:11px;font-weight:400;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.12);padding:9px 22px;transition:all .3s;}
+.nav-back:hover{border-color:var(--gold);color:var(--gold);}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.25;}
+.hero-bg-grad{position:absolute;inset:0;background:radial-gradient(ellipse at center, rgba(26,23,20,.3) 0%, rgba(26,23,20,.85) 70%);}
+.hero-content{position:relative;z-index:2;padding:120px 24px 80px;max-width:800px;}
+.hero-eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:32px;opacity:0;animation:fadeUp .8s .2s var(--ease) forwards;}
+.hero-eyeline{width:36px;height:1px;background:var(--gold);}
+.hero-eyelabel{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(158,122,58,.15);border:1px solid var(--gold-line);color:var(--gold-l);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:8px 20px;margin-bottom:32px;opacity:0;animation:fadeUp .8s .35s var(--ease) forwards;}
+.hero-h1{font-family:var(--serif);font-size:clamp(48px,7vw,100px);font-weight:300;line-height:1.0;margin-bottom:24px;opacity:0;animation:fadeUp .9s .5s var(--ease) forwards;}
+.hero-h1 em{font-style:italic;color:var(--gold-l);}
+.hero-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.8;max-width:520px;margin:0 auto 56px;opacity:0;animation:fadeUp .8s .65s var(--ease) forwards;}
+
+/* SPECS */
+.specs{display:flex;gap:0;justify-content:center;margin-bottom:64px;opacity:0;animation:fadeUp .8s .75s var(--ease) forwards;flex-wrap:wrap;}
+.spec{padding:24px 36px;border-left:1px solid rgba(255,255,255,.08);text-align:center;}
+.spec:first-child{border-left:none;}
+.spec-n{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--gold-l);line-height:1;margin-bottom:6px;}
+.spec-l{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+
+/* FORM */
+.notify-form{opacity:0;animation:fadeUp .8s .9s var(--ease) forwards;}
+.notify-form p{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px;}
+.form-row{display:flex;gap:0;max-width:520px;margin:0 auto;}
+.form-input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-right:none;color:var(--white);padding:14px 20px;font-family:var(--sans);font-size:13px;font-weight:300;outline:none;transition:border-color .3s;}
+.form-input::placeholder{color:rgba(255,255,255,.25);}
+.form-input:focus{border-color:var(--gold-line);}
+.form-btn{background:var(--gold);border:none;color:var(--white);padding:14px 28px;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .3s;white-space:nowrap;}
+.form-btn:hover{background:var(--gold-l);}
+.form-note{font-size:11px;color:rgba(255,255,255,.2);margin-top:12px;}
+
+/* DIVIDER */
+.divider{border:none;border-top:1px solid rgba(255,255,255,.06);margin:0;}
+
+/* INFO SECTION */
+.info{padding:100px 0;background:rgba(255,255,255,.02);}
+.info-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;}
+.info-card{background:rgba(255,255,255,.04);padding:40px 32px;}
+.info-ic{font-size:20px;color:var(--gold);margin-bottom:20px;}
+.info-title{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--white);margin-bottom:12px;}
+.info-body{font-size:13px;color:rgba(255,255,255,.4);line-height:1.8;}
+
+/* FOOTER */
+footer{padding:32px 56px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;}
+.f-logo{display:flex;align-items:center;gap:10px;}
+.f-mark{width:26px;height:26px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:11px;font-weight:600;color:var(--white);}
+.f-name{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);}
+.f-links{display:flex;gap:24px;}
+.f-links a{font-size:11px;color:rgba(255,255,255,.25);transition:color .3s;}
+.f-links a:hover{color:var(--gold);}
+
+@media(max-width:768px){
+  nav,footer{padding:16px 20px;}
+  .container{padding:0 20px;}
+  .spec{padding:18px 20px;}
+  .form-row{flex-direction:column;}
+  .form-input{border-right:1px solid rgba(255,255,255,.12);border-bottom:none;}
+  .form-btn{border:none;}
+  .info-inner{grid-template-columns:1fr;}
+  .f-links{display:none;}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-mark">i8</div>
+    <span class="nav-name">Innov8 Development</span>
+  </a>
+  <a href="/#projekty" class="nav-back">← Wszystkie projekty</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="/images/ojrzanow.jpg" alt="Ojrzanów — domy premium" />
+    <div class="hero-bg-grad"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyeline"></div>
+      <span class="hero-eyelabel">Projekt w przygotowaniu · Okolice Warszawy</span>
+      <div class="hero-eyeline"></div>
+    </div>
+    <div class="badge">Pozwolenie w toku</div>
+    <h1 class="hero-h1">Ojrzanów<br><em>Domy Premium</em></h1>
+    <p class="hero-sub">7 ekskluzywnych domów jednorodzinnych w zielonej okolicy pod Warszawą. Każdy dom ~200 m² z własną działką. Szczegóły wkrótce.</p>
+
+    <div class="specs">
+      <div class="spec">
+        <div class="spec-n">7</div>
+        <div class="spec-l">Domów</div>
+      </div>
+      <div class="spec">
+        <div class="spec-n">~200</div>
+        <div class="spec-l">m² każdy</div>
+      </div>
+      <div class="spec">
+        <div class="spec-n">2026</div>
+        <div class="spec-l">Planowany start</div>
+      </div>
+    </div>
+
+    <div class="notify-form">
+      <p>Zapisz się — poinformujemy Cię jako pierwszego</p>
+      <form id="ojrzanow-form" style="margin:0;">
+        <div class="form-row">
+          <input class="form-input" type="email" name="email" placeholder="Twój adres email" required />
+          <button class="form-btn" type="button" onclick="submitNotify('ojrzanow-form', 'Ojrzanów')">Powiadom mnie →</button>
+        </div>
+        <p class="form-note">Bez spamu. Tylko jedna wiadomość gdy ruszymy sprzedaż.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="info">
+  <div class="container">
+    <div class="info-inner">
+      <div class="info-card">
+        <div class="info-ic">⌖</div>
+        <div class="info-title">Lokalizacja</div>
+        <div class="info-body">Ojrzanów — spokojna miejscowość w gminie Grodzisk Mazowiecki. Doskonałe połączenia z Warszawą, zielona okolica, cisza.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-ic">◎</div>
+        <div class="info-title">Standard</div>
+        <div class="info-body">Domy premium ~200 m² z własną działką. Nowoczesna architektura, wysokiej jakości materiały, przemyślane układy funkcjonalne.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-ic">✦</div>
+        <div class="info-title">Status</div>
+        <div class="info-body">Pozwolenie na budowę w trakcie uzyskiwania. Sprzedaż ruszy po uzyskaniu pozwolenia. Zapisz się aby być pierwszym w kolejce.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">
+    <div class="f-mark">i8</div>
+    <span class="f-name">Innov8 Development</span>
+  </div>
+  <div class="f-links">
+    <a href="tel:+48535033499">+48 535 033 499</a>
+    <a href="mailto:biuro@innov-8.pl">biuro@innov-8.pl</a>
+    <a href="/#kontakt">Kontakt</a>
+  </div>
+</footer>
+
+<script>
+async function submitNotify(formId, project) {
+  const form = document.getElementById(formId);
+  const email = form.querySelector('[type="email"]').value.trim();
+  const btn = form.querySelector('button');
+  if (!email) return;
+  btn.textContent = 'Wysyłanie...';
+  btn.disabled = true;
+  try {
+    const fd = new FormData();
+    fd.append('access_key', 'c8fc4570-5388-4f39-be7f-a82a5f2e5cef');
+    fd.append('subject', `Zapis na listę: ${project} — Innov8 Development`);
+    fd.append('from_name', 'Innov8 Development');
+    fd.append('email', email);
+    fd.append('message', `Prośba o powiadomienie o starcie sprzedaży: ${project}`);
+    const res = await fetch('https://api.web3forms.com/submit', { method:'POST', body:fd });
+    const json = await res.json();
+    if (json.success) {
+      btn.textContent = '✓ Zapisano!';
+      btn.style.background = '#4a7c59';
+      form.querySelector('input').value = '';
+    } else throw new Error();
+  } catch {
+    btn.textContent = 'Błąd — spróbuj ponownie';
+    btn.style.background = '#c0392b';
+    btn.disabled = false;
+    setTimeout(() => { btn.textContent = 'Powiadom mnie →'; btn.style.background = ''; }, 3000);
+  }
+}
+</script>
+</body>
+</html>
