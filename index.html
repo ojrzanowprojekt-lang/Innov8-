@@ -1137,6 +1137,12 @@ footer { background:#0D0C0A; padding:60px 56px 0; display:grid; grid-template-co
           </select>
         </div>
         <div class="cfg"><label data-pl="Wiadomość" data-en="Message">Wiadomość</label><textarea name="message" rows="4" required placeholder="Opisz czego szukasz — odpowiemy w ciągu 24h." data-pl-ph="Opisz czego szukasz — odpowiemy w ciągu 24h." data-en-ph="Describe what you're looking for — we'll reply within 24h."></textarea></div>
+        <div class="cfg" style="margin-top:8px">
+          <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:12px;color:var(--stone);font-weight:300;line-height:1.6">
+            <input type="checkbox" id="rodo-consent" name="rodo" style="margin-top:3px;flex-shrink:0;accent-color:var(--gold);cursor:pointer" required>
+            <span data-pl='Wyrażam zgodę na przetwarzanie moich danych osobowych przez Innov8 Development Sp. z o.o. w celu odpowiedzi na moje zapytanie, zgodnie z <a href="#" onclick="openModal(&#39;privacy&#39;);return false" style="color:var(--gold);text-decoration:underline">Polityką Prywatności</a>. Zgoda jest dobrowolna i może być cofnięta w dowolnym momencie.' data-en='I consent to the processing of my personal data by Innov8 Development Sp. z o.o. for the purpose of responding to my inquiry, in accordance with the <a href="#" onclick="openModal(&#39;privacy&#39;);return false" style="color:var(--gold);text-decoration:underline">Privacy Policy</a>. Consent is voluntary and may be withdrawn at any time.'>Wyrażam zgodę na przetwarzanie moich danych osobowych przez Innov8 Development Sp. z o.o. w celu odpowiedzi na moje zapytanie, zgodnie z <a href="#" onclick="openModal('privacy');return false" style="color:var(--gold);text-decoration:underline">Polityką Prywatności</a>. Zgoda jest dobrowolna i może być cofnięta w dowolnym momencie.</span>
+          </label>
+        </div>
         <button type="button" class="cf-submit" id="cf-submit-btn" data-pl="Wyślij →" data-en="Send →" onclick="submitForm()">Wyślij →</button>
       </form>
     </div>
@@ -1502,11 +1508,19 @@ async function submitForm() {
   const name = form.querySelector('[name="name"]').value.trim();
   const email = form.querySelector('[name="email"]').value.trim();
   const message = form.querySelector('[name="message"]').value.trim();
+  const rodo = document.getElementById('rodo-consent').checked;
 
   if (!name || !email || !message) {
     alert(currentLang === 'en'
       ? 'Please fill in required fields (name, email, message).'
       : 'Proszę wypełnić wymagane pola: imię, email, wiadomość.');
+    return;
+  }
+
+  if (!rodo) {
+    alert(currentLang === 'en'
+      ? 'Please accept the privacy policy to send your message.'
+      : 'Prosimy o zaznaczenie zgody na przetwarzanie danych osobowych.');
     return;
   }
 
