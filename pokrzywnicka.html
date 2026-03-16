@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokrzywnicka 11 — Zrealizowany Projekt | Innov8 Development</title>
+<meta name="description" content="Pokrzywnicka 11 — rewitalizacja budynku modernistycznego z lat 50. XX wieku. 8 mieszkań 32–40m², kompleksowy remont, wszystkie lokale sprzedane. Innov8 Development Warszawa.">
+<link rel="canonical" href="https://innov-8.pl/pokrzywnicka.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white:     #FFFFFF;
+  --off-white: #F8F6F2;
+  --paper:     #F2EDE5;
+  --ink:       #1A1714;
+  --ink-m:     #2E2A25;
+  --stone:     #7A746C;
+  --gold:      #9E7A3A;
+  --gold-l:    #B8954E;
+  --gold-pale: rgba(158,122,58,0.10);
+  --gold-line: rgba(158,122,58,0.25);
+  --border:    rgba(26,23,20,0.08);
+  --serif:     'Cormorant Garamond', Georgia, serif;
+  --sans:      'DM Sans', sans-serif;
+  --ease:      cubic-bezier(0.25,0.46,0.45,0.94);
+  --shadow-m:  0 8px 40px rgba(26,23,20,0.10);
+  --shadow-l:  0 24px 80px rgba(26,23,20,0.14);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--sans); font-weight:300; background:var(--white); color:var(--ink); overflow-x:hidden; }
+img { display:block; width:100%; object-fit:cover; }
+a { text-decoration:none; color:inherit; }
+
+.container { max-width:1240px; margin:0 auto; padding:0 56px; }
+.label { font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:10px; }
+.label::before { content:''; width:20px; height:1px; background:var(--gold); flex-shrink:0; }
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .85s var(--ease),transform .85s var(--ease); }
+.reveal.in { opacity:1; transform:none; }
+.d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s}
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:24px 56px;
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 16px rgba(26,23,20,0.06);
+}
+.nav-logo { display:flex; align-items:center; gap:10px; }
+.nav-mark { width:30px; height:30px; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:13px; font-weight:600; color:var(--white); }
+.nav-name { font-size:12px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); }
+.nav-back { font-size:11px; font-weight:400; letter-spacing:.09em; text-transform:uppercase; color:var(--stone); border:1px solid var(--border); padding:9px 22px; transition:all .3s; }
+.nav-back:hover { border-color:var(--gold); color:var(--gold); }
+.nav-status { display:flex; align-items:center; gap:8px; font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:#4a7c59; }
+.nav-status::before { content:''; width:7px; height:7px; border-radius:50%; background:#4a7c59; }
+
+/* ── HERO ── */
+.hero {
+  height:80vh; min-height:560px;
+  position:relative; overflow:hidden;
+  display:flex; align-items:flex-end;
+  margin-top:73px;
+}
+.hero-img { position:absolute; inset:0; }
+.hero-img img { width:100%; height:100%; object-fit:cover; }
+.hero-overlay {
+  position:absolute; inset:0;
+  background: linear-gradient(to top, rgba(20,17,14,.88) 0%, rgba(20,17,14,.4) 50%, rgba(20,17,14,.15) 100%);
+}
+.hero-content { position:relative; z-index:2; padding:0 56px 72px; width:100%; }
+.hero-eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.hero-eyeline { width:36px; height:1px; background:var(--gold); }
+.hero-eyelabel { font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.55); }
+.hero-h1 { font-family:var(--serif); font-size:clamp(40px,6vw,80px); font-weight:300; color:var(--white); line-height:1.0; margin-bottom:20px; }
+.hero-h1 em { font-style:italic; color:var(--gold-l); }
+.hero-meta { display:flex; gap:32px; flex-wrap:wrap; }
+.hero-tag { font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.45); }
+.hero-tag strong { color:rgba(255,255,255,.8); font-weight:400; }
+.sold-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:#4a7c59; color:var(--white);
+  font-size:10px; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  padding:8px 18px; margin-bottom:28px;
+}
+.sold-badge::before { content:'✓'; font-size:12px; }
+
+/* ── OVERVIEW ── */
+.overview { padding:100px 0; background:var(--white); }
+.overview-inner { display:grid; grid-template-columns:1fr 1fr; gap:88px; align-items:start; }
+.overview-h2 { font-family:var(--serif); font-size:clamp(28px,3vw,44px); font-weight:300; color:var(--ink); line-height:1.15; margin-bottom:24px; }
+.overview-body { font-size:14px; font-weight:300; line-height:1.9; color:var(--stone); margin-bottom:16px; }
+.overview-feats { margin-top:36px; }
+.feat { display:flex; align-items:flex-start; gap:14px; padding:14px 0; border-bottom:1px solid var(--border); }
+.feat:first-child { border-top:1px solid var(--border); }
+.feat-ic { width:24px; height:24px; flex-shrink:0; border:1px solid var(--gold-line); display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:10px; margin-top:2px; background:var(--gold-pale); }
+.feat-title { font-size:13px; font-weight:500; margin-bottom:2px; color:var(--ink); }
+.feat-desc { font-size:12.5px; color:var(--stone); line-height:1.65; }
+
+/* Stats */
+.stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.stat { background:var(--off-white); padding:32px 28px; }
+.stat-n { font-family:var(--serif); font-size:48px; font-weight:300; color:var(--gold); line-height:1; margin-bottom:6px; }
+.stat-l { font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--stone); }
+
+/* ── BEFORE/AFTER ── */
+.ba-section { padding:80px 0; background:var(--ink); }
+.ba-label { margin-bottom:48px; }
+.ba-label .label { color:var(--gold); }
+.ba-label .label::before { background:var(--gold); }
+.ba-h2 { font-family:var(--serif); font-size:clamp(28px,3vw,44px); font-weight:300; color:var(--white); margin-top:16px; }
+.ba-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-top:48px; }
+.ba-item { position:relative; overflow:hidden; aspect-ratio:16/10; }
+.ba-item img { width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease); }
+.ba-item:hover img { transform:scale(1.03); }
+.ba-caption {
+  position:absolute; bottom:0; left:0; right:0;
+  padding:16px 20px;
+  background:linear-gradient(to top, rgba(20,17,14,.8) 0%, transparent 100%);
+  font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.6);
+}
+.ba-full { grid-column:1/-1; aspect-ratio:21/9; }
+
+/* ── TIMELINE ── */
+.timeline-section { padding:100px 0; background:var(--off-white); }
+.tl-inner { display:grid; grid-template-columns:1fr 1fr; gap:88px; align-items:start; }
+.tl-h2 { font-family:var(--serif); font-size:clamp(28px,3vw,44px); font-weight:300; color:var(--ink); margin-bottom:16px; }
+.tl-body { font-size:14px; font-weight:300; line-height:1.9; color:var(--stone); }
+.timeline { position:relative; padding-left:24px; }
+.timeline::before { content:''; position:absolute; left:0; top:8px; bottom:8px; width:1px; background:var(--gold-line); }
+.tl-item { position:relative; padding:0 0 28px 24px; }
+.tl-item::before { content:''; position:absolute; left:-4px; top:6px; width:9px; height:9px; background:var(--gold); border-radius:0; transform:rotate(45deg); }
+.tl-date { font-size:10px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+.tl-text { font-size:13px; color:var(--stone); line-height:1.65; }
+
+/* ── RESULT ── */
+.result-section { padding:100px 0; background:var(--white); }
+.result-inner { display:grid; grid-template-columns:1fr 1fr; gap:88px; align-items:center; }
+.result-h2 { font-family:var(--serif); font-size:clamp(28px,3vw,44px); font-weight:300; color:var(--ink); margin-bottom:24px; }
+.result-h2 em { font-style:italic; color:var(--gold); }
+.result-body { font-size:14px; font-weight:300; line-height:1.9; color:var(--stone); margin-bottom:32px; }
+.result-items { display:flex; flex-direction:column; gap:0; }
+.ri { display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--border); }
+.ri:first-child { border-top:1px solid var(--border); }
+.ri-ic { color:var(--gold); font-size:14px; flex-shrink:0; width:20px; text-align:center; }
+.ri-text { font-size:13px; color:var(--stone); line-height:1.6; }
+.ri-text strong { color:var(--ink); font-weight:500; }
+.result-img { position:relative; }
+.result-img img { width:100%; aspect-ratio:4/3; object-fit:cover; box-shadow:var(--shadow-l); }
+.result-badge { position:absolute; bottom:-24px; right:-24px; background:var(--gold); padding:24px 28px; text-align:center; box-shadow:var(--shadow-m); }
+.rb-n { font-family:var(--serif); font-size:32px; color:var(--white); line-height:1; }
+.rb-l { font-size:9px; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.75); margin-top:4px; }
+
+/* ── CTA ── */
+.cta-section { padding:100px 0; background:var(--ink); text-align:center; }
+.cta-h2 { font-family:var(--serif); font-size:clamp(32px,4vw,56px); font-weight:300; color:var(--white); margin-bottom:20px; }
+.cta-h2 em { font-style:italic; color:var(--gold-l); }
+.cta-sub { font-size:15px; font-weight:300; color:rgba(255,255,255,.45); max-width:480px; margin:0 auto 44px; line-height:1.8; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.btn-gold { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; padding:14px 36px; background:var(--gold); color:var(--white); border:none; transition:all .3s; }
+.btn-gold:hover { background:var(--gold-l); }
+.btn-outline-white { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; padding:13px 36px; background:transparent; color:var(--white); border:1.5px solid rgba(255,255,255,.25); transition:all .3s; }
+.btn-outline-white:hover { border-color:var(--gold-l); color:var(--gold-l); }
+
+/* ── FOOTER ── */
+footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padding:32px 56px; display:flex; align-items:center; justify-content:space-between; }
+.f-logo { display:flex; align-items:center; gap:10px; }
+.f-mark { width:26px; height:26px; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:11px; font-weight:600; color:var(--white); }
+.f-name { font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.4); }
+.f-copy { font-size:11px; color:rgba(255,255,255,.25); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px) {
+  nav { padding:16px 20px; }
+  .container { padding:0 20px; }
+  .hero-content { padding:0 20px 48px; }
+  .overview-inner, .tl-inner, .result-inner { grid-template-columns:1fr; gap:48px; }
+  .ba-grid { grid-template-columns:1fr; }
+  .ba-full { grid-column:1; }
+  .stats-grid { grid-template-columns:1fr 1fr; }
+  .result-badge { right:-12px; bottom:-12px; }
+  footer { flex-direction:column; gap:16px; text-align:center; padding:24px 20px; }
+}
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-mark">i8</div>
+    <span class="nav-name">Innov8 Development</span>
+  </a>
+  <div class="nav-status">Projekt zrealizowany</div>
+  <a href="/#projekty" class="nav-back">← Wszystkie projekty</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img">
+    <img src="/images/pokrzywnicka-budynek.png" alt="Pokrzywnicka 11 — rewitalizacja budynku Warszawa" />
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyeline"></div>
+      <span class="hero-eyelabel">Projekt Zrealizowany · Warszawa</span>
+    </div>
+    <div class="sold-badge">Wszystkie lokale sprzedane</div>
+    <h1 class="hero-h1">Pokrzywnicka 11<br><em>Rewitalizacja</em></h1>
+    <div class="hero-meta">
+      <span class="hero-tag"><strong>8</strong> mieszkań</span>
+      <span class="hero-tag"><strong>32–40 m²</strong> metraże</span>
+      <span class="hero-tag"><strong>Lata 50. XX w.</strong> budynek</span>
+      <span class="hero-tag"><strong>Warszawa</strong> lokalizacja</span>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="overview">
+  <div class="container">
+    <div class="overview-inner">
+      <div>
+        <div class="label reveal" style="margin-bottom:18px">O Projekcie</div>
+        <h2 class="overview-h2 reveal d1">Kameralna inwestycja<br>w budynku z <em style="font-style:italic;color:var(--gold)">duszą.</em></h2>
+        <p class="overview-body reveal d2">Pokrzywnicka 11 to kameralna inwestycja składająca się z 8 mieszkań w budynku wybudowanym w stylu modernistycznym w latach 50. XX wieku. Innov8 Development przeprowadził kompleksową rewitalizację — nadając temu miejscu nowe życie przy zachowaniu jego unikalnego charakteru.</p>
+        <p class="overview-body reveal d2">Mieszkania o metrażach 32–40 m², zaprojektowane tak aby można je zaadaptować na 2 pokoje lub przestronny open space, trafiły do nowych właścicieli w stanie deweloperskim — gotowe do własnej aranżacji.</p>
+        <div class="overview-feats reveal d3">
+          <div class="feat">
+            <div class="feat-ic">◎</div>
+            <div>
+              <div class="feat-title">Kompleksowy remont instalacji</div>
+              <div class="feat-desc">Wymiana wszystkich instalacji wewnętrznych budynku — elektryka, hydraulika, ogrzewanie podłogowe, tynki maszynowe.</div>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-ic">⬡</div>
+            <div>
+              <div class="feat-title">Rewitalizacja części wspólnych</div>
+              <div class="feat-desc">Klatka schodowa, elewacja, brama wejściowa, domofon, kamery, oświetlenie zewnętrzne — wszystko odnowione.</div>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-ic">✦</div>
+            <div>
+              <div class="feat-title">Sprzedaż z rynku wtórnego</div>
+              <div class="feat-desc">Mieszkania sprzedane w stanie deweloperskim, gotowe do własnej aranżacji przez kupujących.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-n">8</div>
+            <div class="stat-l">Mieszkań</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">40m²</div>
+            <div class="stat-l">Maks. metraż</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">100%</div>
+            <div class="stat-l">Lokali sprzedanych</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">2023</div>
+            <div class="stat-l">Rok realizacji</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="ba-section">
+  <div class="container">
+    <div class="ba-label reveal">
+      <span class="label">Dokumentacja</span>
+      <h2 class="ba-h2">Przed i <em style="font-style:italic">po.</em></h2>
+    </div>
+    <div class="ba-grid reveal d1">
+      <div class="ba-item">
+        <img src="/images/pokrzywnicka-przed-po-1.png" alt="Pokrzywnicka 11 — klatka schodowa przed i po remoncie" />
+        <div class="ba-caption">Klatka schodowa — transformacja</div>
+      </div>
+      <div class="ba-item">
+        <img src="/images/pokrzywnicka-przed-po-2.png" alt="Pokrzywnicka 11 — klatka schodowa przed i po" />
+        <div class="ba-caption">Klatka schodowa — detal</div>
+      </div>
+      <div class="ba-item">
+        <img src="/images/pokrzywnicka-przed-po-3.png" alt="Pokrzywnicka 11 — wejście przed i po remoncie" />
+        <div class="ba-caption">Wejście główne — przed i po</div>
+      </div>
+      <div class="ba-item">
+        <img src="/images/pokrzywnicka-przed-po-4.png" alt="Pokrzywnicka 11 — klatka schodowa po remoncie" />
+        <div class="ba-caption">Klatka schodowa — efekt końcowy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="tl-inner">
+      <div>
+        <div class="label reveal" style="margin-bottom:18px">Harmonogram</div>
+        <h2 class="tl-h2 reveal d1">Realizacja<br>krok po kroku.</h2>
+        <p class="tl-body reveal d2" style="margin-top:16px">Precyzyjny harmonogram prac remontowych pozwolił zakończyć projekt terminowo. Każdy etap był nadzorowany przez zespół Innov8 Development — od wyboru ekipy, przez dobór materiałów, po odbiór końcowy.</p>
+      </div>
+      <div class="timeline reveal d1">
+        <div class="tl-item">
+          <div class="tl-date">30.11</div>
+          <div class="tl-text">Odebranie kluczy i rozpoczęcie remontu mieszkania socjalnego</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">15.12</div>
+          <div class="tl-text">Skończona hydraulika — wymiana wszystkich instalacji wodnych</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">19.12</div>
+          <div class="tl-text">Rozpoczęcie montażu okien (2–3 dni)</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">27.12</div>
+          <div class="tl-text">Wylewanie posadzki z pianobetonu i anhydrytu</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">12.01</div>
+          <div class="tl-text">Skończona elektryka we wszystkich mieszkaniach</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">23.01</div>
+          <div class="tl-text">Skończone tynki maszynowe</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">02.02</div>
+          <div class="tl-text">Skończone sufity oraz ścianki działowe w mieszkaniach</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">23.02</div>
+          <div class="tl-text">Wyczyszczona i odmalowana elewacja; zamontowana brama, domofon, kamery, oświetlenie zewnętrzne, skończona klatka schodowa</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">01.03</div>
+          <div class="tl-text">Koniec prac porządkowych wokół budynku — projekt zakończony</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section class="result-section">
+  <div class="container">
+    <div class="result-inner">
+      <div>
+        <div class="label reveal" style="margin-bottom:18px">Wynik</div>
+        <h2 class="result-h2 reveal d1">Projekt <em>zakończony.</em><br>Wszystkie lokale<br>sprzedane.</h2>
+        <p class="result-body reveal d2">Pokrzywnicka 11 to przykład jak Innov8 Development podchodzi do każdej inwestycji — z pełnym zaangażowaniem, precyzyjnym harmonogramem i transparentną komunikacją na każdym etapie. Projekt udowodnił nasz model działania w praktyce.</p>
+        <div class="result-items reveal d3">
+          <div class="ri">
+            <div class="ri-ic">✓</div>
+            <div class="ri-text"><strong>Kompleksowy remont</strong> — wszystkie instalacje wymienione od zera</div>
+          </div>
+          <div class="ri">
+            <div class="ri-ic">✓</div>
+            <div class="ri-text"><strong>Rewitalizacja elewacji</strong> — budynek odzyskał estetyczny wygląd</div>
+          </div>
+          <div class="ri">
+            <div class="ri-ic">✓</div>
+            <div class="ri-text"><strong>Nowe instalacje</strong> — elektryka, hydraulika, ogrzewanie podłogowe</div>
+          </div>
+          <div class="ri">
+            <div class="ri-ic">✓</div>
+            <div class="ri-text"><strong>Wszystkie 8 lokali sprzedane</strong> — w stanie deweloperskim</div>
+          </div>
+          <div class="ri">
+            <div class="ri-ic">✓</div>
+            <div class="ri-text"><strong>Projekt terminowy</strong> — realizacja zgodnie z harmonogramem</div>
+          </div>
+        </div>
+      </div>
+      <div class="result-img reveal d2">
+        <img src="/images/pokrzywnicka-budynek.png" alt="Pokrzywnicka 11 — efekt końcowy rewitalizacji" />
+        <div class="result-badge">
+          <div class="rb-n">8/8</div>
+          <div class="rb-l">Lokali sprzedanych</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="label reveal" style="justify-content:center;margin-bottom:24px">
+      <span style="font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)">Następny projekt</span>
+    </div>
+    <h2 class="cta-h2 reveal d1">Zainteresowany<br><em>współpracą?</em></h2>
+    <p class="cta-sub reveal d2">Aktywnie realizujemy kolejne projekty w Warszawie. Skontaktuj się z nami, aby dowiedzieć się więcej o możliwościach współpracy.</p>
+    <div class="cta-btns reveal d3">
+      <a href="/#projekty" class="btn-gold">Aktywne projekty →</a>
+      <a href="/#kontakt" class="btn-outline-white">Skontaktuj się</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">
+    <div class="f-mark">i8</div>
+    <span class="f-name">Innov8 Development</span>
+  </div>
+  <span class="f-copy">© 2026 Innov8 Development Sp. z o.o.</span>
+</footer>
+
+<script>
+document.querySelectorAll('.reveal').forEach(el => {
+  new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('in');
+  }), { threshold: .07 }).observe(el);
+});
+</script>
+
+</body>
+</html>
