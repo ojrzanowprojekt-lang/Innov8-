@@ -107,8 +107,62 @@ nav {
 .stat-n { font-family:var(--serif); font-size:48px; font-weight:300; color:var(--gold); line-height:1; margin-bottom:6px; }
 .stat-l { font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--stone); }
 
-/* ── BEFORE/AFTER ── */
-.ba-section { padding:80px 0; background:var(--ink); }
+/* ── BEFORE/AFTER SLIDER ── */
+.ba-slider {
+  position:relative; overflow:hidden;
+  height:80vh; min-height:560px;
+  margin-top:73px;
+  cursor:ew-resize;
+  user-select:none;
+}
+.ba-slider-before, .ba-slider-after {
+  position:absolute; inset:0;
+}
+.ba-slider-before img, .ba-slider-after img {
+  width:100%; height:100%; object-fit:cover;
+}
+.ba-slider-after {
+  clip-path: inset(0 50% 0 0);
+  transition: clip-path 0s;
+}
+.ba-slider-divider {
+  position:absolute; top:0; bottom:0;
+  width:3px; background:var(--white);
+  left:50%; transform:translateX(-50%);
+  z-index:10; pointer-events:none;
+  box-shadow:0 0 12px rgba(0,0,0,.4);
+}
+.ba-slider-handle {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:52px; height:52px;
+  background:var(--white);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  z-index:11; pointer-events:none;
+  box-shadow:0 4px 20px rgba(0,0,0,.3);
+  font-size:16px; color:var(--ink);
+}
+.ba-slider-labels {
+  position:absolute; top:24px; left:0; right:0;
+  display:flex; justify-content:space-between;
+  padding:0 32px; z-index:12; pointer-events:none;
+}
+.ba-slider-label {
+  font-size:10px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--white); background:rgba(0,0,0,.45);
+  padding:6px 14px; backdrop-filter:blur(4px);
+}
+.ba-slider-overlay {
+  position:absolute; inset:0; z-index:2;
+  background:linear-gradient(to top, rgba(20,17,14,.75) 0%, transparent 40%);
+  pointer-events:none;
+}
+.ba-slider-content {
+  position:absolute; bottom:0; left:0; right:0;
+  z-index:5; padding:0 56px 72px; pointer-events:none;
+}
+
 .ba-label { margin-bottom:48px; }
 .ba-label .label { color:var(--gold); }
 .ba-label .label::before { background:var(--gold); }
@@ -201,13 +255,29 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
   <a href="/#projekty" class="nav-back">← Wszystkie projekty</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-img">
-    <img src="/images/pokrzywnicka-budynek.png" alt="Pokrzywnicka 11 — rewitalizacja budynku Warszawa" />
+<!-- HERO — BEFORE/AFTER SLIDER -->
+<div class="ba-slider" id="baSlider">
+  <!-- PRZED -->
+  <div class="ba-slider-before">
+    <img src="/images/pokrzywnicka-przed.png" alt="Pokrzywnicka 11 — przed remontem" />
   </div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
+  <!-- PO -->
+  <div class="ba-slider-after" id="baAfter">
+    <img src="/images/pokrzywnicka-po.png" alt="Pokrzywnicka 11 — po remoncie" />
+  </div>
+  <!-- Overlay gradient -->
+  <div class="ba-slider-overlay"></div>
+  <!-- Divider -->
+  <div class="ba-slider-divider" id="baDivider">
+    <div class="ba-slider-handle">⇔</div>
+  </div>
+  <!-- Labels -->
+  <div class="ba-slider-labels">
+    <span class="ba-slider-label">Przed</span>
+    <span class="ba-slider-label">Po</span>
+  </div>
+  <!-- Content overlay -->
+  <div class="ba-slider-content">
     <div class="hero-eyebrow">
       <div class="hero-eyeline"></div>
       <span class="hero-eyelabel">Projekt Zrealizowany · Warszawa</span>
@@ -221,7 +291,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
       <span class="hero-tag"><strong>Warszawa</strong> lokalizacja</span>
     </div>
   </div>
-</section>
+</div>
 
 <!-- OVERVIEW -->
 <section class="overview">
@@ -288,21 +358,25 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
       <h2 class="ba-h2">Przed i <em style="font-style:italic">po.</em></h2>
     </div>
     <div class="ba-grid reveal d1">
-      <div class="ba-item">
-        <img src="/images/pokrzywnicka-przed-po-1.png" alt="Pokrzywnicka 11 — klatka schodowa przed i po remoncie" />
-        <div class="ba-caption">Klatka schodowa — transformacja</div>
+      <div class="ba-item ba-full">
+        <img src="/images/pokrzywnicka-elewacja.png" alt="Pokrzywnicka 11 — elewacja po remoncie" />
+        <div class="ba-caption">Elewacja — efekt końcowy</div>
       </div>
       <div class="ba-item">
-        <img src="/images/pokrzywnicka-przed-po-2.png" alt="Pokrzywnicka 11 — klatka schodowa przed i po" />
+        <img src="/images/pokrzywnicka-drzwi.png" alt="Pokrzywnicka 11 — drzwi mieszkań po remoncie" />
+        <div class="ba-caption">Klatka schodowa — drzwi mieszkań</div>
+      </div>
+      <div class="ba-item">
+        <img src="/images/pokrzywnicka-klatka.png" alt="Pokrzywnicka 11 — klatka schodowa po remoncie" />
         <div class="ba-caption">Klatka schodowa — detal</div>
       </div>
       <div class="ba-item">
-        <img src="/images/pokrzywnicka-przed-po-3.png" alt="Pokrzywnicka 11 — wejście przed i po remoncie" />
-        <div class="ba-caption">Wejście główne — przed i po</div>
+        <img src="/images/pokrzywnicka-przed-po-1.png" alt="Pokrzywnicka 11 — klatka przed i po" />
+        <div class="ba-caption">Klatka schodowa — transformacja</div>
       </div>
       <div class="ba-item">
-        <img src="/images/pokrzywnicka-przed-po-4.png" alt="Pokrzywnicka 11 — klatka schodowa po remoncie" />
-        <div class="ba-caption">Klatka schodowa — efekt końcowy</div>
+        <img src="/images/pokrzywnicka-przed-po-4.png" alt="Pokrzywnicka 11 — schody przed i po" />
+        <div class="ba-caption">Schody — przed i po</div>
       </div>
     </div>
   </div>
@@ -391,7 +465,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
         </div>
       </div>
       <div class="result-img reveal d2">
-        <img src="/images/pokrzywnicka-budynek.png" alt="Pokrzywnicka 11 — efekt końcowy rewitalizacji" />
+        <img src="/images/pokrzywnicka-elewacja.png" alt="Pokrzywnicka 11 — efekt końcowy rewitalizacji" />
         <div class="result-badge">
           <div class="rb-n">8/8</div>
           <div class="rb-l">Lokali sprzedanych</div>
@@ -431,6 +505,33 @@ document.querySelectorAll('.reveal').forEach(el => {
     if (e.isIntersecting) e.target.classList.add('in');
   }), { threshold: .07 }).observe(el);
 });
+
+// Before/After Slider
+(function() {
+  const slider = document.getElementById('baSlider');
+  const after = document.getElementById('baAfter');
+  const divider = document.getElementById('baDivider');
+  if (!slider) return;
+
+  let dragging = false;
+
+  function setPos(x) {
+    const rect = slider.getBoundingClientRect();
+    let pct = (x - rect.left) / rect.width;
+    pct = Math.max(0.05, Math.min(0.95, pct));
+    const pctRight = (1 - pct) * 100;
+    after.style.clipPath = `inset(0 ${pctRight}% 0 0)`;
+    divider.style.left = (pct * 100) + '%';
+  }
+
+  slider.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); });
+  window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+  window.addEventListener('mouseup', () => { dragging = false; });
+
+  slider.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener('touchend', () => { dragging = false; });
+})();
 </script>
 
 </body>
