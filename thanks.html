@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dziękujemy — Innov8 Development</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #9E7A3A;
+    --gold-l: #B8954E;
+    --ink: #1A1714;
+    --stone: #7A746C;
+    --white: #FFFFFF;
+    --off-white: #F8F6F2;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: var(--sans);
+    background: var(--ink);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 40px 24px;
+  }
+
+  /* Animated checkmark */
+  .check-wrap {
+    width: 72px;
+    height: 72px;
+    border: 1.5px solid rgba(158,122,58,.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 40px;
+    animation: fadeIn .6s ease forwards;
+    position: relative;
+  }
+  .check-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(158,122,58,.15);
+    border-radius: 50%;
+  }
+  .check {
+    width: 28px;
+    height: 28px;
+    stroke: var(--gold);
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    animation: drawCheck .6s .3s ease forwards;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp .6s .4s ease forwards;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp .6s .5s ease forwards;
+  }
+  h1 em { font-style: italic; color: var(--gold-l); }
+
+  .sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,.5);
+    line-height: 1.8;
+    max-width: 420px;
+    margin: 0 auto 48px;
+    opacity: 0;
+    animation: fadeUp .6s .6s ease forwards;
+  }
+
+  /* Progress bar */
+  .progress-wrap {
+    width: 200px;
+    height: 1px;
+    background: rgba(255,255,255,.08);
+    margin: 0 auto 16px;
+    opacity: 0;
+    animation: fadeIn .4s .8s ease forwards;
+    position: relative;
+    overflow: hidden;
+  }
+  .progress-bar {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: var(--gold);
+    width: 0%;
+    animation: progress 5s .8s linear forwards;
+  }
+  .countdown {
+    font-size: 11px;
+    letter-spacing: .12em;
+    color: rgba(255,255,255,.25);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeIn .4s .8s ease forwards;
+  }
+  .countdown span { color: var(--gold); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,.2);
+    text-decoration: none;
+    transition: all .3s;
+    opacity: 0;
+    animation: fadeUp .6s .9s ease forwards;
+  }
+  .btn:hover { border-color: var(--gold); color: var(--gold-l); }
+
+  /* Logo top */
+  .logo {
+    position: fixed;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    opacity: 0;
+    animation: fadeIn .6s .1s ease forwards;
+  }
+  .logo-mark {
+    width: 28px;
+    height: 28px;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .logo-name {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.6);
+  }
+
+  /* Contact info */
+  .contact-info {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,.06);
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp .6s 1s ease forwards;
+  }
+  .ci {
+    font-size: 12px;
+    color: rgba(255,255,255,.3);
+    line-height: 1.7;
+  }
+  .ci a { color: var(--gold-l); text-decoration: none; }
+  .ci a:hover { text-decoration: underline; }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(16px) } to { opacity:1; transform:none } }
+  @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+  @keyframes drawCheck { to { stroke-dashoffset: 0 } }
+  @keyframes progress { to { width: 100% } }
+</style>
+</head>
+<body>
+
+<a href="/" class="logo">
+  <div class="logo-mark">i8</div>
+  <span class="logo-name">Innov8 Development</span>
+</a>
+
+<div class="check-wrap">
+  <svg class="check" viewBox="0 0 28 28">
+    <polyline points="5,14 11,20 23,8"/>
+  </svg>
+</div>
+
+<div class="eyebrow">Wiadomość wysłana</div>
+
+<h1>Dziękujemy<br>za <em>kontakt.</em></h1>
+
+<p class="sub">Twoje zapytanie zostało przyjęte. Odezwiemy się w ciągu 24 godzin w dni robocze.</p>
+
+<div class="progress-wrap">
+  <div class="progress-bar"></div>
+</div>
+<p class="countdown">Powrót na stronę za <span id="sec">5</span> sekund</p>
+
+<a href="/" class="btn">← Wróć na stronę główną</a>
+
+<div class="contact-info">
+  <div class="ci">
+    Telefon<br>
+    <a href="tel:+48535033499">+48 535 033 499</a>
+  </div>
+  <div class="ci">
+    Email<br>
+    <a href="mailto:biuro@innov-8.pl">biuro@innov-8.pl</a>
+  </div>
+  <div class="ci">
+    Godziny<br>
+    Pon–Pt: 8:00–16:00
+  </div>
+</div>
+
+<script>
+  let s = 5;
+  const el = document.getElementById('sec');
+  const t = setInterval(() => {
+    s--;
+    el.textContent = s;
+    if (s <= 0) {
+      clearInterval(t);
+      window.location.href = '/';
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>
