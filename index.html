@@ -6,8 +6,8 @@
 
 <!-- ══ SEO META ══ -->
 <title>Innov8 Development — Deweloper Warszawa | Rewitalizacja Kamienic | Inwestycje Nieruchomości</title>
-<meta name="description" content="Innov8 Development — warszawski deweloper specjalizujący się w rewitalizacji kamienic, budowie domów premium i inwestycjach nieruchomościowych. Projekty: Sabały 52, Sycowska 33, Ojrzanów. Współpraca z inwestorami instytucjonalnymi i prywatnymi.">
-<meta name="keywords" content="deweloper Warszawa, rewitalizacja kamienic Warszawa, inwestycje nieruchomości Warszawa, mieszkania Warszawa, domy premium Ojrzanów, Innov8 Development, kupno mieszkania Warszawa, inwestor nieruchomości Polska, Warsaw real estate developer, real estate investment Poland, JV real estate Warsaw">
+<meta name="description" content="Innov8 Development — warszawski deweloper specjalizujący się w rewitalizacji kamienic i budowie domów premium. Projekty: Sabały 52, Sycowska 33, Ojrzanów. Skupujemy nieruchomości w Warszawie.">
+<meta name="keywords" content="deweloper Warszawa, rewitalizacja kamienic Warszawa, mieszkania Warszawa, domy premium Ojrzanów, Innov8 Development, kupno mieszkania Warszawa, skup nieruchomości Warszawa, Warsaw real estate developer, property developer Warsaw Poland">
 <meta name="author" content="Innov8 Development Sp. z o.o.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://innov-8.pl/">
@@ -708,23 +708,35 @@ footer { background:#0D0C0A; padding:60px 56px 0; display:grid; grid-template-co
 <!-- ══ PROMO POPUP ══ -->
 <div class="promo-overlay" id="promoOverlay" onclick="closePromo(event)">
   <div class="promo-box">
-    <!-- Przycisk zamknij -->
     <button class="promo-close" onclick="dismissPromo()" aria-label="Zamknij">✕</button>
-    <!-- Timer -->
     <div class="promo-timer">
       <div class="promo-bar-wrap"><div class="promo-bar" id="promoBar"></div></div>
       <span class="promo-timer-txt" id="promoCountdown">10</span>
     </div>
-    <!-- Zdjęcie -->
-    <img class="promo-img" src="/images/sycowska.jpg" alt="Sycowska 33 — apartamenty Warszawa" />
-    <!-- Treść -->
-    <div class="promo-body">
-      <div class="promo-label" data-pl="Sprzedaż otwarta · Warszawa, Włochy" data-en="Sales Open · Warsaw, Włochy">Sprzedaż otwarta · Warszawa, Włochy</div>
-      <h2 class="promo-h" data-pl="Sycowska 33<br><em>9 apartamentów</em><br>w Warszawie." data-en="Sycowska 33<br><em>9 apartments</em><br>in Warsaw.">Sycowska 33<br><em>9 apartamentów</em><br>w Warszawie.</h2>
-      <p class="promo-sub" data-pl="Metraże 19–55 m² · Stan deweloperski · Dzielnica Włochy. Lokale dostępne od zaraz." data-en="19–55 m² · Developer condition · Włochy district. Units available now.">Metraże 19–55 m² · Stan deweloperski · Dzielnica Włochy. Lokale dostępne od zaraz.</p>
-      <div class="promo-actions">
-        <a class="promo-cta" href="/sycowska.html" data-pl="Zobacz ofertę →" data-en="View offer →">Zobacz ofertę →</a>
-        <button class="promo-skip" onclick="dismissPromo()" data-pl="Zamknij" data-en="Close">Zamknij</button>
+    <!-- WARIANT A — Sycowska -->
+    <div id="promo-sycowska">
+      <img class="promo-img" src="/images/sycowska.jpg" alt="Sycowska 33 — apartamenty Warszawa" />
+      <div class="promo-body">
+        <div class="promo-label" data-pl="Sprzedaż otwarta · Warszawa, Włochy" data-en="Sales Open · Warsaw, Włochy">Sprzedaż otwarta · Warszawa, Włochy</div>
+        <h2 class="promo-h" data-pl="Sycowska 33<br><em>9 apartamentów</em><br>w Warszawie." data-en="Sycowska 33<br><em>9 apartments</em><br>in Warsaw.">Sycowska 33<br><em>9 apartamentów</em><br>w Warszawie.</h2>
+        <p class="promo-sub" data-pl="Metraże 19–55 m² · Stan deweloperski · Dzielnica Włochy. Lokale dostępne od zaraz." data-en="19–55 m² · Developer condition · Włochy district. Units available now.">Metraże 19–55 m² · Stan deweloperski · Dzielnica Włochy. Lokale dostępne od zaraz.</p>
+        <div class="promo-actions">
+          <a class="promo-cta" href="/sycowska.html" data-pl="Zobacz ofertę →" data-en="View offer →">Zobacz ofertę →</a>
+          <button class="promo-skip" onclick="dismissPromo()" data-pl="Zamknij" data-en="Close">Zamknij</button>
+        </div>
+      </div>
+    </div>
+    <!-- WARIANT B — Sabały -->
+    <div id="promo-sabaly" style="display:none">
+      <img class="promo-img" src="/images/sabaly.jpg" alt="Sabały 52 — apartamenty Warszawa" />
+      <div class="promo-body">
+        <div class="promo-label" data-pl="Sprzedaż otwarta · Warszawa" data-en="Sales Open · Warsaw">Sprzedaż otwarta · Warszawa</div>
+        <h2 class="promo-h" data-pl="Sabały 52<br><em>17 studiów</em><br>w kamienicy." data-en="Sabały 52<br><em>17 studios</em><br>in a tenement.">Sabały 52<br><em>17 studiów</em><br>w kamienicy.</h2>
+        <p class="promo-sub" data-pl="Kamienica po generalnym remoncie · Stan deweloperski · Warszawa. Sprawdź dostępne lokale." data-en="Fully renovated tenement · Developer condition · Warsaw. Check available units.">Kamienica po generalnym remoncie · Stan deweloperski · Warszawa. Sprawdź dostępne lokale.</p>
+        <div class="promo-actions">
+          <a class="promo-cta" href="https://sabaly52.pl" target="_blank" rel="noopener" data-pl="Zobacz ofertę →" data-en="View offer →">Zobacz ofertę →</a>
+          <button class="promo-skip" onclick="dismissPromo()" data-pl="Zamknij" data-en="Close">Zamknij</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1402,9 +1414,9 @@ footer { background:#0D0C0A; padding:60px 56px 0; display:grid; grid-template-co
   </div>
   <div class="ch-chips" id="cchips">
     <button class="chip" onclick="qs(currentLang==='en'?'What are your active projects?':'Jakie są aktywne projekty?')" data-pl="Projekty" data-en="Projects">Projekty</button>
-    <button class="chip" onclick="qs(currentLang==='en'?'How can I invest?':'Jak zainwestować kapitał?')" data-pl="Inwestycja" data-en="Investment">Inwestycja</button>
-    <button class="chip" onclick="qs(currentLang==='en'?'Tell me about your equity program':'Opowiedz o programie equity')" data-pl="Program Equity" data-en="Equity Program">Program Equity</button>
-    <button class="chip" onclick="qs(currentLang==='en'?'What is the minimum investment?':'Jaki jest minimalny wkład?')" data-pl="Min. wkład" data-en="Min. investment">Min. wkład</button>
+    <button class="chip" onclick="qs(currentLang==='en'?'Tell me about Sycowska 33':'Opowiedz o Sycowskiej 33')" data-pl="Sycowska 33" data-en="Sycowska 33">Sycowska 33</button>
+    <button class="chip" onclick="qs(currentLang==='en'?'I have a property, can we cooperate?':'Mam nieruchomość, czy możemy współpracować?')" data-pl="Mam nieruchomość" data-en="I have a property">Mam nieruchomość</button>
+    <button class="chip" onclick="qs(currentLang==='en'?'How can I contact you?':'Jak mogę się skontaktować?')" data-pl="Kontakt" data-en="Contact">Kontakt</button>
   </div>
   <div class="ch-inp">
     <input id="cinput" type="text" placeholder="Napisz wiadomość..." data-pl-ph="Napisz wiadomość..." data-en-ph="Type a message..." onkeypress="if(event.key==='Enter')send()">
@@ -1650,18 +1662,15 @@ async function submitForm() {
 /* ── PROMO POPUP ── */
 (function() {
   const COOKIE = 'innov8_promo_seen';
-  const DURATION = 10; // sekund do auto-zamknięcia
+  const DURATION = 10;
 
-  function getCookie(n) {
-    return document.cookie.split(';').some(c => c.trim().startsWith(n + '='));
-  }
+  function getCookie(n) { return document.cookie.split(';').some(c => c.trim().startsWith(n + '=')); }
   function setCookie(n, days) {
     const d = new Date();
     d.setTime(d.getTime() + days * 86400000);
     document.cookie = n + '=1; expires=' + d.toUTCString() + '; path=/; SameSite=Lax';
   }
 
-  // Nie pokazuj jeśli już widziany w ciągu 24h
   if (getCookie(COOKIE)) return;
 
   const overlay = document.getElementById('promoOverlay');
@@ -1669,38 +1678,30 @@ async function submitForm() {
   const countdown = document.getElementById('promoCountdown');
   if (!overlay) return;
 
-  // Pokaż po 1.5s
-  setTimeout(() => {
-    overlay.classList.add('show');
-    startTimer();
-  }, 1500);
+  // Losuj wariant A (Sycowska) lub B (Sabały)
+  const variant = Math.random() < 0.5 ? 'sycowska' : 'sabaly';
+  document.getElementById('promo-sycowska').style.display = variant === 'sycowska' ? 'block' : 'none';
+  document.getElementById('promo-sabaly').style.display  = variant === 'sabaly'   ? 'block' : 'none';
 
-  let timeLeft = DURATION;
-  let interval;
+  setTimeout(() => { overlay.classList.add('show'); startTimer(); }, 1500);
+
+  let timeLeft = DURATION, interval;
 
   function startTimer() {
-    // Animuj pasek
     bar.style.transition = 'width ' + DURATION + 's linear';
     setTimeout(() => { bar.style.width = '0%'; }, 50);
-
     interval = setInterval(() => {
       timeLeft--;
       countdown.textContent = timeLeft;
-      if (timeLeft <= 0) {
-        clearInterval(interval);
-        dismissPromo();
-      }
+      if (timeLeft <= 0) { clearInterval(interval); dismissPromo(); }
     }, 1000);
   }
 
-  window.closePromo = function(e) {
-    if (e.target === overlay) dismissPromo();
-  };
-
+  window.closePromo   = function(e) { if (e.target === overlay) dismissPromo(); };
   window.dismissPromo = function() {
     clearInterval(interval);
     overlay.classList.remove('show');
-    setCookie(COOKIE, 1); // nie pokazuj przez 24h
+    setCookie(COOKIE, 1);
   };
 })();
 </script>
