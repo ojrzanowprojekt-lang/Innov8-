@@ -240,13 +240,12 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
     <span class="nav-name">Innov8 Development</span>
   </a>
   <div class="nav-status" data-pl="Sprzedaż Otwarta" data-en="Sales Open">Sprzedaż Otwarta</div>
-  <div class="lang-sw"><button class="lang-btn act" onclick="setLang('pl')">PL</button><span class="lang-sep">/</span><button class="lang-btn" onclick="setLang('en')">EN</button></div>
-  <div class="lang-sw" style="display:flex;gap:4px;align-items:center;">
-    <button class="lang-btn act" onclick="setLang('pl')" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:2px 4px;cursor:pointer;font-family:var(--sans);">PL</button>
-    <span style="color:var(--border);font-size:10px;">/</span>
-    <button class="lang-btn" onclick="setLang('en')" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:2px 4px;cursor:pointer;font-family:var(--sans);">EN</button>
+  <div style="display:flex;gap:4px;align-items:center;">
+    <button onclick="setLang('pl')" id="btn-pl" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:2px 4px;cursor:pointer;font-family:var(--sans);">PL</button>
+    <span style="color:rgba(26,23,20,.12);font-size:10px;">/</span>
+    <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:2px 4px;cursor:pointer;font-family:var(--sans);">EN</button>
   </div>
-  <a href="/#projekty" class="nav-back" data-pl="← Wszystkie projekty" data-en="← All Projects" data-pl="← Wszystkie projekty" data-en="← All Projects">← Wszystkie projekty</a>
+  <a href="/#projekty" class="nav-back" data-pl="← Wszystkie projekty" data-en="← All Projects">← Wszystkie projekty</a>
 </nav>
 
 <!-- HERO -->
@@ -276,12 +275,11 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
   <div class="container">
     <div class="uc-inner">
       <div class="uc-text">
-        <strong>Prace w toku</strong> — budynek jest aktualnie w trakcie remontu.<br>
-        Lokale dostępne w sprzedaży. Odbiór kluczy po zakończeniu prac.
+        <span data-pl="<strong>Prace w toku</strong> — budynek jest aktualnie w trakcie remontu.<br>Lokale dostępne w sprzedaży. Odbiór kluczy po zakończeniu prac." data-en="<strong>Work in progress</strong> — building currently under renovation.<br>Units available for sale. Keys handed over upon completion."><strong>Prace w toku</strong> — budynek jest aktualnie w trakcie remontu.<br>Lokale dostępne w sprzedaży. Odbiór kluczy po zakończeniu prac.</span>
       </div>
       <div class="uc-progress">
         <div class="uc-prog-label">
-          <span>Postęp prac</span>
+          <span data-pl="Postęp prac" data-en="Construction Progress">Postęp prac</span>
           <span>~65%</span>
         </div>
         <div class="uc-prog-bar">
@@ -297,30 +295,30 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
   <div class="container">
     <div class="overview-inner">
       <div>
-        <div class="label reveal" style="margin-bottom:18px">O Projekcie</div>
-        <h2 class="overview-h2 reveal d1">9 lokali w sercu<br><em style="font-style:italic;color:var(--gold)">Włoch.</em></h2>
-        <p class="overview-body reveal d2">Sycowska 33 to kameralna inwestycja w spokojnej dzielnicy Włochy — doskonale skomunikowanej z centrum Warszawy. Kompleksowo remontowany budynek oferuje lokale o zróżnicowanych metrażach, idealne zarówno na własne mieszkanie, jak i pod wynajem.</p>
-        <p class="overview-body reveal d2">Wszystkie lokale sprzedawane w stanie deweloperskim — gotowe do własnej aranżacji. Wybrane mieszkania posiadają balkony.</p>
+        <div class="label reveal" style="margin-bottom:18px" data-pl="O Projekcie" data-en="About">O Projekcie</div>
+        <h2 class="overview-h2 reveal d1" data-pl="9 lokali w sercu<br><em style='font-style:italic;color:var(--gold)'>Włoch.</em>" data-en="9 units in the heart<br><em style='font-style:italic;color:var(--gold)'>of Włochy.</em>">9 lokali w sercu<br><em style="font-style:italic;color:var(--gold)">Włoch.</em></h2>
+        <p class="overview-body reveal d2" data-pl="Sycowska 33 to kameralna inwestycja w spokojnej dzielnicy Włochy — doskonale skomunikowanej z centrum Warszawy. Kompleksowo remontowany budynek oferuje lokale o zróżnicowanych metrażach, idealne zarówno na własne mieszkanie, jak i pod wynajem." data-en="Sycowska 33 is a boutique investment in the quiet Włochy district — well connected to Warsaw city centre. The comprehensively renovated building offers units in various sizes, ideal as a personal home or rental investment.">Sycowska 33 to kameralna inwestycja w spokojnej dzielnicy Włochy — doskonale skomunikowanej z centrum Warszawy. Kompleksowo remontowany budynek oferuje lokale o zróżnicowanych metrażach, idealne zarówno na własne mieszkanie, jak i pod wynajem.</p>
+        <p class="overview-body reveal d2" data-pl="Wszystkie lokale sprzedawane w stanie deweloperskim — gotowe do własnej aranżacji. Wybrane mieszkania posiadają balkony." data-en="All units sold in developer condition — ready for your own fit-out. Selected apartments feature private balconies.">Wszystkie lokale sprzedawane w stanie deweloperskim — gotowe do własnej aranżacji. Wybrane mieszkania posiadają balkony.</p>
         <div class="reveal d3" style="margin-top:36px;">
           <div class="feat">
             <div class="feat-ic">◎</div>
             <div>
-              <div class="feat-title">Kompleksowy remont</div>
-              <div class="feat-desc">Wymiana wszystkich instalacji, nowa elewacja, odnowione części wspólne.</div>
+              <div class="feat-title" data-pl="Kompleksowy remont" data-en="Full Renovation">Kompleksowy remont</div>
+              <div class="feat-desc" data-pl="Wymiana wszystkich instalacji, nowa elewacja, odnowione części wspólne." data-en="Full replacement of all utilities, new facade, renovated common areas.">Wymiana wszystkich instalacji, nowa elewacja, odnowione części wspólne.</div>
             </div>
           </div>
           <div class="feat">
             <div class="feat-ic">⬡</div>
             <div>
-              <div class="feat-title">Stan deweloperski</div>
-              <div class="feat-desc">Lokale gotowe do własnej aranżacji — tynki, wylewki, instalacje.</div>
+              <div class="feat-title" data-pl="Stan deweloperski" data-en="Developer Condition">Stan deweloperski</div>
+              <div class="feat-desc" data-pl="Lokale gotowe do własnej aranżacji — tynki, wylewki, instalacje." data-en="Units ready for fit-out — plaster, screed, all utilities installed.">Lokale gotowe do własnej aranżacji — tynki, wylewki, instalacje.</div>
             </div>
           </div>
           <div class="feat">
             <div class="feat-ic">✦</div>
             <div>
-              <div class="feat-title">Świetna lokalizacja</div>
-              <div class="feat-desc">Dzielnica Włochy — dobre połączenia z centrum, spokojna okolica.</div>
+              <div class="feat-title" data-pl="Świetna lokalizacja" data-en="Great Location">Świetna lokalizacja</div>
+              <div class="feat-desc" data-pl="Dzielnica Włochy — dobre połączenia z centrum, spokojna okolica." data-en="Włochy district — great transport links to the city, quiet neighbourhood.">Dzielnica Włochy — dobre połączenia z centrum, spokojna okolica.</div>
             </div>
           </div>
         </div>
@@ -329,19 +327,19 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
         <div class="stats-grid">
           <div class="stat">
             <div class="stat-n">9</div>
-            <div class="stat-l">Lokali</div>
+            <div class="stat-l" data-pl="Lokali" data-en="Units">Lokali</div>
           </div>
           <div class="stat">
             <div class="stat-n">55m²</div>
-            <div class="stat-l">Największy lokal</div>
+            <div class="stat-l" data-pl="Największy lokal" data-en="Largest Unit">Największy lokal</div>
           </div>
           <div class="stat">
             <div class="stat-n">3</div>
-            <div class="stat-l">Piętra</div>
+            <div class="stat-l" data-pl="Piętra" data-en="Floors">Piętra</div>
           </div>
           <div class="stat">
             <div class="stat-n">269</div>
-            <div class="stat-l">m² łącznie</div>
+            <div class="stat-l" data-pl="m² łącznie" data-en="Total m²">m² łącznie</div>
           </div>
         </div>
       </div>
@@ -354,12 +352,12 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
   <div class="container">
     <div class="apt-header reveal">
       <div>
-        <div class="label">Dostępne Lokale</div>
-        <h2 class="apt-h2">Wybierz swój<br><em style="font-style:italic;color:var(--gold)">lokal.</em></h2>
+        <div class="label" data-pl="Dostępne Lokale" data-en="Available Units">Dostępne Lokale</div>
+        <h2 class="apt-h2" data-pl="Wybierz swój<br><em style='font-style:italic;color:var(--gold)'>lokal.</em>" data-en="Choose your<br><em style='font-style:italic;color:var(--gold)'>unit.</em>">Wybierz swój<br><em style="font-style:italic;color:var(--gold)">lokal.</em></h2>
       </div>
       <div class="apt-legend">
-        <div class="leg-item"><div class="leg-dot available"></div> Dostępny</div>
-        <div class="leg-item"><div class="leg-dot sold"></div> Sprzedany</div>
+        <div class="leg-item"><div class="leg-dot available"></div> <span data-pl="Dostępny" data-en="Available">Dostępny</span></div>
+        <div class="leg-item"><div class="leg-dot sold"></div> <span data-pl="Sprzedany" data-en="Sold">Sprzedany</span></div>
       </div>
     </div>
 
@@ -367,7 +365,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
       <table>
         <thead>
           <tr>
-            <th>Nr lokalu</th>
+            <th data-pl="Nr lokalu" data-en="Unit No.">Nr lokalu</th>
             <th data-pl="Piętro" data-en="Floor">Piętro</th>
             <th data-pl="Powierzchnia" data-en="Area">Powierzchnia</th>
             <th data-pl="Aneks / 2 pokoje" data-en="Kitchenette / 2 rms">Aneks / 2 pokoje</th>
@@ -484,8 +482,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
 
     <div class="apt-cta reveal d2">
       <div class="apt-cta-text">
-        <h3>Zainteresowany lokalem?</h3>
-        <p>Skontaktuj się z nami — odpowiemy w ciągu 24h.</p>
+        <h3 data-pl="Zainteresowany lokalem?" data-en="Interested in a unit?">Zainteresowany lokalem?</h3>
+        <p data-pl="Skontaktuj się z nami — odpowiemy w ciągu 24h." data-en="Contact us — we'll reply within 24 hours.">Skontaktuj się z nami — odpowiemy w ciągu 24h.</p>
       </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
         <a href="tel:+48535033499" class="btn-gold" data-pl="Zadzwoń: +48 535 033 499" data-en="Call: +48 535 033 499">Zadzwoń: +48 535 033 499</a>
@@ -498,11 +496,11 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
 <!-- GALLERY -->
 <section class="gallery">
   <div class="container">
-    <div class="label reveal" style="margin-bottom:14px">Dokumentacja</div>
-    <h2 class="gallery-h2 reveal d1">Postęp <em style="font-style:italic;color:var(--gold)">prac.</em></h2>
+    <div class="label reveal" style="margin-bottom:14px" data-pl="Dokumentacja" data-en="Documentation">Dokumentacja</div>
+    <h2 class="gallery-h2 reveal d1" data-pl="Postęp <em style='font-style:italic;color:var(--gold)'>prac.</em>" data-en="Construction <em style='font-style:italic;color:var(--gold)'>progress.</em>">Postęp <em style="font-style:italic;color:var(--gold)">prac.</em></h2>
     <img src="/images/sycowska.jpg" alt="Sycowska 33 — budynek" class="gallery-img reveal d2" />
     <p style="margin-top:20px;font-size:12px;color:var(--stone);font-style:italic;" class="reveal d3">
-      Zdjęcia z postępów prac będą aktualizowane na bieżąco. Ostatnia aktualizacja: marzec 2026.
+      <span data-pl="Zdjęcia z postępów prac będą aktualizowane na bieżąco. Ostatnia aktualizacja: marzec 2026." data-en="Construction photos updated regularly. Last update: March 2026.">Zdjęcia z postępów prac będą aktualizowane na bieżąco. Ostatnia aktualizacja: marzec 2026.</span>
     </p>
   </div>
 </section>
@@ -510,28 +508,28 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
 <!-- PROCESS -->
 <section class="process">
   <div class="container">
-    <div class="label reveal" style="margin-bottom:14px">Harmonogram</div>
-    <h2 class="proc-h2 reveal d1">Etapy <em style="font-style:italic;color:var(--gold)">realizacji.</em></h2>
+    <div class="label reveal" style="margin-bottom:14px" data-pl="Harmonogram" data-en="Timeline">Harmonogram</div>
+    <h2 class="proc-h2 reveal d1" data-pl="Etapy <em style='font-style:italic;color:var(--gold)'>realizacji.</em>" data-en="Project <em style='font-style:italic;color:var(--gold)'>stages.</em>">Etapy <em style="font-style:italic;color:var(--gold)">realizacji.</em></h2>
     <div class="proc-steps reveal d2">
       <div class="pstep">
         <div class="pstep-n">01</div>
-        <div class="pstep-t">Zakup i przygotowanie</div>
-        <div class="pstep-d">Nabycie nieruchomości, opracowanie projektu remontowego i budżetu inwestycji.</div>
+        <div class="pstep-t" data-pl="Zakup i przygotowanie" data-en="Acquisition & Preparation">Zakup i przygotowanie</div>
+        <div class="pstep-d" data-pl="Nabycie nieruchomości, opracowanie projektu remontowego i budżetu inwestycji." data-en="Property acquisition, renovation design and investment budget preparation.">Nabycie nieruchomości, opracowanie projektu remontowego i budżetu inwestycji.</div>
       </div>
       <div class="pstep">
         <div class="pstep-n">02</div>
-        <div class="pstep-t">Remont i instalacje</div>
-        <div class="pstep-d">Kompleksowa wymiana instalacji elektrycznych, hydraulicznych i grzewczych.</div>
+        <div class="pstep-t" data-pl="Remont i instalacje" data-en="Renovation & Utilities">Remont i instalacje</div>
+        <div class="pstep-d" data-pl="Kompleksowa wymiana instalacji elektrycznych, hydraulicznych i grzewczych." data-en="Full replacement of electrical, plumbing and heating systems.">Kompleksowa wymiana instalacji elektrycznych, hydraulicznych i grzewczych.</div>
       </div>
       <div class="pstep">
         <div class="pstep-n">03</div>
-        <div class="pstep-t">Wykończenie i elewacja</div>
-        <div class="pstep-d">Tynki, posadzki, odnowa elewacji, klatki schodowej i otoczenia budynku.</div>
+        <div class="pstep-t" data-pl="Wykończenie i elewacja" data-en="Finishing & Facade">Wykończenie i elewacja</div>
+        <div class="pstep-d" data-pl="Tynki, posadzki, odnowa elewacji, klatki schodowej i otoczenia budynku." data-en="Plaster, floors, facade renovation, stairwell and building surroundings.">Tynki, posadzki, odnowa elewacji, klatki schodowej i otoczenia budynku.</div>
       </div>
       <div class="pstep">
         <div class="pstep-n">04</div>
-        <div class="pstep-t">Odbiory i przekazanie</div>
-        <div class="pstep-d">Odbiory techniczne, przekazanie lokali nowym właścicielom.</div>
+        <div class="pstep-t" data-pl="Odbiory i przekazanie" data-en="Inspections & Handover">Odbiory i przekazanie</div>
+        <div class="pstep-d" data-pl="Odbiory techniczne, przekazanie lokali nowym właścicielom." data-en="Technical inspections and handover of units to new owners.">Odbiory techniczne, przekazanie lokali nowym właścicielom.</div>
       </div>
     </div>
   </div>
@@ -543,10 +541,10 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
     <div class="label reveal" style="justify-content:center;margin-bottom:24px">
       <span style="font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)">Kontakt</span>
     </div>
-    <h2 class="cta-h2 reveal d1">Masz pytania<br>o <em>Sycowską 33?</em></h2>
-    <p class="cta-sub reveal d2">Chętnie odpowiemy na wszystkie pytania dotyczące lokali, stanu zaawansowania prac i warunków zakupu.</p>
+    <h2 class="cta-h2 reveal d1" data-pl="Masz pytania<br>o <em>Sycowską 33?</em>" data-en="Questions about<br><em>Sycowska 33?</em>">Masz pytania<br>o <em>Sycowską 33?</em></h2>
+    <p class="cta-sub reveal d2" data-pl="Chętnie odpowiemy na wszystkie pytania dotyczące lokali, stanu zaawansowania prac i warunków zakupu." data-en="We'll answer all questions about units, construction progress and purchase terms.">Chętnie odpowiemy na wszystkie pytania dotyczące lokali, stanu zaawansowania prac i warunków zakupu.</p>
     <div class="cta-btns reveal d3">
-      <a href="tel:+48535033499" class="btn-gold">+48 535 033 499</a>
+      <a href="tel:+48535033499" class="btn-gold" data-pl="+48 535 033 499" data-en="+48 535 033 499">+48 535 033 499</a>
       <a href="/#kontakt" class="btn-outline-white" data-pl="Formularz kontaktowy" data-en="Contact Form">Formularz kontaktowy</a>
     </div>
   </div>

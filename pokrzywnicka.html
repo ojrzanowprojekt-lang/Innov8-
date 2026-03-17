@@ -264,13 +264,12 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
     <span class="nav-name">Innov8 Development</span>
   </a>
   <div class="nav-status" data-pl="Projekt zrealizowany" data-en="Completed Project">Projekt zrealizowany</div>
-  <div class="lang-sw"><button class="lang-btn act" onclick="setLang('pl')">PL</button><span class="lang-sep">/</span><button class="lang-btn" onclick="setLang('en')">EN</button></div>
-  <div class="lang-sw" style="display:flex;gap:4px;align-items:center;">
-    <button class="lang-btn act" onclick="setLang('pl')" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:2px 4px;cursor:pointer;font-family:var(--sans);">PL</button>
-    <span style="color:var(--border);font-size:10px;">/</span>
-    <button class="lang-btn" onclick="setLang('en')" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:2px 4px;cursor:pointer;font-family:var(--sans);">EN</button>
+  <div style="display:flex;gap:4px;align-items:center;">
+    <button onclick="setLang('pl')" id="btn-pl" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:2px 4px;cursor:pointer;font-family:var(--sans);">PL</button>
+    <span style="color:rgba(26,23,20,.12);font-size:10px;">/</span>
+    <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:2px 4px;cursor:pointer;font-family:var(--sans);">EN</button>
   </div>
-  <a href="/#projekty" class="nav-back" data-pl="← Wszystkie projekty" data-en="← All Projects" data-pl="← Wszystkie projekty" data-en="← All Projects">← Wszystkie projekty</a>
+  <a href="/#projekty" class="nav-back" data-pl="← Wszystkie projekty" data-en="← All Projects">← Wszystkie projekty</a>
 </nav>
 
 <!-- HERO — statyczne zdjęcie -->
@@ -300,30 +299,30 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
   <div class="container">
     <div class="overview-inner">
       <div>
-        <div class="label reveal" style="margin-bottom:18px">O Projekcie</div>
+        <div class="label reveal" style="margin-bottom:18px" data-pl="O Projekcie" data-en="About">O Projekcie</div>
         <h2 class="overview-h2 reveal d1">Kameralna inwestycja<br>w budynku z <em style="font-style:italic;color:var(--gold)">duszą.</em></h2>
-        <p class="overview-body reveal d2">Pokrzywnicka 11 to kameralna inwestycja składająca się z 8 mieszkań w budynku wybudowanym w stylu modernistycznym w latach 50. XX wieku. Innov8 Development przeprowadził kompleksową rewitalizację — nadając temu miejscu nowe życie przy zachowaniu jego unikalnego charakteru.</p>
-        <p class="overview-body reveal d2">Mieszkania o metrażach 32–40 m², zaprojektowane tak aby można je zaadaptować na 2 pokoje lub przestronny open space, trafiły do nowych właścicieli w stanie deweloperskim — gotowe do własnej aranżacji.</p>
+        <p class="overview-body reveal d2" data-pl="Pokrzywnicka 11 to kameralna inwestycja składająca się z 8 mieszkań w budynku wybudowanym w stylu modernistycznym w latach 50. XX wieku. Innov8 Development przeprowadził kompleksową rewitalizację — nadając temu miejscu nowe życie przy zachowaniu jego unikalnego charakteru." data-en="Pokrzywnicka 11 is a boutique investment comprising 8 apartments in a modernist building from the 1950s. Innov8 Development carried out a comprehensive renovation — breathing new life into the property while preserving its unique character.">Pokrzywnicka 11 to kameralna inwestycja składająca się z 8 mieszkań w budynku wybudowanym w stylu modernistycznym w latach 50. XX wieku. Innov8 Development przeprowadził kompleksową rewitalizację — nadając temu miejscu nowe życie przy zachowaniu jego unikalnego charakteru.</p>
+        <p class="overview-body reveal d2" data-pl="Mieszkania o metrażach 32–40 m², zaprojektowane tak aby można je zaadaptować na 2 pokoje lub przestronny open space, trafiły do nowych właścicieli w stanie deweloperskim — gotowe do własnej aranżacji." data-en="Apartments of 32–40 m², designed to be converted into 2 rooms or a spacious open-plan layout, were handed over to new owners in developer condition — ready for personalisation.">Mieszkania o metrażach 32–40 m², zaprojektowane tak aby można je zaadaptować na 2 pokoje lub przestronny open space, trafiły do nowych właścicieli w stanie deweloperskim — gotowe do własnej aranżacji.</p>
         <div class="overview-feats reveal d3">
           <div class="feat">
             <div class="feat-ic">◎</div>
             <div>
-              <div class="feat-title">Kompleksowy remont instalacji</div>
-              <div class="feat-desc">Wymiana wszystkich instalacji wewnętrznych budynku — elektryka, hydraulika, ogrzewanie podłogowe, tynki maszynowe.</div>
+              <div class="feat-title" data-pl="Kompleksowy remont instalacji" data-en="Full Utility Renovation">Kompleksowy remont instalacji</div>
+              <div class="feat-desc" data-pl="Wymiana wszystkich instalacji wewnętrznych budynku — elektryka, hydraulika, ogrzewanie podłogowe, tynki maszynowe." data-en="Full replacement of all internal utilities — electricity, plumbing, underfloor heating, machine-applied plaster.">Wymiana wszystkich instalacji wewnętrznych budynku — elektryka, hydraulika, ogrzewanie podłogowe, tynki maszynowe.</div>
             </div>
           </div>
           <div class="feat">
             <div class="feat-ic">⬡</div>
             <div>
-              <div class="feat-title">Rewitalizacja części wspólnych</div>
-              <div class="feat-desc">Klatka schodowa, elewacja, brama wejściowa, domofon, kamery, oświetlenie zewnętrzne — wszystko odnowione.</div>
+              <div class="feat-title" data-pl="Rewitalizacja części wspólnych" data-en="Common Areas Revitalised">Rewitalizacja części wspólnych</div>
+              <div class="feat-desc" data-pl="Klatka schodowa, elewacja, brama wejściowa, domofon, kamery, oświetlenie zewnętrzne — wszystko odnowione." data-en="Stairwell, facade, entrance gate, intercom, cameras, exterior lighting — everything renewed.">Klatka schodowa, elewacja, brama wejściowa, domofon, kamery, oświetlenie zewnętrzne — wszystko odnowione.</div>
             </div>
           </div>
           <div class="feat">
             <div class="feat-ic">✦</div>
             <div>
-              <div class="feat-title">Sprzedaż z rynku wtórnego</div>
-              <div class="feat-desc">Mieszkania sprzedane w stanie deweloperskim, gotowe do własnej aranżacji przez kupujących.</div>
+              <div class="feat-title" data-pl="Sprzedaż z rynku wtórnego" data-en="Secondary Market Sale">Sprzedaż z rynku wtórnego</div>
+              <div class="feat-desc" data-pl="Mieszkania sprzedane w stanie deweloperskim, gotowe do własnej aranżacji przez kupujących." data-en="Apartments sold in developer condition, ready for buyers to personalise.">Mieszkania sprzedane w stanie deweloperskim, gotowe do własnej aranżacji przez kupujących.</div>
             </div>
           </div>
         </div>
@@ -332,19 +331,19 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
         <div class="stats-grid">
           <div class="stat">
             <div class="stat-n">8</div>
-            <div class="stat-l">Mieszkań</div>
+            <div class="stat-l" data-pl="Mieszkań" data-en="Apartments">Mieszkań</div>
           </div>
           <div class="stat">
             <div class="stat-n">40m²</div>
-            <div class="stat-l">Maks. metraż</div>
+            <div class="stat-l" data-pl="Maks. metraż" data-en="Max. Area">Maks. metraż</div>
           </div>
           <div class="stat">
             <div class="stat-n">100%</div>
-            <div class="stat-l">Lokali sprzedanych</div>
+            <div class="stat-l" data-pl="Lokali sprzedanych" data-en="Units Sold">Lokali sprzedanych</div>
           </div>
           <div class="stat">
             <div class="stat-n">2023</div>
-            <div class="stat-l">Rok realizacji</div>
+            <div class="stat-l" data-pl="Rok realizacji" data-en="Year Completed">Rok realizacji</div>
           </div>
         </div>
       </div>
@@ -427,29 +426,29 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
 <section class="ba-section">
   <div class="container">
     <div class="ba-label reveal">
-      <span class="label">Dokumentacja</span>
-      <h2 class="ba-h2">Przed i <em style="font-style:italic">po.</em></h2>
+      <span class="label" data-pl="Dokumentacja" data-en="Documentation">Dokumentacja</span>
+      <h2 class="ba-h2" data-pl="Przed i <em style='font-style:italic'>po.</em>" data-en="Before and <em style='font-style:italic'>after.</em>">Przed i <em style="font-style:italic">po.</em></h2>
     </div>
     <div class="ba-grid reveal d1">
       <div class="ba-item ba-full">
         <img src="/images/pokrzywnicka-elewacja.png" alt="Pokrzywnicka 11 — elewacja po remoncie" />
-        <div class="ba-caption">Elewacja — efekt końcowy</div>
+        <div class="ba-caption" data-pl="Elewacja — efekt końcowy" data-en="Facade — final result">Elewacja — efekt końcowy</div>
       </div>
       <div class="ba-item">
         <img src="/images/pokrzywnicka-drzwi.png" alt="Pokrzywnicka 11 — drzwi mieszkań po remoncie" />
-        <div class="ba-caption">Klatka schodowa — drzwi mieszkań</div>
+        <div class="ba-caption" data-pl="Klatka schodowa — drzwi mieszkań" data-en="Stairwell — apartment doors">Klatka schodowa — drzwi mieszkań</div>
       </div>
       <div class="ba-item">
         <img src="/images/pokrzywnicka-klatka.png" alt="Pokrzywnicka 11 — klatka schodowa po remoncie" />
-        <div class="ba-caption">Klatka schodowa — detal</div>
+        <div class="ba-caption" data-pl="Klatka schodowa — detal" data-en="Stairwell — detail">Klatka schodowa — detal</div>
       </div>
       <div class="ba-item">
         <img src="/images/pokrzywnicka-przed-po-1.png" alt="Pokrzywnicka 11 — klatka przed i po" />
-        <div class="ba-caption">Klatka schodowa — transformacja</div>
+        <div class="ba-caption" data-pl="Klatka schodowa — transformacja" data-en="Stairwell — transformation">Klatka schodowa — transformacja</div>
       </div>
       <div class="ba-item">
         <img src="/images/pokrzywnicka-przed-po-4.png" alt="Pokrzywnicka 11 — schody przed i po" />
-        <div class="ba-caption">Schody — przed i po</div>
+        <div class="ba-caption" data-pl="Schody — przed i po" data-en="Stairs — before and after">Schody — przed i po</div>
       </div>
     </div>
   </div>
@@ -460,46 +459,46 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
   <div class="container">
     <div class="tl-inner">
       <div>
-        <div class="label reveal" style="margin-bottom:18px">Harmonogram</div>
-        <h2 class="tl-h2 reveal d1">Realizacja<br>krok po kroku.</h2>
-        <p class="tl-body reveal d2" style="margin-top:16px">Precyzyjny harmonogram prac remontowych pozwolił zakończyć projekt terminowo. Każdy etap był nadzorowany przez zespół Innov8 Development — od wyboru ekipy, przez dobór materiałów, po odbiór końcowy.</p>
+        <div class="label reveal" style="margin-bottom:18px" data-pl="Harmonogram" data-en="Timeline">Harmonogram</div>
+        <h2 class="tl-h2 reveal d1" data-pl="Realizacja<br>krok po kroku." data-en="Execution<br>step by step.">Realizacja<br>krok po kroku.</h2>
+        <p class="tl-body reveal d2" style="margin-top:16px" data-pl="Precyzyjny harmonogram prac remontowych pozwolił zakończyć projekt terminowo. Każdy etap był nadzorowany przez zespół Innov8 Development — od wyboru ekipy, przez dobór materiałów, po odbiór końcowy." data-en="A precise renovation schedule allowed the project to be completed on time. Every stage was supervised by the Innov8 Development team — from crew selection and materials sourcing to final inspection.">Precyzyjny harmonogram prac remontowych pozwolił zakończyć projekt terminowo. Każdy etap był nadzorowany przez zespół Innov8 Development — od wyboru ekipy, przez dobór materiałów, po odbiór końcowy.</p>
       </div>
       <div class="timeline reveal d1">
         <div class="tl-item">
           <div class="tl-date">30.11</div>
-          <div class="tl-text">Odebranie kluczy i rozpoczęcie remontu mieszkania socjalnego</div>
+          <div class="tl-text" data-pl="Odebranie kluczy i rozpoczęcie remontu mieszkania socjalnego" data-en="Keys received and renovation of social unit commenced">Odebranie kluczy i rozpoczęcie remontu mieszkania socjalnego</div>
         </div>
         <div class="tl-item">
           <div class="tl-date">15.12</div>
-          <div class="tl-text">Skończona hydraulika — wymiana wszystkich instalacji wodnych</div>
+          <div class="tl-text" data-pl="Skończona hydraulika — wymiana wszystkich instalacji wodnych" data-en="Plumbing complete — all water systems replaced">Skończona hydraulika — wymiana wszystkich instalacji wodnych</div>
         </div>
         <div class="tl-item">
           <div class="tl-date">19.12</div>
-          <div class="tl-text">Rozpoczęcie montażu okien (2–3 dni)</div>
+          <div class="tl-text" data-pl="Rozpoczęcie montażu okien (2–3 dni)" data-en="Window installation started (2–3 days)">Rozpoczęcie montażu okien (2–3 dni)</div>
         </div>
         <div class="tl-item">
           <div class="tl-date">27.12</div>
-          <div class="tl-text">Wylewanie posadzki z pianobetonu i anhydrytu</div>
+          <div class="tl-text" data-pl="Wylewanie posadzki z pianobetonu i anhydrytu" data-en="Foam concrete and anhydrite screed poured">Wylewanie posadzki z pianobetonu i anhydrytu</div>
         </div>
         <div class="tl-item">
           <div class="tl-date">12.01</div>
-          <div class="tl-text">Skończona elektryka we wszystkich mieszkaniach</div>
+          <div class="tl-text" data-pl="Skończona elektryka we wszystkich mieszkaniach" data-en="Electrical works complete in all apartments">Skończona elektryka we wszystkich mieszkaniach</div>
         </div>
         <div class="tl-item">
           <div class="tl-date">23.01</div>
-          <div class="tl-text">Skończone tynki maszynowe</div>
+          <div class="tl-text" data-pl="Skończone tynki maszynowe" data-en="Machine-applied plaster complete">Skończone tynki maszynowe</div>
         </div>
         <div class="tl-item">
           <div class="tl-date">02.02</div>
-          <div class="tl-text">Skończone sufity oraz ścianki działowe w mieszkaniach</div>
+          <div class="tl-text" data-pl="Skończone sufity oraz ścianki działowe w mieszkaniach" data-en="Ceilings and partition walls complete">Skończone sufity oraz ścianki działowe w mieszkaniach</div>
         </div>
         <div class="tl-item">
           <div class="tl-date">23.02</div>
-          <div class="tl-text">Wyczyszczona i odmalowana elewacja; zamontowana brama, domofon, kamery, oświetlenie zewnętrzne, skończona klatka schodowa</div>
+          <div class="tl-text" data-pl="Wyczyszczona i odmalowana elewacja; zamontowana brama, domofon, kamery, oświetlenie zewnętrzne, skończona klatka schodowa" data-en="Facade cleaned and painted; gate, intercom, cameras, exterior lighting installed, stairwell complete">Wyczyszczona i odmalowana elewacja; zamontowana brama, domofon, kamery, oświetlenie zewnętrzne, skończona klatka schodowa</div>
         </div>
         <div class="tl-item">
           <div class="tl-date">01.03</div>
-          <div class="tl-text">Koniec prac porządkowych wokół budynku — projekt zakończony</div>
+          <div class="tl-text" data-pl="Koniec prac porządkowych wokół budynku — projekt zakończony" data-en="Finishing works around building complete — project done">Koniec prac porządkowych wokół budynku — projekt zakończony</div>
         </div>
       </div>
     </div>
@@ -511,29 +510,29 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
   <div class="container">
     <div class="result-inner">
       <div>
-        <div class="label reveal" style="margin-bottom:18px">Wynik</div>
+        <div class="label reveal" style="margin-bottom:18px" data-pl="Wynik" data-en="Result">Wynik</div>
         <h2 class="result-h2 reveal d1">Projekt <em>zakończony.</em><br>Wszystkie lokale<br>sprzedane.</h2>
-        <p class="result-body reveal d2">Pokrzywnicka 11 to przykład jak Innov8 Development podchodzi do każdej inwestycji — z pełnym zaangażowaniem, precyzyjnym harmonogramem i transparentną komunikacją na każdym etapie. Projekt udowodnił nasz model działania w praktyce.</p>
+        <p class="result-body reveal d2" data-pl="Pokrzywnicka 11 to przykład jak Innov8 Development podchodzi do każdej inwestycji — z pełnym zaangażowaniem, precyzyjnym harmonogramem i transparentną komunikacją na każdym etapie. Projekt udowodnił nasz model działania w praktyce." data-en="Pokrzywnicka 11 exemplifies Innov8 Development's approach to every investment — full commitment, precise scheduling and transparent communication at every stage. The project proved our operating model in practice.">Pokrzywnicka 11 to przykład jak Innov8 Development podchodzi do każdej inwestycji — z pełnym zaangażowaniem, precyzyjnym harmonogramem i transparentną komunikacją na każdym etapie. Projekt udowodnił nasz model działania w praktyce.</p>
         <div class="result-items reveal d3">
           <div class="ri">
             <div class="ri-ic">✓</div>
-            <div class="ri-text"><strong>Kompleksowy remont</strong> — wszystkie instalacje wymienione od zera</div>
+            <div class="ri-text" data-pl="<strong>Kompleksowy remont</strong> — wszystkie instalacje wymienione od zera" data-en="<strong>Full renovation</strong> — all utilities replaced from scratch"><strong>Kompleksowy remont</strong> — wszystkie instalacje wymienione od zera</div>
           </div>
           <div class="ri">
             <div class="ri-ic">✓</div>
-            <div class="ri-text"><strong>Rewitalizacja elewacji</strong> — budynek odzyskał estetyczny wygląd</div>
+            <div class="ri-text" data-pl="<strong>Rewitalizacja elewacji</strong> — budynek odzyskał estetyczny wygląd" data-en="<strong>Facade revitalisation</strong> — the building regained its aesthetic appearance"><strong>Rewitalizacja elewacji</strong> — budynek odzyskał estetyczny wygląd</div>
           </div>
           <div class="ri">
             <div class="ri-ic">✓</div>
-            <div class="ri-text"><strong>Nowe instalacje</strong> — elektryka, hydraulika, ogrzewanie podłogowe</div>
+            <div class="ri-text" data-pl="<strong>Nowe instalacje</strong> — elektryka, hydraulika, ogrzewanie podłogowe" data-en="<strong>New utilities</strong> — electricity, plumbing, underfloor heating"><strong>Nowe instalacje</strong> — elektryka, hydraulika, ogrzewanie podłogowe</div>
           </div>
           <div class="ri">
             <div class="ri-ic">✓</div>
-            <div class="ri-text"><strong>Wszystkie 8 lokali sprzedane</strong> — w stanie deweloperskim</div>
+            <div class="ri-text" data-pl="<strong>Wszystkie 8 lokali sprzedane</strong> — w stanie deweloperskim" data-en="<strong>All 8 units sold</strong> — in developer condition"><strong>Wszystkie 8 lokali sprzedane</strong> — w stanie deweloperskim</div>
           </div>
           <div class="ri">
             <div class="ri-ic">✓</div>
-            <div class="ri-text"><strong>Projekt terminowy</strong> — realizacja zgodnie z harmonogramem</div>
+            <div class="ri-text" data-pl="<strong>Projekt terminowy</strong> — realizacja zgodnie z harmonogramem" data-en="<strong>On-time delivery</strong> — project completed on schedule"><strong>Projekt terminowy</strong> — realizacja zgodnie z harmonogramem</div>
           </div>
         </div>
       </div>
@@ -541,7 +540,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
         <img src="/images/pokrzywnicka-elewacja.png" alt="Pokrzywnicka 11 — efekt końcowy rewitalizacji" />
         <div class="result-badge">
           <div class="rb-n">8/8</div>
-          <div class="rb-l">Lokali sprzedanych</div>
+          <div class="rb-l" data-pl="Lokali sprzedanych" data-en="Units Sold">Lokali sprzedanych</div>
         </div>
       </div>
     </div>
@@ -555,7 +554,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
       <span style="font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)">Następny projekt</span>
     </div>
     <h2 class="cta-h2 reveal d1">Zainteresowany<br><em>współpracą?</em></h2>
-    <p class="cta-sub reveal d2">Aktywnie realizujemy kolejne projekty w Warszawie. Skontaktuj się z nami, aby dowiedzieć się więcej o możliwościach współpracy.</p>
+    <p class="cta-sub reveal d2" data-pl="Aktywnie realizujemy kolejne projekty w Warszawie. Skontaktuj się z nami, aby dowiedzieć się więcej o możliwościach współpracy." data-en="We are actively executing new projects in Warsaw. Contact us to learn more about collaboration opportunities.">Aktywnie realizujemy kolejne projekty w Warszawie. Skontaktuj się z nami, aby dowiedzieć się więcej o możliwościach współpracy.</p>
     <div class="cta-btns reveal d3">
       <a href="/#projekty" class="btn-gold" data-pl="Aktywne projekty →" data-en="Active Projects →">Aktywne projekty →</a>
       <a href="/#kontakt" class="btn-outline-white" data-pl="Skontaktuj się" data-en="Contact Us">Skontaktuj się</a>
