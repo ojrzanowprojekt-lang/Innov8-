@@ -94,6 +94,38 @@ footer{padding:32px 56px;border-top:1px solid rgba(255,255,255,.06);display:flex
   .f-links{display:none;}
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* ── CHATBOT ── */
+.chat-fab{position:fixed;bottom:32px;right:32px;z-index:900;width:52px;height:52px;background:var(--gold);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(158,122,58,.4);transition:all .3s;}
+.chat-fab:hover{background:var(--gold-l);transform:scale(1.08);}
+.chat-fab svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;}
+.chat-win-s{position:fixed;bottom:96px;right:32px;z-index:900;width:340px;background:#1A1714;border:1px solid rgba(255,255,255,.08);box-shadow:0 24px 80px rgba(0,0,0,.5);display:none;flex-direction:column;overflow:hidden;}
+.chat-win-s.open{display:flex;}
+.chat-head-s{background:rgba(255,255,255,.04);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);}
+.chat-head-info{display:flex;align-items:center;gap:10px;}
+.chat-avatar-s{width:32px;height:32px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:13px;font-weight:600;color:#fff;}
+.chat-title-s{font-size:13px;font-weight:500;color:rgba(255,255,255,.8);}
+.chat-sub-s{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.06em;}
+.chat-close-s{background:none;border:none;color:rgba(255,255,255,.3);font-size:18px;cursor:pointer;line-height:1;}
+.chat-close-s:hover{color:#fff;}
+.chat-msgs-s{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:300px;}
+.cms{display:flex;flex-direction:column;max-width:85%;}
+.cms.bot{align-self:flex-start;}
+.cms.user{align-self:flex-end;align-items:flex-end;}
+.cms-b{padding:9px 12px;font-size:13px;line-height:1.55;font-family:var(--sans);font-weight:300;}
+.cms.bot .cms-b{background:rgba(255,255,255,.06);color:rgba(255,255,255,.8);border-radius:0 8px 8px 8px;}
+.cms.user .cms-b{background:var(--gold);color:#fff;border-radius:8px 0 8px 8px;}
+.cms-t{font-size:10px;color:rgba(255,255,255,.2);margin-top:3px;}
+.tdots-s{background:rgba(255,255,255,.06);padding:9px 13px;display:flex;gap:3px;align-items:center;border-radius:0 8px 8px 8px;align-self:flex-start;}
+.tds{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);animation:tdot 1.2s infinite;}
+.tds:nth-child(2){animation-delay:.2s}.tds:nth-child(3){animation-delay:.4s}
+.chat-inp-s{display:flex;border-top:1px solid rgba(255,255,255,.06);}
+#cinput-s{flex:1;background:transparent;border:none;color:rgba(255,255,255,.8);padding:11px 13px;font-family:var(--sans);font-size:13px;font-weight:300;outline:none;}
+#cinput-s::placeholder{color:rgba(255,255,255,.2);}
+#csend-s{background:transparent;border:none;padding:11px 14px;cursor:pointer;color:var(--gold);font-size:16px;transition:all .2s;}
+#csend-s:hover{color:var(--gold-l);}
+@media(max-width:768px){.chat-win-s{width:calc(100vw - 24px);right:12px;}}
+
 </style>
 <script src="/lang.js"></script>
 </head>
@@ -149,6 +181,10 @@ footer{padding:32px 56px;border-top:1px solid rgba(255,255,255,.06);display:flex
           <input class="form-input" type="email" name="email" placeholder="Twój adres email" required />
           <button class="form-btn" type="button" onclick="submitNotify('ojrzanow-form', 'Ojrzanów')" data-pl="Powiadom mnie →" data-en="Notify Me →">Powiadom mnie →</button>
         </div>
+                <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:11px;color:rgba(255,255,255,.3);line-height:1.6;margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto;text-align:left;">
+          <input type="checkbox" id="ojrzanow-form-rodo" style="margin-top:3px;flex-shrink:0;accent-color:var(--gold);cursor:pointer;" required />
+          <span data-pl='Wyrażam zgodę na przetwarzanie moich danych osobowych przez Innov8 Development Sp. z o.o. w celu otrzymywania informacji o projekcie, zgodnie z <a href="https://innov-8.pl" style="color:var(--gold-l);text-decoration:underline;">Polityką Prywatności</a>.' data-en='I consent to the processing of my personal data by Innov8 Development Sp. z o.o. for the purpose of receiving project updates, in accordance with the <a href="https://innov-8.pl" style="color:var(--gold-l);text-decoration:underline;">Privacy Policy</a>.'>Wyrażam zgodę na przetwarzanie moich danych osobowych przez Innov8 Development Sp. z o.o. w celu otrzymywania informacji o projekcie, zgodnie z <a href="https://innov-8.pl" style="color:var(--gold-l);text-decoration:underline;">Polityką Prywatności</a>.</span>
+        </label>
         <p class="form-note" data-pl="Bez spamu. Tylko jedna wiadomość gdy ruszymy sprzedaż." data-en="No spam. One email when sales launch.">Bez spamu. Tylko jedna wiadomość gdy ruszymy sprzedaż.</p>
       </form>
     </div>
@@ -196,7 +232,14 @@ async function submitNotify(formId, project) {
   const form = document.getElementById(formId);
   const email = form.querySelector('[type="email"]').value.trim();
   const btn = form.querySelector('button');
+  const rodo = document.getElementById('ojrzanow-form-rodo');
   if (!email) return;
+  if (rodo && !rodo.checked) {
+    alert(typeof currentLang !== 'undefined' && currentLang === 'en'
+      ? 'Please accept the privacy policy to continue.'
+      : 'Prosimy o zaznaczenie zgody na przetwarzanie danych osobowych.');
+    return;
+  }
   btn.textContent = 'Wysyłanie...';
   btn.disabled = true;
   try {
@@ -228,6 +271,60 @@ document.querySelectorAll('.lang-btn').forEach(b => {
   b.addEventListener('mouseenter', () => b.style.color = 'var(--gold)');
   b.addEventListener('mouseleave', () => { if (!b.classList.contains('act')) b.style.color = ''; });
 });
+</script>
+
+<!-- CHATBOT -->
+<button class="chat-fab" onclick="toggleChatS()" aria-label="Asystent Innov8">
+  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+<div class="chat-win-s" id="chat-win-s">
+  <div class="chat-head-s">
+    <div class="chat-head-info">
+      <div class="chat-avatar-s">i8</div>
+      <div>
+        <div class="chat-title-s" data-pl="Asystent Innov8" data-en="Innov8 Assistant">Asystent Innov8</div>
+        <div class="chat-sub-s">Online</div>
+      </div>
+    </div>
+    <button class="chat-close-s" onclick="toggleChatS()">✕</button>
+  </div>
+  <div class="chat-msgs-s" id="cmsgs-s">
+    <div class="cms bot">
+      <div class="cms-b" data-pl="Dzień dobry! Mogę odpowiedzieć na pytania o ten projekt lub inne inwestycje Innov8 Development." data-en="Hello! I can answer questions about this project or other Innov8 Development investments.">Dzień dobry! Mogę odpowiedzieć na pytania o ten projekt lub inne inwestycje Innov8 Development.</div>
+      <div class="cms-t" id="chat-s-time"></div>
+    </div>
+  </div>
+  <div class="chat-inp-s">
+    <input id="cinput-s" type="text" placeholder="Napisz wiadomość..." data-pl-ph="Napisz wiadomość..." data-en-ph="Type a message..." onkeydown="if(event.key==='Enter')sendChatS()"/>
+    <button id="csend-s" onclick="sendChatS()">→</button>
+  </div>
+</div>
+
+<script>
+
+/* CHATBOT */
+let chatOpenS=false, histS=[];
+if(document.getElementById('chat-s-time')) document.getElementById('chat-s-time').textContent=new Date().toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
+function toggleChatS(){chatOpenS=!chatOpenS;document.getElementById('chat-win-s').classList.toggle('open',chatOpenS);}
+function addMsgS(txt,role){const w=document.getElementById('cmsgs-s');const d=document.createElement('div');d.className='cms '+role;d.innerHTML='<div class="cms-b">'+txt+'</div><div class="cms-t">'+new Date().toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'})+'</div>';w.appendChild(d);w.scrollTop=w.scrollHeight;}
+function showDotsS(){const w=document.getElementById('cmsgs-s');const d=document.createElement('div');d.id='dots-s';d.className='tdots-s';d.innerHTML='<div class="tds"></div><div class="tds"></div><div class="tds"></div>';w.appendChild(d);w.scrollTop=w.scrollHeight;}
+function hideDotsS(){const t=document.getElementById('dots-s');if(t)t.remove();}
+async function sendChatS(){
+  const inp=document.getElementById('cinput-s');
+  const msg=inp.value.trim(); if(!msg)return;
+  inp.value=''; addMsgS(msg,'user');
+  histS.push({role:'user',content:msg}); showDotsS();
+  try{
+    const r=await fetch('https://innov8-chat.vercel.app/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:histS})});
+    const data=await r.json(); const reply=data.reply;
+    histS.push({role:'assistant',content:reply});
+    hideDotsS(); addMsgS(reply,'bot');
+  }catch(e){
+    hideDotsS();
+    addMsgS(typeof currentLang!=='undefined'&&currentLang==='en'?'Sorry, an error occurred. Contact us at biuro@innov-8.pl':'Przepraszamy, błąd połączenia. Kontakt: biuro@innov-8.pl','bot');
+  }
+}
+
 </script>
 </body>
 </html>
