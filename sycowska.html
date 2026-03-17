@@ -264,6 +264,17 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
 @media(max-width:768px){.chat-win-s{width:calc(100vw - 24px);right:12px;}}
 @keyframes tdot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
 
+
+.apt-plan a {
+  display:inline-flex; align-items:center; gap:5px;
+  font-size:10px; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--gold); border:1px solid var(--gold-line); padding:5px 10px;
+  text-decoration:none; transition:all .2s; background:var(--gold-pale);
+  white-space:nowrap;
+}
+.apt-plan a:hover { background:var(--gold); color:var(--white); }
+.apt-plan a::before { content:'↓'; font-size:11px; }
+
 </style>
 <script src="/lang.js"></script>
 </head>
@@ -408,6 +419,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             
             <th data-pl="Balkon" data-en="Balcony">Balkon</th>
             <th data-pl="Status" data-en="Status">Status</th>
+            <th data-pl="Plan" data-en="Floor Plan">Plan</th>
             <th data-pl="Cena" data-en="Price">Cena</th>
             <th data-pl="Cena / m²" data-en="Price / m²">Cena / m²</th>
           </tr>
@@ -421,6 +433,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">375 000 zł</td>
             <td class="apt-psm">19 643 zł/m²</td>
+          
+            <td class="apt-plan"><a href="/images/plan-m1.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
           </tr>
           <tr>
             <td class="apt-id">M2</td>
@@ -430,6 +444,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">465 000 zł</td>
             <td class="apt-psm">16 885 zł/m²</td>
+          
+            <td class="apt-plan"><a href="/images/plan-m2.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
           </tr>
           <tr>
             <td class="apt-id">M3</td>
@@ -439,6 +455,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">493 000 zł</td>
             <td class="apt-psm">16 901 zł/m²</td>
+          
+            <td class="apt-plan"><a href="/images/plan-m3.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
           </tr>
           <tr>
             <td class="apt-id">M4</td>
@@ -448,6 +466,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">499 000 zł</td>
             <td class="apt-psm">16 745 zł/m²</td>
+          
+            <td class="apt-plan"><a href="/images/plan-m4.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
           </tr>
           <tr>
             <td class="apt-id">M5</td>
@@ -457,6 +477,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">390 000 zł</td>
             <td class="apt-psm">19 618 zł/m²</td>
+          
+            <td class="apt-plan"><a href="/images/plan-m5.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
           </tr>
           <tr>
             <td class="apt-id">M6</td>
@@ -466,6 +488,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">480 000 zł</td>
             <td class="apt-psm">16 997 zł/m²</td>
+          
+            <td class="apt-plan"><a href="/images/plan-m6.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
           </tr>
           <tr>
             <td class="apt-id">M7</td>
@@ -475,6 +499,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">505 000 zł</td>
             <td class="apt-psm">16 918 zł/m²</td>
+          
+            <td class="apt-plan"><a href="/images/plan-m7.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
           </tr>
           <tr>
             <td class="apt-id">M8</td>
@@ -484,6 +510,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">525 000 zł</td>
             <td class="apt-psm">16 935 zł/m²</td>
+          
+            <td class="apt-plan"><a href="/images/plan-m8.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
           </tr>
           <tr>
             <td class="apt-id">M9</td>
@@ -493,6 +521,8 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td><span class="status-pill available" data-pl="Dostępny" data-en="Available">Dostępny</span></td>
             <td class="apt-price">915 000 zł</td>
             <td class="apt-psm">16 667 zł/m²</td>
+          
+            <td class="apt-plan"><a href="/images/plan-m9.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
           </tr>
         </tbody>
       </table>
@@ -520,6 +550,30 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
     <p style="margin-top:20px;font-size:12px;color:var(--stone);font-style:italic;" class="reveal d3">
       <span data-pl="Zdjęcia z postępów prac będą aktualizowane na bieżąco. Ostatnia aktualizacja: marzec 2026." data-en="Construction photos updated regularly. Last update: March 2026.">Zdjęcia z postępów prac będą aktualizowane na bieżąco. Ostatnia aktualizacja: marzec 2026.</span>
     </p>
+  </div>
+</section>
+
+<!-- RZUTY PIĘTER -->
+<section style="padding:80px 0; background:var(--off-white);">
+  <div class="container">
+    <div class="label reveal" style="margin-bottom:14px" data-pl="Rzuty Kondygnacji" data-en="Floor Plans">Rzuty Kondygnacji</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:300;color:var(--ink);margin-bottom:8px" class="reveal d1">Układ <em style="font-style:italic;color:var(--gold)">pięter.</em></h2>
+    <p style="font-size:13px;color:var(--stone);margin-bottom:40px;font-weight:300" class="reveal d2" data-pl="Kliknij na rzut aby zobaczyć w pełnym rozmiarze." data-en="Click the floor plan to view full size.">Kliknij na rzut aby zobaczyć w pełnym rozmiarze.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;" class="reveal d2">
+      <div>
+        <div style="font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;" data-pl="Parter" data-en="Ground Floor">Parter</div>
+        <a href="/images/plan-parter.png" target="_blank" rel="noopener">
+          <img src="/images/plan-parter.png" alt="Sycowska 33 — rzut parteru" style="width:100%;border:1px solid var(--border);transition:opacity .3s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'" />
+        </a>
+      </div>
+      <div>
+        <div style="font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;" data-pl="1 Piętro" data-en="1st Floor">1 Piętro</div>
+        <a href="/images/plan-pietro1.png" target="_blank" rel="noopener">
+          <img src="/images/plan-pietro1.png" alt="Sycowska 33 — rzut 1 piętra" style="width:100%;border:1px solid var(--border);transition:opacity .3s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'" />
+        </a>
+      </div>
+    </div>
+    <p style="margin-top:16px;font-size:12px;color:var(--stone);font-style:italic;" class="reveal d3" data-pl="Plany mają charakter poglądowy. Szczegółowe plany każdego lokalu dostępne w tabeli powyżej." data-en="Plans are for illustrative purposes. Detailed floor plans for each unit are available in the table above.">Plany mają charakter poglądowy. Szczegółowe plany każdego lokalu dostępne w tabeli powyżej.</p>
   </div>
 </section>
 
