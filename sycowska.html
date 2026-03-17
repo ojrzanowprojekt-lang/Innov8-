@@ -265,15 +265,65 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
 @keyframes tdot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
 
 
-.apt-plan a {
+.apt-plan button {
   display:inline-flex; align-items:center; gap:5px;
   font-size:10px; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
   color:var(--gold); border:1px solid var(--gold-line); padding:5px 10px;
-  text-decoration:none; transition:all .2s; background:var(--gold-pale);
-  white-space:nowrap;
+  background:var(--gold-pale); cursor:pointer; font-family:var(--sans);
+  transition:all .2s; white-space:nowrap;
 }
-.apt-plan a:hover { background:var(--gold); color:var(--white); }
-.apt-plan a::before { content:'↓'; font-size:11px; }
+.apt-plan button:hover { background:var(--gold); color:var(--white); }
+.apt-plan button::before { content:'⊞'; font-size:11px; }
+
+/* ── LIGHTBOX ── */
+#plan-lightbox {
+  position:fixed; inset:0; z-index:900;
+  background:rgba(10,9,8,.92); backdrop-filter:blur(8px);
+  display:none; align-items:center; justify-content:center; padding:20px;
+}
+#plan-lightbox.open { display:flex; }
+#plan-lb-box {
+  position:relative; width:min(860px,96vw); max-height:92vh;
+  background:var(--ink); display:flex; flex-direction:column;
+  box-shadow:0 40px 100px rgba(0,0,0,.6);
+}
+#plan-lb-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 20px; border-bottom:1px solid rgba(255,255,255,.08); flex-shrink:0;
+}
+#plan-lb-title { font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.6); }
+.lb-header-btns { display:flex; align-items:center; gap:8px; }
+#plan-lb-download {
+  font-size:10px; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--gold); background:var(--gold-pale); border:1px solid var(--gold-line);
+  padding:5px 12px; cursor:pointer; font-family:var(--sans); text-decoration:none; transition:all .2s;
+}
+#plan-lb-download:hover { background:var(--gold); color:#fff; }
+#plan-lb-close {
+  width:30px; height:30px; background:rgba(255,255,255,.08); border:none;
+  color:rgba(255,255,255,.5); font-size:16px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; transition:all .2s;
+}
+#plan-lb-close:hover { background:rgba(255,255,255,.15); color:#fff; }
+#plan-lb-content {
+  flex:1; overflow:auto; display:flex; align-items:center; justify-content:center;
+  min-height:300px; background:#0e0d0c;
+}
+#plan-lb-iframe { width:100%; height:70vh; border:none; display:block; }
+#plan-lb-img { max-width:100%; max-height:70vh; object-fit:contain; display:none; }
+#plan-lb-nav {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 20px; border-top:1px solid rgba(255,255,255,.08); flex-shrink:0;
+}
+.lb-nav-btn {
+  display:flex; align-items:center; gap:6px; font-size:10px; font-weight:500;
+  letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.4);
+  background:none; border:1px solid rgba(255,255,255,.1); padding:7px 16px;
+  cursor:pointer; font-family:var(--sans); transition:all .2s;
+}
+.lb-nav-btn:hover { border-color:var(--gold); color:var(--gold); }
+.lb-nav-btn:disabled { opacity:.2; cursor:default; pointer-events:none; }
+#plan-lb-counter { font-size:11px; color:rgba(255,255,255,.3); letter-spacing:.08em; }
 
 </style>
 <script src="/lang.js"></script>
@@ -434,7 +484,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td class="apt-price">375 000 zł</td>
             <td class="apt-psm">19 643 zł/m²</td>
           
-            <td class="apt-plan"><a href="/images/plan-m1.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
+            <td class="apt-plan"><button onclick="openPlan(1)" data-pl="Plan" data-en="Plan">Plan</button></td>
           </tr>
           <tr>
             <td class="apt-id">M2</td>
@@ -445,7 +495,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td class="apt-price">465 000 zł</td>
             <td class="apt-psm">16 885 zł/m²</td>
           
-            <td class="apt-plan"><a href="/images/plan-m2.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
+            <td class="apt-plan"><button onclick="openPlan(2)" data-pl="Plan" data-en="Plan">Plan</button></td>
           </tr>
           <tr>
             <td class="apt-id">M3</td>
@@ -456,7 +506,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td class="apt-price">493 000 zł</td>
             <td class="apt-psm">16 901 zł/m²</td>
           
-            <td class="apt-plan"><a href="/images/plan-m3.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
+            <td class="apt-plan"><button onclick="openPlan(3)" data-pl="Plan" data-en="Plan">Plan</button></td>
           </tr>
           <tr>
             <td class="apt-id">M4</td>
@@ -467,7 +517,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td class="apt-price">499 000 zł</td>
             <td class="apt-psm">16 745 zł/m²</td>
           
-            <td class="apt-plan"><a href="/images/plan-m4.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
+            <td class="apt-plan"><button onclick="openPlan(4)" data-pl="Plan" data-en="Plan">Plan</button></td>
           </tr>
           <tr>
             <td class="apt-id">M5</td>
@@ -478,7 +528,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td class="apt-price">390 000 zł</td>
             <td class="apt-psm">19 618 zł/m²</td>
           
-            <td class="apt-plan"><a href="/images/plan-m5.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
+            <td class="apt-plan"><button onclick="openPlan(5)" data-pl="Plan" data-en="Plan">Plan</button></td>
           </tr>
           <tr>
             <td class="apt-id">M6</td>
@@ -489,7 +539,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td class="apt-price">480 000 zł</td>
             <td class="apt-psm">16 997 zł/m²</td>
           
-            <td class="apt-plan"><a href="/images/plan-m6.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
+            <td class="apt-plan"><button onclick="openPlan(6)" data-pl="Plan" data-en="Plan">Plan</button></td>
           </tr>
           <tr>
             <td class="apt-id">M7</td>
@@ -500,7 +550,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td class="apt-price">505 000 zł</td>
             <td class="apt-psm">16 918 zł/m²</td>
           
-            <td class="apt-plan"><a href="/images/plan-m7.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
+            <td class="apt-plan"><button onclick="openPlan(7)" data-pl="Plan" data-en="Plan">Plan</button></td>
           </tr>
           <tr>
             <td class="apt-id">M8</td>
@@ -511,7 +561,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td class="apt-price">525 000 zł</td>
             <td class="apt-psm">16 935 zł/m²</td>
           
-            <td class="apt-plan"><a href="/images/plan-m8.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
+            <td class="apt-plan"><button onclick="openPlan(8)" data-pl="Plan" data-en="Plan">Plan</button></td>
           </tr>
           <tr>
             <td class="apt-id">M9</td>
@@ -522,7 +572,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
             <td class="apt-price">915 000 zł</td>
             <td class="apt-psm">16 667 zł/m²</td>
           
-            <td class="apt-plan"><a href="/images/plan-m9.pdf" target="_blank" rel="noopener" data-pl="Plan PDF" data-en="Floor Plan">Plan PDF</a></td>
+            <td class="apt-plan"><button onclick="openPlan(9)" data-pl="Plan" data-en="Plan">Plan</button></td>
           </tr>
         </tbody>
       </table>
@@ -562,13 +612,13 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;" class="reveal d2">
       <div>
         <div style="font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;" data-pl="Parter" data-en="Ground Floor">Parter</div>
-        <a href="/images/plan-parter.png" target="_blank" rel="noopener">
+        <a href="#" onclick="openPlanImg('/images/plan-parter.png', 'Rzut Parteru');return false;">
           <img src="/images/plan-parter.png" alt="Sycowska 33 — rzut parteru" style="width:100%;border:1px solid var(--border);transition:opacity .3s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'" />
         </a>
       </div>
       <div>
         <div style="font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;" data-pl="1 Piętro" data-en="1st Floor">1 Piętro</div>
-        <a href="/images/plan-pietro1.png" target="_blank" rel="noopener">
+        <a href="#" onclick="openPlanImg('/images/plan-pietro1.png', 'Rzut 1 Piętra');return false;">
           <img src="/images/plan-pietro1.png" alt="Sycowska 33 — rzut 1 piętra" style="width:100%;border:1px solid var(--border);transition:opacity .3s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'" />
         </a>
       </div>
@@ -699,6 +749,100 @@ async function sendChatS(){
     addMsgS(typeof currentLang!=='undefined'&&currentLang==='en'?'Sorry, an error occurred. Contact us at biuro@innov-8.pl':'Przepraszamy, błąd połączenia. Kontakt: biuro@innov-8.pl','bot');
   }
 }
+
+</script>
+
+<!-- LIGHTBOX PLANÓW -->
+<div id="plan-lightbox" onclick="if(event.target===this)closePlan()">
+  <div id="plan-lb-box">
+    <div id="plan-lb-header">
+      <div id="plan-lb-title">Plan mieszkania</div>
+      <div class="lb-header-btns">
+        <a id="plan-lb-download" href="#" download>↓ Pobierz PDF</a>
+        <button id="plan-lb-close" onclick="closePlan()">✕</button>
+      </div>
+    </div>
+    <div id="plan-lb-content">
+      <iframe id="plan-lb-iframe" src=""></iframe>
+      <img id="plan-lb-img" src="" alt="Plan" />
+    </div>
+    <div id="plan-lb-nav">
+      <button class="lb-nav-btn" id="lb-prev" onclick="navPlan(-1)">← Poprzedni</button>
+      <span id="plan-lb-counter">1 / 9</span>
+      <button class="lb-nav-btn" id="lb-next" onclick="navPlan(1)">Następny →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+
+/* ── PLAN LIGHTBOX ── */
+const PLANS = [
+  { id: 1, title: 'Mieszkanie M1 — 19,09 m²', file: '/images/plan-m1.pdf', type: 'pdf' },
+  { id: 2, title: 'Mieszkanie M2 — 27,54 m²', file: '/images/plan-m2.pdf', type: 'pdf' },
+  { id: 3, title: 'Mieszkanie M3 — 29,17 m²', file: '/images/plan-m3.pdf', type: 'pdf' },
+  { id: 4, title: 'Mieszkanie M4 — 29,8 m²',  file: '/images/plan-m4.pdf', type: 'pdf' },
+  { id: 5, title: 'Mieszkanie M5 — 19,88 m²', file: '/images/plan-m5.pdf', type: 'pdf' },
+  { id: 6, title: 'Mieszkanie M6 — 28,24 m²', file: '/images/plan-m6.pdf', type: 'pdf' },
+  { id: 7, title: 'Mieszkanie M7 — 29,85 m²', file: '/images/plan-m7.pdf', type: 'pdf' },
+  { id: 8, title: 'Mieszkanie M8 — 31 m²',    file: '/images/plan-m8.pdf', type: 'pdf' },
+  { id: 9, title: 'Mieszkanie M9 — 54,9 m²',  file: '/images/plan-m9.pdf', type: 'pdf' },
+];
+let currentPlan = 0;
+
+function openPlan(num) {
+  currentPlan = num - 1;
+  showPlan(currentPlan);
+  document.getElementById('plan-lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function openPlanImg(src, title) {
+  const lb = document.getElementById('plan-lightbox');
+  document.getElementById('plan-lb-iframe').style.display = 'none';
+  document.getElementById('plan-lb-img').style.display = 'block';
+  document.getElementById('plan-lb-img').src = src;
+  document.getElementById('plan-lb-title').textContent = title;
+  document.getElementById('plan-lb-download').href = src;
+  document.getElementById('plan-lb-download').download = title;
+  document.getElementById('plan-lb-nav').style.display = 'none';
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showPlan(idx) {
+  const plan = PLANS[idx];
+  document.getElementById('plan-lb-iframe').style.display = 'block';
+  document.getElementById('plan-lb-img').style.display = 'none';
+  document.getElementById('plan-lb-iframe').src = plan.file;
+  document.getElementById('plan-lb-title').textContent = plan.title;
+  document.getElementById('plan-lb-download').href = plan.file;
+  document.getElementById('plan-lb-download').download = 'Plan-' + plan.title + '.pdf';
+  document.getElementById('plan-lb-counter').textContent = (idx + 1) + ' / ' + PLANS.length;
+  document.getElementById('plan-lb-nav').style.display = 'flex';
+  document.getElementById('lb-prev').disabled = idx === 0;
+  document.getElementById('lb-next').disabled = idx === PLANS.length - 1;
+}
+
+function navPlan(dir) {
+  currentPlan = Math.max(0, Math.min(PLANS.length - 1, currentPlan + dir));
+  showPlan(currentPlan);
+}
+
+function closePlan() {
+  document.getElementById('plan-lightbox').classList.remove('open');
+  document.getElementById('plan-lb-iframe').src = '';
+  document.getElementById('plan-lb-img').src = '';
+  document.body.style.overflow = '';
+}
+
+// Zamknij klawiszem Escape lub strzałkami
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('plan-lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closePlan();
+  if (e.key === 'ArrowRight') navPlan(1);
+  if (e.key === 'ArrowLeft') navPlan(-1);
+});
 
 </script>
 </body>
