@@ -517,6 +517,21 @@ footer { background:#0D0C0A; padding:60px 56px 0; display:grid; grid-template-co
 .f-links { list-style:none; display:flex; flex-direction:column; gap:9px; }
 .f-links a { font-size:12.5px; color:rgba(255,255,255,.25); transition:color .3s; }
 .f-links a:hover { color:var(--off-white); }
+.f-newsletter { grid-column:1/-1; border-top:1px solid rgba(255,255,255,.06); padding-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+.f-nl-text h4 { font-family:var(--serif); font-size:22px; font-weight:300; color:var(--white); margin-bottom:8px; }
+.f-nl-text h4 em { font-style:italic; color:var(--gold-l); }
+.f-nl-text p { font-size:12.5px; color:rgba(255,255,255,.3); line-height:1.7; }
+.f-nl-form { display:flex; flex-direction:column; gap:10px; }
+.f-nl-row { display:flex; }
+.f-nl-input { flex:1; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-right:none; color:var(--white); padding:12px 16px; font-family:var(--sans); font-size:13px; font-weight:300; outline:none; transition:border-color .3s; }
+.f-nl-input::placeholder { color:rgba(255,255,255,.2); }
+.f-nl-input:focus { border-color:var(--gold-line); }
+.f-nl-btn { background:var(--gold); border:none; color:var(--white); padding:12px 22px; font-family:var(--sans); font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:background .3s; white-space:nowrap; }
+.f-nl-btn:hover { background:var(--gold-l); }
+.f-nl-rodo { display:flex; align-items:flex-start; gap:8px; font-size:10.5px; color:rgba(255,255,255,.25); line-height:1.6; cursor:pointer; }
+.f-nl-rodo input { margin-top:3px; flex-shrink:0; accent-color:var(--gold); cursor:pointer; }
+.f-nl-rodo a { color:rgba(158,122,58,.7); text-decoration:underline; }
+.f-nl-rodo a:hover { color:var(--gold-l); }
 .f-bottom { margin:0 -56px; padding:18px 56px; margin-top:44px; border-top:1px solid rgba(255,255,255,.04); display:flex; justify-content:space-between; align-items:center; }
 .f-bottom p { font-size:11px; color:rgba(255,255,255,.18); }
 .f-bottom a { color:rgba(255,255,255,.18); transition:color .3s; }
@@ -628,6 +643,9 @@ footer { background:#0D0C0A; padding:60px 56px 0; display:grid; grid-template-co
   .burger{display:flex;}
   .container{padding:0 20px;}
   .about-inner{grid-template-columns:1fr;gap:56px;}
+  .f-newsletter{grid-template-columns:1fr;}
+  .f-nl-row{flex-direction:column;}
+  .f-nl-input{border-right:1px solid rgba(255,255,255,.1);border-bottom:none;}
   .about-float-img{display:none;}
   .about-badge{left:-8px;}
   .proj-grid{grid-template-columns:1fr;grid-template-rows:auto;}
@@ -1279,6 +1297,24 @@ footer { background:#0D0C0A; padding:60px 56px 0; display:grid; grid-template-co
       <li><a href="https://www.tiktok.com/@innov_8.pl" target="_blank" rel="noopener noreferrer">TikTok</a></li>
     </ul>
   </div>
+  <!-- NEWSLETTER -->
+  <div class="f-newsletter">
+    <div class="f-nl-text">
+      <h4 data-pl="Bądź na <em>bieżąco.</em>" data-en="Stay <em>informed.</em>">Bądź na <em>bieżąco.</em></h4>
+      <p data-pl="Nowe projekty, dostępne lokale, aktualności z rynku — bez spamu, tylko konkrety." data-en="New projects, available units, market updates — no spam, just the essentials.">Nowe projekty, dostępne lokale, aktualności z rynku — bez spamu, tylko konkrety.</p>
+    </div>
+    <div class="f-nl-form">
+      <div class="f-nl-row">
+        <input class="f-nl-input" type="email" id="f-nl-email" data-pl-ph="Twój adres email" data-en-ph="Your email address" placeholder="Twój adres email" />
+        <button class="f-nl-btn" onclick="submitFooterNL()" data-pl="Zapisz się" data-en="Subscribe">Zapisz się</button>
+      </div>
+      <label class="f-nl-rodo">
+        <input type="checkbox" id="f-nl-rodo" />
+        <span data-pl='Wyrażam zgodę na przetwarzanie moich danych osobowych przez Innov8 Development Sp. z o.o. w celu otrzymywania newslettera, zgodnie z <a href="#" onclick="openModal(\'privacy\');return false">Polityką Prywatności</a>.' data-en='I consent to the processing of my personal data by Innov8 Development Sp. z o.o. for the purpose of receiving the newsletter, in accordance with the <a href="#" onclick="openModal(\'privacy\');return false">Privacy Policy</a>.'>Wyrażam zgodę na przetwarzanie moich danych osobowych przez Innov8 Development Sp. z o.o. w celu otrzymywania newslettera, zgodnie z <a href="#" onclick="openModal('privacy');return false">Polityką Prywatności</a>.</span>
+      </label>
+    </div>
+  </div>
+
   <div class="f-bottom">
     <p>© 2026 Innov8 Development Sp. z o.o. <span data-pl="Wszelkie prawa zastrzeżone." data-en="All rights reserved.">Wszelkie prawa zastrzeżone.</span></p>
     <p><a href="#" onclick="openModal('privacy');return false" data-pl="Polityka Prywatności" data-en="Privacy Policy">Polityka Prywatności</a> · <a href="#" onclick="openModal('terms');return false" data-pl="Regulamin" data-en="Terms">Regulamin</a></p>
@@ -1658,6 +1694,48 @@ async function submitForm() {
     // We let the native submit happen — just update button state first.
   });
 })();
+
+/* ── FOOTER NEWSLETTER ── */
+async function submitFooterNL() {
+  const email = document.getElementById('f-nl-email').value.trim();
+  const rodo = document.getElementById('f-nl-rodo');
+  const btn = document.querySelector('.f-nl-btn');
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'pl';
+  if (!email) return;
+  if (!rodo.checked) {
+    alert(lang === 'en'
+      ? 'Please accept the privacy policy to continue.'
+      : 'Prosimy o zaznaczenie zgody na przetwarzanie danych osobowych.');
+    return;
+  }
+  btn.textContent = lang === 'en' ? 'Sending...' : 'Wysyłanie...';
+  btn.disabled = true;
+  try {
+    const fd = new FormData();
+    fd.append('access_key', 'c8fc4570-5388-4f39-be7f-a82a5f2e5cef');
+    fd.append('subject', 'Zapis na newsletter — Innov8 Development');
+    fd.append('from_name', 'Innov8 Newsletter');
+    fd.append('email', email);
+    fd.append('message', 'Nowy zapis na newsletter ze strony głównej innov-8.pl');
+    const res = await fetch('https://api.web3forms.com/submit', { method:'POST', body:fd });
+    const json = await res.json();
+    if (json.success) {
+      btn.textContent = lang === 'en' ? '✓ Subscribed!' : '✓ Zapisano!';
+      btn.style.background = '#4a7c59';
+      document.getElementById('f-nl-email').value = '';
+      rodo.checked = false;
+    } else throw new Error();
+  } catch {
+    btn.textContent = lang === 'en' ? 'Error — try again' : 'Błąd — spróbuj ponownie';
+    btn.style.background = '#c0392b';
+    btn.disabled = false;
+    setTimeout(() => {
+      btn.textContent = lang === 'en' ? 'Subscribe' : 'Zapisz się';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3000);
+  }
+}
 
 /* ── PROMO POPUP ── */
 (function() {
