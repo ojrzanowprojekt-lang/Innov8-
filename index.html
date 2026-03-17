@@ -661,11 +661,74 @@ footer { background:#0D0C0A; padding:60px 56px 0; display:grid; grid-template-co
   .cf-row{grid-template-columns:1fr;}
   .growth-pillars{grid-template-columns:1fr 1fr;}
 }
+/* ── PROMO POPUP ── */
+.promo-overlay {
+  position:fixed; inset:0; z-index:800;
+  background:rgba(20,17,14,.7);
+  backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center;
+  padding:20px;
+  opacity:0; pointer-events:none;
+  transition:opacity .5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.promo-overlay.show { opacity:1; pointer-events:all; }
+.promo-box {
+  position:relative; background:var(--ink);
+  max-width:560px; width:100%; overflow:hidden;
+  transform:translateY(28px);
+  transition:transform .5s cubic-bezier(0.25,0.46,0.45,0.94);
+  box-shadow:0 40px 100px rgba(0,0,0,.55);
+}
+.promo-overlay.show .promo-box { transform:none; }
+.promo-img { width:100%; height:220px; object-fit:cover; object-position:center 60%; display:block; filter:brightness(.8); }
+.promo-body { padding:28px 32px 32px; }
+.promo-label { font-size:9.5px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+.promo-label::before { content:''; width:16px; height:1px; background:var(--gold); }
+.promo-h { font-family:var(--serif); font-size:clamp(22px,4vw,32px); font-weight:300; color:var(--white); line-height:1.15; margin-bottom:10px; }
+.promo-h em { font-style:italic; color:var(--gold-l); }
+.promo-sub { font-size:13px; color:rgba(255,255,255,.45); line-height:1.75; margin-bottom:24px; }
+.promo-actions { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.promo-cta { display:inline-flex; align-items:center; gap:8px; background:var(--gold); color:var(--white); font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; padding:12px 28px; transition:background .3s; text-decoration:none; }
+.promo-cta:hover { background:var(--gold-l); }
+.promo-skip { font-size:11px; color:rgba(255,255,255,.25); cursor:pointer; background:none; border:none; font-family:var(--sans); transition:color .2s; padding:0; }
+.promo-skip:hover { color:rgba(255,255,255,.5); }
+.promo-close { position:absolute; top:12px; right:12px; width:32px; height:32px; border-radius:50%; background:rgba(0,0,0,.45); border:none; cursor:pointer; color:rgba(255,255,255,.6); font-size:14px; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); transition:all .2s; z-index:2; }
+.promo-close:hover { background:rgba(0,0,0,.75); color:#fff; }
+.promo-timer { position:absolute; top:12px; left:12px; z-index:2; display:flex; align-items:center; gap:7px; background:rgba(0,0,0,.45); backdrop-filter:blur(4px); padding:5px 10px; }
+.promo-bar-wrap { width:44px; height:2px; background:rgba(255,255,255,.15); overflow:hidden; }
+.promo-bar { height:100%; background:var(--gold); width:100%; }
+.promo-timer-txt { font-size:10px; color:rgba(255,255,255,.4); font-weight:500; letter-spacing:.06em; min-width:12px; }
+@media(max-width:480px){ .promo-body{padding:20px 20px 24px;} .promo-img{height:160px;} }
 </style>
 </head>
 <body>
 
 <div id="cur"></div>
+
+<!-- ══ PROMO POPUP ══ -->
+<div class="promo-overlay" id="promoOverlay" onclick="closePromo(event)">
+  <div class="promo-box">
+    <!-- Przycisk zamknij -->
+    <button class="promo-close" onclick="dismissPromo()" aria-label="Zamknij">✕</button>
+    <!-- Timer -->
+    <div class="promo-timer">
+      <div class="promo-bar-wrap"><div class="promo-bar" id="promoBar"></div></div>
+      <span class="promo-timer-txt" id="promoCountdown">10</span>
+    </div>
+    <!-- Zdjęcie -->
+    <img class="promo-img" src="/images/sycowska.jpg" alt="Sycowska 33 — apartamenty Warszawa" />
+    <!-- Treść -->
+    <div class="promo-body">
+      <div class="promo-label" data-pl="Sprzedaż otwarta · Warszawa, Włochy" data-en="Sales Open · Warsaw, Włochy">Sprzedaż otwarta · Warszawa, Włochy</div>
+      <h2 class="promo-h" data-pl="Sycowska 33<br><em>9 apartamentów</em><br>w Warszawie." data-en="Sycowska 33<br><em>9 apartments</em><br>in Warsaw.">Sycowska 33<br><em>9 apartamentów</em><br>w Warszawie.</h2>
+      <p class="promo-sub" data-pl="Metraże 19–55 m² · Stan deweloperski · Dzielnica Włochy. Lokale dostępne od zaraz." data-en="19–55 m² · Developer condition · Włochy district. Units available now.">Metraże 19–55 m² · Stan deweloperski · Dzielnica Włochy. Lokale dostępne od zaraz.</p>
+      <div class="promo-actions">
+        <a class="promo-cta" href="/sycowska.html" data-pl="Zobacz ofertę →" data-en="View offer →">Zobacz ofertę →</a>
+        <button class="promo-skip" onclick="dismissPromo()" data-pl="Zamknij" data-en="Close">Zamknij</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div id="cur-ring"></div>
 
 <!-- ══ NAV ══ -->
@@ -1584,6 +1647,62 @@ async function submitForm() {
   });
 })();
 
+/* ── PROMO POPUP ── */
+(function() {
+  const COOKIE = 'innov8_promo_seen';
+  const DURATION = 10; // sekund do auto-zamknięcia
+
+  function getCookie(n) {
+    return document.cookie.split(';').some(c => c.trim().startsWith(n + '='));
+  }
+  function setCookie(n, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + days * 86400000);
+    document.cookie = n + '=1; expires=' + d.toUTCString() + '; path=/; SameSite=Lax';
+  }
+
+  // Nie pokazuj jeśli już widziany w ciągu 24h
+  if (getCookie(COOKIE)) return;
+
+  const overlay = document.getElementById('promoOverlay');
+  const bar = document.getElementById('promoBar');
+  const countdown = document.getElementById('promoCountdown');
+  if (!overlay) return;
+
+  // Pokaż po 1.5s
+  setTimeout(() => {
+    overlay.classList.add('show');
+    startTimer();
+  }, 1500);
+
+  let timeLeft = DURATION;
+  let interval;
+
+  function startTimer() {
+    // Animuj pasek
+    bar.style.transition = 'width ' + DURATION + 's linear';
+    setTimeout(() => { bar.style.width = '0%'; }, 50);
+
+    interval = setInterval(() => {
+      timeLeft--;
+      countdown.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        dismissPromo();
+      }
+    }, 1000);
+  }
+
+  window.closePromo = function(e) {
+    if (e.target === overlay) dismissPromo();
+  };
+
+  window.dismissPromo = function() {
+    clearInterval(interval);
+    overlay.classList.remove('show');
+    setCookie(COOKIE, 1); // nie pokazuj przez 24h
+  };
+})();
 </script>
 </body>
 </html>
