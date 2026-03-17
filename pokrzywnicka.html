@@ -256,7 +256,65 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
 
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
 
-/* ── CHATBOT ── */
+/* ── GALLERY LIGHTBOX ── */
+#gallery-lb {
+  position:fixed; inset:0; z-index:950;
+  background:rgba(8,7,6,.96); backdrop-filter:blur(10px);
+  display:none; flex-direction:column;
+}
+#gallery-lb.open { display:flex; }
+#gallery-lb-top {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 24px; flex-shrink:0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+#gallery-lb-counter { font-size:11px; color:rgba(255,255,255,.35); letter-spacing:.1em; }
+#gallery-lb-close {
+  width:36px; height:36px; background:rgba(255,255,255,.08); border:none;
+  color:rgba(255,255,255,.5); font-size:18px; cursor:pointer; display:flex;
+  align-items:center; justify-content:center; transition:all .2s; border-radius:0;
+}
+#gallery-lb-close:hover { background:rgba(255,255,255,.18); color:#fff; }
+#gallery-lb-main {
+  flex:1; display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden; padding:20px 80px;
+}
+#gallery-lb-img {
+  max-width:100%; max-height:100%; object-fit:contain;
+  transition:opacity .25s;
+  user-select:none; -webkit-user-select:none;
+}
+#gallery-lb-img.fade { opacity:0; }
+.gallery-lb-arrow {
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:48px; height:48px; background:rgba(255,255,255,.08); border:none;
+  color:rgba(255,255,255,.6); font-size:20px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .2s;
+}
+.gallery-lb-arrow:hover { background:var(--gold); color:#fff; }
+#gallery-lb-prev { left:16px; }
+#gallery-lb-next { right:16px; }
+.gallery-lb-arrow:disabled { opacity:.15; cursor:default; pointer-events:none; }
+#gallery-lb-thumbs {
+  height:72px; flex-shrink:0; overflow-x:auto; display:flex; gap:3px;
+  padding:8px 16px; border-top:1px solid rgba(255,255,255,.06);
+  scrollbar-width:thin; scrollbar-color:rgba(255,255,255,.15) transparent;
+}
+.gallery-lb-thumb {
+  width:88px; height:56px; flex-shrink:0; object-fit:cover;
+  opacity:.4; cursor:pointer; transition:opacity .2s;
+  border:2px solid transparent;
+}
+.gallery-lb-thumb.active { opacity:1; border-color:var(--gold); }
+.gallery-lb-thumb:hover { opacity:.75; }
+@media(max-width:768px) {
+  #gallery-lb-main { padding:12px 52px; }
+  .gallery-lb-arrow { width:36px; height:36px; font-size:16px; }
+  #gallery-lb-prev { left:8px; }
+  #gallery-lb-next { right:8px; }
+}
+</style>
 .chat-fab{position:fixed;bottom:32px;right:32px;z-index:900;width:52px;height:52px;background:var(--gold);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(158,122,58,.4);transition:all .3s;}
 .chat-fab:hover{background:var(--gold-l);transform:scale(1.08);}
 .chat-fab svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;}
@@ -458,35 +516,45 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padd
 </section>
 
 
-<!-- BEFORE / AFTER -->
+<!-- GALERIA -->
 <section class="ba-section">
   <div class="container">
     <div class="ba-label reveal">
-      <span class="label" data-pl="Dokumentacja" data-en="Documentation">Dokumentacja</span>
-      <h2 class="ba-h2" data-pl="Przed i <em style='font-style:italic'>po.</em>" data-en="Before and <em style='font-style:italic'>after.</em>">Przed i <em style="font-style:italic">po.</em></h2>
+      <span class="label" data-pl="Galeria" data-en="Gallery">Galeria</span>
+      <h2 class="ba-h2" data-pl="Dokumentacja <em style='font-style:italic'>projektu.</em>" data-en="Project <em style='font-style:italic'>documentation.</em>">Dokumentacja <em style="font-style:italic">projektu.</em></h2>
     </div>
-    <div class="ba-grid reveal d1">
-      <div class="ba-item ba-full">
-        <img src="/images/pokrzywnicka-elewacja.png" alt="Pokrzywnicka 11 — elewacja po remoncie" />
-        <div class="ba-caption" data-pl="Elewacja — efekt końcowy" data-en="Facade — final result">Elewacja — efekt końcowy</div>
+    <p style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:32px;font-weight:300" class="reveal d1" data-pl="Kliknij na zdjęcie aby otworzyć galerię." data-en="Click any photo to open the gallery.">Kliknij na zdjęcie aby otworzyć galerię.</p>
+
+    <!-- SIATKA MINIATUR -->
+    <div class="reveal d1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;">
+      <div style="grid-column:1/3;grid-row:1/3;position:relative;overflow:hidden;cursor:pointer;aspect-ratio:1/1;" onclick="openGallery(0)">
+        <img src="/images/pokrzywnicka-gallery/pok-01.png" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''" />
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.4) 0%,transparent 50%);pointer-events:none;"></div>
       </div>
-      <div class="ba-item">
-        <img src="/images/pokrzywnicka-drzwi.png" alt="Pokrzywnicka 11 — drzwi mieszkań po remoncie" />
-        <div class="ba-caption" data-pl="Klatka schodowa — drzwi mieszkań" data-en="Stairwell — apartment doors">Klatka schodowa — drzwi mieszkań</div>
+      <div style="position:relative;overflow:hidden;cursor:pointer;aspect-ratio:1/1;" onclick="openGallery(1)">
+        <img src="/images/pokrzywnicka-gallery/pok-02.png" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''" />
       </div>
-      <div class="ba-item">
-        <img src="/images/pokrzywnicka-klatka.png" alt="Pokrzywnicka 11 — klatka schodowa po remoncie" />
-        <div class="ba-caption" data-pl="Klatka schodowa — detal" data-en="Stairwell — detail">Klatka schodowa — detal</div>
+      <div style="position:relative;overflow:hidden;cursor:pointer;aspect-ratio:1/1;" onclick="openGallery(2)">
+        <img src="/images/pokrzywnicka-gallery/pok-03.png" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''" />
       </div>
-      <div class="ba-item">
-        <img src="/images/pokrzywnicka-przed-po-1.png" alt="Pokrzywnicka 11 — klatka przed i po" />
-        <div class="ba-caption" data-pl="Klatka schodowa — transformacja" data-en="Stairwell — transformation">Klatka schodowa — transformacja</div>
+      <div style="position:relative;overflow:hidden;cursor:pointer;aspect-ratio:1/1;" onclick="openGallery(3)">
+        <img src="/images/pokrzywnicka-gallery/pok-04.png" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''" />
       </div>
-      <div class="ba-item">
-        <img src="/images/pokrzywnicka-przed-po-4.png" alt="Pokrzywnicka 11 — schody przed i po" />
-        <div class="ba-caption" data-pl="Schody — przed i po" data-en="Stairs — before and after">Schody — przed i po</div>
+      <div style="position:relative;overflow:hidden;cursor:pointer;aspect-ratio:1/1;" onclick="openGallery(4)">
+        <img src="/images/pokrzywnicka-gallery/pok-05.png" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''" />
+      </div>
+      <div style="position:relative;overflow:hidden;cursor:pointer;aspect-ratio:1/1;" onclick="openGallery(5)">
+        <img src="/images/pokrzywnicka-gallery/pok-06.png" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''" />
+      </div>
+      <div style="position:relative;overflow:hidden;cursor:pointer;aspect-ratio:1/1;" onclick="openGallery(6)">
+        <img src="/images/pokrzywnicka-gallery/pok-07.png" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''" />
+      </div>
+      <div style="position:relative;overflow:hidden;cursor:pointer;aspect-ratio:1/1;" onclick="openGallery(7)">
+        <img src="/images/pokrzywnicka-gallery/pok-08.png" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''" />
       </div>
     </div>
+
+    <button onclick="openGallery(0)" style="margin-top:16px;background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:11px 28px;cursor:pointer;transition:all .3s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='rgba(255,255,255,.2)';this.style.color='rgba(255,255,255,.5)'" data-pl="Zobacz wszystkie 57 zdjęć →" data-en="View all 57 photos →">Zobacz wszystkie 57 zdjęć →</button>
   </div>
 </section>
 
@@ -702,6 +770,152 @@ async function sendChatS(){
     addMsgS(typeof currentLang!=='undefined'&&currentLang==='en'?'Sorry, an error occurred. Contact us at biuro@innov-8.pl':'Przepraszamy, błąd połączenia. Kontakt: biuro@innov-8.pl','bot');
   }
 }
+
+</script>
+
+<!-- GALLERY LIGHTBOX -->
+<div id="gallery-lb">
+  <div id="gallery-lb-top">
+    <div style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);">Pokrzywnicka 11</div>
+    <div id="gallery-lb-counter">1 / 57</div>
+    <button id="gallery-lb-close" onclick="closeGallery()">✕</button>
+  </div>
+  <div id="gallery-lb-main">
+    <button class="gallery-lb-arrow" id="gallery-lb-prev" onclick="navGallery(-1)">‹</button>
+    <img id="gallery-lb-img" src="" alt="Pokrzywnicka 11" />
+    <button class="gallery-lb-arrow" id="gallery-lb-next" onclick="navGallery(1)">›</button>
+  </div>
+  <div id="gallery-lb-thumbs"></div>
+</div>
+
+<script>
+
+/* ── GALLERY LIGHTBOX ── */
+const GALLERY = [
+  '/images/pokrzywnicka-gallery/pok-01.png',
+  '/images/pokrzywnicka-gallery/pok-02.png',
+  '/images/pokrzywnicka-gallery/pok-03.png',
+  '/images/pokrzywnicka-gallery/pok-04.png',
+  '/images/pokrzywnicka-gallery/pok-05.png',
+  '/images/pokrzywnicka-gallery/pok-06.png',
+  '/images/pokrzywnicka-gallery/pok-07.png',
+  '/images/pokrzywnicka-gallery/pok-08.png',
+  '/images/pokrzywnicka-gallery/pok-09.png',
+  '/images/pokrzywnicka-gallery/pok-10.png',
+  '/images/pokrzywnicka-gallery/pok-11.png',
+  '/images/pokrzywnicka-gallery/pok-12.png',
+  '/images/pokrzywnicka-gallery/pok-13.png',
+  '/images/pokrzywnicka-gallery/pok-14.png',
+  '/images/pokrzywnicka-gallery/pok-15.png',
+  '/images/pokrzywnicka-gallery/pok-16.png',
+  '/images/pokrzywnicka-gallery/pok-17.png',
+  '/images/pokrzywnicka-gallery/pok-18.png',
+  '/images/pokrzywnicka-gallery/pok-19.png',
+  '/images/pokrzywnicka-gallery/pok-20.png',
+  '/images/pokrzywnicka-gallery/pok-21.png',
+  '/images/pokrzywnicka-gallery/pok-22.png',
+  '/images/pokrzywnicka-gallery/pok-23.png',
+  '/images/pokrzywnicka-gallery/pok-24.png',
+  '/images/pokrzywnicka-gallery/pok-25.png',
+  '/images/pokrzywnicka-gallery/pok-26.png',
+  '/images/pokrzywnicka-gallery/pok-27.png',
+  '/images/pokrzywnicka-gallery/pok-28.png',
+  '/images/pokrzywnicka-gallery/pok-29.png',
+  '/images/pokrzywnicka-gallery/pok-30.png',
+  '/images/pokrzywnicka-gallery/pok-31.png',
+  '/images/pokrzywnicka-gallery/pok-32.png',
+  '/images/pokrzywnicka-gallery/pok-33.png',
+  '/images/pokrzywnicka-gallery/pok-34.png',
+  '/images/pokrzywnicka-gallery/pok-35.png',
+  '/images/pokrzywnicka-gallery/pok-36.png',
+  '/images/pokrzywnicka-gallery/pok-37.png',
+  '/images/pokrzywnicka-gallery/pok-38.png',
+  '/images/pokrzywnicka-gallery/pok-39.png',
+  '/images/pokrzywnicka-gallery/pok-40.png',
+  '/images/pokrzywnicka-gallery/pok-41.png',
+  '/images/pokrzywnicka-gallery/pok-42.png',
+  '/images/pokrzywnicka-gallery/pok-43.png',
+  '/images/pokrzywnicka-gallery/pok-44.png',
+  '/images/pokrzywnicka-gallery/pok-45.png',
+  '/images/pokrzywnicka-gallery/pok-46.png',
+  '/images/pokrzywnicka-gallery/pok-47.png',
+  '/images/pokrzywnicka-gallery/pok-48.png',
+  '/images/pokrzywnicka-gallery/pok-49.png',
+  '/images/pokrzywnicka-gallery/pok-50.png',
+  '/images/pokrzywnicka-gallery/pok-51.png',
+  '/images/pokrzywnicka-gallery/pok-52.png',
+  '/images/pokrzywnicka-gallery/pok-53.png',
+  '/images/pokrzywnicka-gallery/pok-54.png',
+  '/images/pokrzywnicka-gallery/pok-55.png',
+  '/images/pokrzywnicka-gallery/pok-56.png',
+  '/images/pokrzywnicka-gallery/pok-57.png'
+];
+let galleryIdx = 0;
+
+function openGallery(idx) {
+  galleryIdx = idx;
+  const lb = document.getElementById('gallery-lb');
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderThumbs();
+  showGalleryImg(galleryIdx);
+}
+
+function renderThumbs() {
+  const wrap = document.getElementById('gallery-lb-thumbs');
+  wrap.innerHTML = '';
+  GALLERY.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src = src; img.className = 'gallery-lb-thumb';
+    img.loading = 'lazy';
+    img.onclick = () => showGalleryImg(i);
+    wrap.appendChild(img);
+  });
+}
+
+function showGalleryImg(idx) {
+  galleryIdx = Math.max(0, Math.min(GALLERY.length - 1, idx));
+  const el = document.getElementById('gallery-lb-img');
+  el.classList.add('fade');
+  setTimeout(() => {
+    el.src = GALLERY[galleryIdx];
+    el.classList.remove('fade');
+  }, 200);
+  document.getElementById('gallery-lb-counter').textContent = (galleryIdx + 1) + ' / ' + GALLERY.length;
+  document.getElementById('gallery-lb-prev').disabled = galleryIdx === 0;
+  document.getElementById('gallery-lb-next').disabled = galleryIdx === GALLERY.length - 1;
+  // Thumb highlight
+  document.querySelectorAll('.gallery-lb-thumb').forEach((t, i) => t.classList.toggle('active', i === galleryIdx));
+  // Scroll thumb into view
+  const thumbs = document.getElementById('gallery-lb-thumbs');
+  const activeThumb = thumbs.children[galleryIdx];
+  if (activeThumb) activeThumb.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+}
+
+function navGallery(dir) { showGalleryImg(galleryIdx + dir); }
+
+function closeGallery() {
+  document.getElementById('gallery-lb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('gallery-lb').classList.contains('open')) return;
+  if (e.key === 'Escape') closeGallery();
+  if (e.key === 'ArrowRight') navGallery(1);
+  if (e.key === 'ArrowLeft') navGallery(-1);
+});
+
+// Swipe na mobile
+(function() {
+  let sx = 0;
+  const lb = document.getElementById('gallery-lb');
+  lb.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+  lb.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 50) navGallery(dx < 0 ? 1 : -1);
+  }, {passive:true});
+})();
 
 </script>
 </body>
